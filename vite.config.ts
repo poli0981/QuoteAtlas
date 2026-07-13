@@ -1,10 +1,33 @@
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 
-// PWA (vite-plugin-pwa) is wired in M4; kept out of the toolchain baseline.
+// Offline-first PWA (docs/08 §5): precache the app shell + bundled data + fonts;
+// `prompt` surfaces a reload toast on SW update rather than auto-reloading.
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    VitePWA({
+      registerType: 'prompt',
+      includeAssets: ['icon.svg'],
+      manifest: {
+        name: 'QuoteAtlas',
+        short_name: 'QuoteAtlas',
+        description: 'Ambient quote display — offline-first.',
+        lang: 'en',
+        theme_color: '#0f172a',
+        background_color: '#0a0a0a',
+        display: 'standalone',
+        start_url: '/',
+        icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,woff2,svg,json}'],
+      },
+    }),
+  ],
   test: {
     environment: 'jsdom',
     include: ['src/**/*.test.{ts,tsx}'],
