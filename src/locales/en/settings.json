@@ -25,5 +25,13 @@
     "interval": "Interval (seconds)",
     "clock24": "24-hour clock",
     "bilingual": "Show translation"
+  },
+  "about": {
+    "title": "About",
+    "version": "Version",
+    "report": "Report bug",
+    "export": "Export logs",
+    "copiedHint": "Logs copied — paste into the report's Logs field.",
+    "reopenLegal": "Reopen legal notice"
   }
 }

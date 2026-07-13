@@ -1,5 +1,6 @@
 import { useEffect, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BugReportActions } from '../bug-report/BugReportActions';
 import type { QuoteMode } from '../quote/types';
 import { useSettings } from './store';
 
@@ -222,6 +223,26 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
               }}
             />
           </label>
+        </section>
+
+        <section className="mt-8">
+          <h3 className="mb-3 text-xs tracking-wide uppercase opacity-60">{t('about.title')}</h3>
+          <p className="mb-3 text-sm opacity-70">
+            {t('about.version')}: {__APP_VERSION__}
+          </p>
+          <div className="mb-3">
+            <BugReportActions />
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              update({ consentVersion: 0 });
+              onClose();
+            }}
+            className="rounded bg-white/10 px-3 py-1 text-sm hover:bg-white/20"
+          >
+            {t('about.reopenLegal')}
+          </button>
         </section>
       </div>
     </div>

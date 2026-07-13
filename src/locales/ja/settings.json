@@ -25,5 +25,13 @@
     "interval": "間隔（秒）",
     "clock24": "24時間表示",
     "bilingual": "翻訳を表示"
+  },
+  "about": {
+    "title": "情報",
+    "version": "バージョン",
+    "report": "バグを報告",
+    "export": "ログを書き出す",
+    "copiedHint": "ログをコピーしました — 報告の Logs 欄に貼り付けてください。",
+    "reopenLegal": "法的通知を再表示"
   }
 }
