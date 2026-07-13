@@ -1,0 +1,30 @@
+{
+  "notFound": {
+    "title": "Trang này lạc lối rồi.",
+    "message": "Liên kết có thể đã hỏng hoặc trang đã dời đi.",
+    "home": "Về trang trích dẫn"
+  },
+  "forbidden": {
+    "title": "Bị chặn truy cập.",
+    "message": "Bạn không có quyền xem nội dung này."
+  },
+  "rateLimited": {
+    "title": "Quá nhiều yêu cầu.",
+    "message": "Vui lòng chậm lại và thử lại sau giây lát."
+  },
+  "serverError": {
+    "title": "Có lỗi từ phía máy chủ.",
+    "message": "Đây là sự cố phía nhà cung cấp — vui lòng thử lại sau."
+  },
+  "offline": {
+    "title": "Bạn đang ngoại tuyến.",
+    "message": "QuoteAtlas vẫn hoạt động sau khi đã tải.",
+    "retry": "Thử lại"
+  },
+  "crash": {
+    "title": "Đã xảy ra sự cố.",
+    "message": "Có lỗi bất ngờ. Tải lại thường sẽ khắc phục được.",
+    "reload": "Tải lại",
+    "reportBug": "Báo lỗi"
+  }
+}

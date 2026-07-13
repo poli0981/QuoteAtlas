@@ -17,6 +17,8 @@ import tzData from '../features/region/tz-to-country.json';
 import { SettingsPanel } from '../features/settings/SettingsPanel';
 import { useSettings, type BackgroundSettings } from '../features/settings/store';
 import i18n, { UI_LANGUAGES } from '../lib/i18n';
+import { ErrorView } from './ErrorView';
+import { useAutoHide } from './use-auto-hide';
 
 const INDEX = indexData as unknown as LocaleIndex;
 const POOL = enData.quotes as unknown as QuoteRecord[];
@@ -62,7 +64,9 @@ export function App(): ReactElement {
   const [quote, setQuote] = useState<QuoteRecord | null>(null);
   const [detected, setDetected] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [online, setOnline] = useState(() => navigator.onLine);
   const historyRef = useRef<string[]>([]);
+  const toolbarVisible = useAutoHide();
 
   const effective = regionOverride ?? detected;
   const resolution = resolveLocale(effective, INDEX, navigator.languages);
@@ -81,6 +85,22 @@ export function App(): ReactElement {
     // one-time region detection (docs/03 §1)
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setDetected(detect(tzData.map, { timeZone, languages: navigator.languages }));
+  }, []);
+
+  useEffect(() => {
+    // track connectivity for the offline notice (docs/06 §9)
+    const on = (): void => {
+      setOnline(true);
+    };
+    const off = (): void => {
+      setOnline(false);
+    };
+    window.addEventListener('online', on);
+    window.addEventListener('offline', off);
+    return () => {
+      window.removeEventListener('online', on);
+      window.removeEventListener('offline', off);
+    };
   }, []);
 
   useEffect(() => {
@@ -118,6 +138,11 @@ export function App(): ReactElement {
       .writeText(`${quote.text}\n${attributionText(quote)}`)
       .catch(() => undefined);
   };
+
+  const path = window.location.pathname;
+  if (path !== '/' && path !== '/index.html') {
+    return <ErrorView state="notFound" />;
+  }
 
   return (
     <main
@@ -172,11 +197,21 @@ export function App(): ReactElement {
         </div>
       )}
 
+      {!online && (
+        <div className="absolute inset-x-0 top-8 z-20 mx-auto w-fit rounded-full bg-red-500/20 px-4 py-1 text-xs text-red-200">
+          {t('errors:offline.title')}
+        </div>
+      )}
+
       <div className="relative z-10">
         {quote && <QuoteView quote={quote} bilingual={bilingual} uiLanguage={uiLanguage} />}
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center gap-4 p-6">
+      <div
+        className={`absolute inset-x-0 bottom-0 z-20 flex justify-center gap-4 p-6 transition-opacity duration-500 ${
+          toolbarVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      >
         <button
           type="button"
           onClick={copyQuote}
