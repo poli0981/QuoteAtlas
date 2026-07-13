@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactElement } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactElement,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import enData from '../../data/quotes/en.json';
 import indexData from '../../data/quotes/index.json';
@@ -18,7 +25,9 @@ import { SettingsPanel } from '../features/settings/SettingsPanel';
 import { useSettings, type BackgroundSettings } from '../features/settings/store';
 import i18n, { UI_LANGUAGES } from '../lib/i18n';
 import { ErrorView } from './ErrorView';
+import { UpdateToast } from './UpdateToast';
 import { useAutoHide } from './use-auto-hide';
+import { useFullscreen } from './use-fullscreen';
 
 const INDEX = indexData as unknown as LocaleIndex;
 const POOL = enData.quotes as unknown as QuoteRecord[];
@@ -67,6 +76,7 @@ export function App(): ReactElement {
   const [online, setOnline] = useState(() => navigator.onLine);
   const historyRef = useRef<string[]>([]);
   const toolbarVisible = useAutoHide();
+  const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
 
   const effective = regionOverride ?? detected;
   const resolution = resolveLocale(effective, INDEX, navigator.languages);
@@ -132,12 +142,34 @@ export function App(): ReactElement {
     return undefined;
   }, [locale, quoteMode, rotateSeconds]);
 
-  const copyQuote = (): void => {
+  const copyQuote = useCallback((): void => {
     if (!quote) return;
     void navigator.clipboard
       .writeText(`${quote.text}\n${attributionText(quote)}`)
       .catch(() => undefined);
-  };
+  }, [quote]);
+
+  useEffect(() => {
+    // keyboard shortcuts: F11 fullscreen, C copy (docs/06 §12)
+    const onKey = (e: KeyboardEvent): void => {
+      if (
+        e.target instanceof HTMLElement &&
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)
+      ) {
+        return;
+      }
+      if (e.key === 'F11') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key === 'c' || e.key === 'C') {
+        copyQuote();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [toggleFullscreen, copyQuote]);
 
   const path = window.location.pathname;
   if (path !== '/' && path !== '/index.html') {
@@ -146,7 +178,9 @@ export function App(): ReactElement {
 
   return (
     <main
-      className="relative grid min-h-dvh place-items-center overflow-hidden px-6"
+      className={`relative grid min-h-dvh place-items-center overflow-hidden px-6 ${
+        isFullscreen && !toolbarVisible ? 'cursor-none' : ''
+      }`}
       style={{
         ...backgroundStyle(background),
         color: background.fontColor,
@@ -222,6 +256,15 @@ export function App(): ReactElement {
         </button>
         <button
           type="button"
+          onClick={toggleFullscreen}
+          aria-label={t('settings:fullscreen')}
+          aria-pressed={isFullscreen}
+          className="rounded-full px-3 py-2 text-lg opacity-70 hover:bg-white/10 hover:opacity-100"
+        >
+          ⛶
+        </button>
+        <button
+          type="button"
           onClick={() => {
             setSettingsOpen(true);
           }}
@@ -241,6 +284,8 @@ export function App(): ReactElement {
       )}
 
       {consentVersion !== LEGAL_VERSION && <Gate />}
+
+      <UpdateToast />
     </main>
   );
 }
