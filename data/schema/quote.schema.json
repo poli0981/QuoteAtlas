@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quote.schema.json",
+  "title": "QuoteAtlas locale quote file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["locale", "quotes"],
+  "properties": {
+    "locale": { "type": "string", "minLength": 2 },
+    "quotes": { "type": "array", "items": { "$ref": "#/$defs/quote" } }
+  },
+  "$defs": {
+    "quote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "text",
+        "lang",
+        "translations",
+        "attribution",
+        "regions",
+        "tags",
+        "holidays"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z]{2}(?:-[A-Za-z]+)*-[0-9]{4,}$" },
+        "type": { "enum": ["proverb", "quote", "movie", "game", "book"] },
+        "text": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "lang": { "type": "string", "minLength": 2 },
+        "translations": { "type": "object", "additionalProperties": { "type": "string" } },
+        "attribution": { "$ref": "#/$defs/attribution" },
+        "regions": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]{2}$" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "holidays": { "type": "array", "items": { "type": "string" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "proverb" } } },
+          "then": {
+            "properties": { "attribution": { "properties": { "source": { "type": "string" } } } }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "quote" } } },
+          "then": {
+            "properties": {
+              "attribution": {
+                "anyOf": [
+                  { "properties": { "author": { "type": "string" } } },
+                  { "properties": { "source": { "type": "string" } } }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "movie" } } },
+          "then": {
+            "properties": { "attribution": { "properties": { "work": { "type": "string" } } } }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "book" } } },
+          "then": {
+            "properties": {
+              "attribution": {
+                "properties": { "work": { "type": "string" }, "author": { "type": "string" } }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "game" } } },
+          "then": {
+            "properties": {
+              "attribution": {
+                "allOf": [
+                  { "properties": { "work": { "type": "string" } } },
+                  {
+                    "anyOf": [
+                      { "properties": { "developer": { "type": "string" } } },
+                      { "properties": { "publisher": { "type": "string" } } }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "work",
+        "character",
+        "actor",
+        "author",
+        "developer",
+        "publisher",
+        "source",
+        "year",
+        "links",
+        "rights"
+      ],
+      "properties": {
+        "work": { "type": ["string", "null"] },
+        "character": { "type": ["string", "null"] },
+        "actor": { "type": ["string", "null"] },
+        "author": { "type": ["string", "null"] },
+        "developer": { "type": ["string", "null"] },
+        "publisher": { "type": ["string", "null"] },
+        "source": { "type": ["string", "null"] },
+        "year": { "type": ["integer", "null"] },
+        "links": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "work": { "type": "string", "format": "uri" },
+            "author": { "type": "string", "format": "uri" }
+          }
+        },
+        "rights": {
+          "enum": ["public-domain", "quoted-with-attribution", "own-translation", "cc0"]
+        }
+      }
+    }
+  }
+}

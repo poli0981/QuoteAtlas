@@ -1,0 +1,43 @@
+# Local-only project spec — MUST NEVER be committed/pushed (maintainer constraint)
+/docs/
+/CLAUDE.md
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+
+# Test / coverage artifacts
+coverage/
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+
+# Tauri (wired in Phase 3/4)
+src-tauri/target/
+src-tauri/gen/
+
+# Font source workspace — source OFL TTFs are supplied by a human, not committed;
+# only the subset public/fonts/*.woff2 outputs are tracked
+fonts-src/
+
+# Environment / local overrides
+.env
+.env.*
+!.env.example
+*.local
+
+# Editor / OS / agent tooling (local-only)
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.claude/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

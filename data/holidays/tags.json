@@ -1,0 +1,6 @@
+{
+  "tet": { "scope": "national", "countries": ["VN"] },
+  "new-year": { "scope": "international" },
+  "mid-autumn": { "scope": "national", "countries": ["VN", "CN", "TW", "HK", "KR"] },
+  "hung-kings": { "scope": "national", "countries": ["VN"] }
+}

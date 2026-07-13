@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+/* Tailwind 4 CSS-first config (docs/06 §2, docs/10 §2). Font stacks are keyed to
+   the `fontKey` values in data/quotes/index.json; extended per locale wave. */
+@theme {
+  --font-ui: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Lora', ui-serif, Georgia, 'Times New Roman', serif;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body {
+  margin: 0;
+  block-size: 100%;
+}
+
+body {
+  min-block-size: 100dvh;
+  font-family: var(--font-ui);
+}

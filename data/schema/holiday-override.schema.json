@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "holiday-override.schema.json",
+  "title": "QuoteAtlas per-country holiday override",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["country"],
+  "properties": {
+    "country": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "add": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tag", "rule"],
+        "properties": {
+          "tag": { "type": "string" },
+          "rule": { "type": "string", "pattern": "^(?:lunar:)?[0-9]{1,2}-[0-9]{1,2}$" },
+          "days": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "remove": { "type": "array", "items": { "type": "string" } }
+  }
+}
