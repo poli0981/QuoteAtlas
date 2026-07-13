@@ -8,6 +8,10 @@ export interface BackgroundSettings {
   mode: 'color' | 'gradient';
   color: string;
   gradient: { from: string; to: string; angle: number };
+  /** readability overlay, 0–80 % (docs/06 §3) */
+  scrim: number;
+  fontColor: string;
+  textShadow: boolean;
 }
 
 export interface Settings {
@@ -15,6 +19,8 @@ export interface Settings {
   uiLanguage: UiLanguage;
   regionOverride: string | null;
   quoteMode: QuoteMode;
+  /** rotate-mode interval in seconds (30–3600, docs/03 §3) */
+  rotateSeconds: number;
   hour12: boolean;
   bilingual: boolean;
   background: BackgroundSettings;
@@ -33,12 +39,16 @@ export const DEFAULT_SETTINGS: Settings = {
   uiLanguage: 'en',
   regionOverride: null,
   quoteMode: 'daily',
+  rotateSeconds: 60,
   hour12: false,
   bilingual: false,
   background: {
     mode: 'gradient',
     color: '#0a0a0a',
     gradient: { from: '#1e293b', to: '#0f172a', angle: 135 },
+    scrim: 0,
+    fontColor: '#fafafa',
+    textShadow: false,
   },
   consentVersion: 0,
 };
@@ -61,6 +71,16 @@ export const useSettings = create<Settings & SettingsActions>()(
       name: 'qa.settings.v1',
       version: 1,
       storage: createJSONStorage(settingsStorage),
+      // Deep-merge so persisted state from an older field set backfills new
+      // fields from the defaults (docs/05 §9 settings migration).
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<Settings>;
+        return {
+          ...current,
+          ...p,
+          background: { ...current.background, ...(p.background ?? {}) },
+        };
+      },
     },
   ),
 );

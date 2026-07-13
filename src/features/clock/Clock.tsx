@@ -5,7 +5,13 @@ import { useEffect, useState, type ReactElement } from 'react';
  * line (docs/07 §4) — incl. the VN amlich line — is added once its fixture is
  * human-verified (R8); until then only the Gregorian line shows.
  */
-export function Clock({ locale }: { locale: string }): ReactElement {
+export function Clock({
+  locale,
+  hour12 = false,
+}: {
+  locale: string;
+  hour12?: boolean;
+}): ReactElement {
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -27,7 +33,7 @@ export function Clock({ locale }: { locale: string }): ReactElement {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    hour12: false,
+    hour12,
   }).format(now);
 
   return (

@@ -1,0 +1,28 @@
+{
+  "open": "Cài đặt",
+  "title": "Cài đặt",
+  "close": "Đóng",
+  "copy": "Sao chép câu trích",
+  "background": {
+    "title": "Hình nền",
+    "mode": "Chế độ",
+    "color": "Màu",
+    "gradient": "Chuyển sắc",
+    "from": "Từ",
+    "to": "Đến",
+    "angle": "Góc",
+    "scrim": "Lớp phủ",
+    "fontColor": "Màu chữ",
+    "textShadow": "Đổ bóng chữ"
+  },
+  "general": {
+    "title": "Chung",
+    "quoteMode": "Chế độ hiển thị",
+    "perLoad": "Mỗi lần mở",
+    "daily": "Theo ngày",
+    "rotate": "Xoay vòng",
+    "interval": "Khoảng (giây)",
+    "clock24": "Đồng hồ 24 giờ",
+    "bilingual": "Hiện bản dịch"
+  }
+}
