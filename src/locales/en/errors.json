@@ -1,0 +1,30 @@
+{
+  "notFound": {
+    "title": "This page wandered off.",
+    "message": "The link may be broken or the page has moved.",
+    "home": "Back to quotes"
+  },
+  "forbidden": {
+    "title": "Access blocked.",
+    "message": "You don't have permission to view this."
+  },
+  "rateLimited": {
+    "title": "Too many requests.",
+    "message": "Please slow down and try again shortly."
+  },
+  "serverError": {
+    "title": "Something went wrong upstream.",
+    "message": "This is on the host's side — please try again later."
+  },
+  "offline": {
+    "title": "You're offline.",
+    "message": "QuoteAtlas keeps working once loaded.",
+    "retry": "Retry"
+  },
+  "crash": {
+    "title": "Something broke.",
+    "message": "An unexpected error occurred. Reloading usually fixes it.",
+    "reload": "Reload",
+    "reportBug": "Report bug"
+  }
+}
