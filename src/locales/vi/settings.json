@@ -25,5 +25,13 @@
     "interval": "Khoảng (giây)",
     "clock24": "Đồng hồ 24 giờ",
     "bilingual": "Hiện bản dịch"
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "version": "Phiên bản",
+    "report": "Báo lỗi",
+    "export": "Xuất log",
+    "copiedHint": "Đã sao chép log — dán vào ô Logs của báo cáo.",
+    "reopenLegal": "Mở lại thông báo pháp lý"
   }
 }

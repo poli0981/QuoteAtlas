@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BugReportActions } from '../features/bug-report/BugReportActions';
 
 /**
  * Full-screen error page (docs/06 §9). `crash` is shown by the ErrorBoundary;
@@ -7,8 +8,6 @@ import { useTranslation } from 'react-i18next';
  * are host-level (Cloudflare static pages) but supported here for completeness.
  */
 export type ErrorState = 'notFound' | 'forbidden' | 'rateLimited' | 'serverError' | 'crash';
-
-const ISSUES_URL = 'https://github.com/poli0981/QuoteAtlas/issues/new';
 
 export function ErrorView({ state }: { state: ErrorState }): ReactElement {
   const { t } = useTranslation('errors');
@@ -41,14 +40,7 @@ export function ErrorView({ state }: { state: ErrorState }): ReactElement {
               >
                 {t('crash.reload')}
               </button>
-              <a
-                href={ISSUES_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg bg-white/10 px-4 py-2 hover:bg-white/20"
-              >
-                {t('crash.reportBug')}
-              </a>
+              <BugReportActions />
             </>
           )}
         </div>
