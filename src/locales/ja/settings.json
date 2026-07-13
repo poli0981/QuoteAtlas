@@ -1,0 +1,28 @@
+{
+  "open": "設定",
+  "title": "設定",
+  "close": "閉じる",
+  "copy": "引用をコピー",
+  "background": {
+    "title": "背景",
+    "mode": "モード",
+    "color": "色",
+    "gradient": "グラデーション",
+    "from": "開始",
+    "to": "終了",
+    "angle": "角度",
+    "scrim": "スクリム",
+    "fontColor": "文字色",
+    "textShadow": "文字の影"
+  },
+  "general": {
+    "title": "一般",
+    "quoteMode": "引用モード",
+    "perLoad": "読み込みごと",
+    "daily": "毎日",
+    "rotate": "ローテーション",
+    "interval": "間隔（秒）",
+    "clock24": "24時間表示",
+    "bilingual": "翻訳を表示"
+  }
+}

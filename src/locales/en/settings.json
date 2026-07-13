@@ -1,0 +1,28 @@
+{
+  "open": "Settings",
+  "title": "Settings",
+  "close": "Close",
+  "copy": "Copy quote",
+  "background": {
+    "title": "Background",
+    "mode": "Mode",
+    "color": "Color",
+    "gradient": "Gradient",
+    "from": "From",
+    "to": "To",
+    "angle": "Angle",
+    "scrim": "Scrim",
+    "fontColor": "Text color",
+    "textShadow": "Text shadow"
+  },
+  "general": {
+    "title": "General",
+    "quoteMode": "Quote mode",
+    "perLoad": "Each load",
+    "daily": "Daily",
+    "rotate": "Rotate",
+    "interval": "Interval (seconds)",
+    "clock24": "24-hour clock",
+    "bilingual": "Show translation"
+  }
+}
