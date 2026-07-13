@@ -1,0 +1,7 @@
+{
+  "movie": ["imdb.com"],
+  "book": ["wikipedia.org", "wikisource.org"],
+  "game": ["store.steampowered.com"],
+  "quote": ["wikipedia.org"],
+  "extra": []
+}

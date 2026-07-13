@@ -1,0 +1,4 @@
+# Rust shell toolchain (docs/01 §1, docs/10 §5). Android targets added in Phase 4.
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy"]

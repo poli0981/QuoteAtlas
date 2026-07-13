@@ -1,0 +1,9 @@
+dist/
+coverage/
+node_modules/
+playwright-report/
+test-results/
+src-tauri/target/
+src-tauri/gen/
+public/fonts/
+package-lock.json

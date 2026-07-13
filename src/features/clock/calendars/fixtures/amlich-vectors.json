@@ -1,0 +1,59 @@
+{
+  "_note": "Vietnamese lunar (Hồ Ngọc Đức, UTC+7). Curated ANCHORS only — NOT the full 1900–2100 human-verified set required by docs/11 §2. Generating that set and verifying it against Hồ Ngọc Đức's published tables is P0 spike S3 (a human step); flip _verified to true only after that sign-off.",
+  "_verified": false,
+  "tet": [
+    {
+      "solar": { "d": 25, "m": 1, "y": 2020 },
+      "lunar": { "day": 1, "month": 1, "year": 2020, "leap": false },
+      "canChi": "Canh Tý"
+    },
+    {
+      "solar": { "d": 12, "m": 2, "y": 2021 },
+      "lunar": { "day": 1, "month": 1, "year": 2021, "leap": false },
+      "canChi": "Tân Sửu"
+    },
+    {
+      "solar": { "d": 1, "m": 2, "y": 2022 },
+      "lunar": { "day": 1, "month": 1, "year": 2022, "leap": false },
+      "canChi": "Nhâm Dần"
+    },
+    {
+      "solar": { "d": 22, "m": 1, "y": 2023 },
+      "lunar": { "day": 1, "month": 1, "year": 2023, "leap": false },
+      "canChi": "Quý Mão"
+    },
+    {
+      "solar": { "d": 10, "m": 2, "y": 2024 },
+      "lunar": { "day": 1, "month": 1, "year": 2024, "leap": false },
+      "canChi": "Giáp Thìn"
+    },
+    {
+      "solar": { "d": 29, "m": 1, "y": 2025 },
+      "lunar": { "day": 1, "month": 1, "year": 2025, "leap": false },
+      "canChi": "Ất Tỵ"
+    },
+    {
+      "solar": { "d": 17, "m": 2, "y": 2026 },
+      "lunar": { "day": 1, "month": 1, "year": 2026, "leap": false },
+      "canChi": "Bính Ngọ"
+    },
+    {
+      "solar": { "d": 6, "m": 2, "y": 2027 },
+      "lunar": { "day": 1, "month": 1, "year": 2027, "leap": false },
+      "canChi": "Đinh Mùi"
+    },
+    {
+      "solar": { "d": 26, "m": 1, "y": 2028 },
+      "lunar": { "day": 1, "month": 1, "year": 2028, "leap": false },
+      "canChi": "Mậu Thân"
+    }
+  ],
+  "divergence": [
+    {
+      "solar": { "d": 17, "m": 2, "y": 2007 },
+      "lunar": { "day": 1, "month": 1, "year": 2007, "leap": false },
+      "note": "Vietnamese Tết. Intl `chinese` (UTC+8) places the new year on 18/2/2007 — exactly the divergence R8 exists for."
+    }
+  ],
+  "leapYears": [{ "year": 2023, "leapMonth": 2 }]
+}

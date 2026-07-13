@@ -1,0 +1,137 @@
+{
+  "locale": "en",
+  "quotes": [
+    {
+      "id": "en-0001",
+      "type": "proverb",
+      "text": "Where there is a will, there is a way.",
+      "lang": "en",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "English proverb",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["US", "GB", "AU", "CA"],
+      "tags": ["perseverance"],
+      "holidays": []
+    },
+    {
+      "id": "en-0002",
+      "type": "proverb",
+      "text": "A journey of a thousand miles begins with a single step.",
+      "lang": "en",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "Chinese proverb",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["US", "GB", "AU", "CA"],
+      "tags": ["beginnings", "perseverance"],
+      "holidays": []
+    },
+    {
+      "id": "en-0003",
+      "type": "proverb",
+      "text": "Actions speak louder than words.",
+      "lang": "en",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "English proverb",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["US", "GB", "AU", "CA"],
+      "tags": ["action"],
+      "holidays": []
+    },
+    {
+      "id": "en-0004",
+      "type": "quote",
+      "text": "Knowledge is power.",
+      "lang": "en",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": "Francis Bacon",
+        "developer": null,
+        "publisher": null,
+        "source": null,
+        "year": 1597,
+        "links": { "author": "https://en.wikipedia.org/wiki/Francis_Bacon" },
+        "rights": "public-domain"
+      },
+      "regions": ["US", "GB", "AU", "CA"],
+      "tags": ["knowledge"],
+      "holidays": []
+    },
+    {
+      "id": "en-0005",
+      "type": "quote",
+      "text": "That which does not kill us makes us stronger.",
+      "lang": "en",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": "Friedrich Nietzsche",
+        "developer": null,
+        "publisher": null,
+        "source": null,
+        "year": 1888,
+        "links": { "author": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche" },
+        "rights": "public-domain"
+      },
+      "regions": ["US", "GB", "AU", "CA"],
+      "tags": ["resilience"],
+      "holidays": []
+    },
+    {
+      "id": "en-0006",
+      "type": "quote",
+      "text": "Write it on your heart that every day is the best day in the year.",
+      "lang": "en",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": "Ralph Waldo Emerson",
+        "developer": null,
+        "publisher": null,
+        "source": null,
+        "year": 1870,
+        "links": { "author": "https://en.wikipedia.org/wiki/Ralph_Waldo_Emerson" },
+        "rights": "public-domain"
+      },
+      "regions": ["US", "GB", "AU", "CA"],
+      "tags": ["gratitude", "time"],
+      "holidays": ["new-year"]
+    }
+  ]
+}
