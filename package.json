@@ -24,6 +24,7 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "knip": "knip",
+    "i18n:check": "tsx scripts/check-i18n-parity.ts",
     "validate:data": "tsx scripts/validate-data.ts",
     "subset:fonts": "tsx scripts/subset-fonts.ts",
     "gen:attributions": "tsx scripts/gen-attributions.ts",
@@ -34,8 +35,11 @@
     "e2e": "playwright test"
   },
   "dependencies": {
+    "i18next": "^26.3.0",
     "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react-dom": "19.2.7",
+    "react-i18next": "^17.0.0",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
