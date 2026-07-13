@@ -1,0 +1,13 @@
+{
+  "language": {
+    "label": "Ngôn ngữ",
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "ja": "日本語"
+  },
+  "region": {
+    "label": "Khu vực",
+    "auto": "Tự động",
+    "fallback": "Đang hiển thị {{locale}} — chưa có kho cho {{region}}"
+  }
+}

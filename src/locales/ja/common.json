@@ -1,0 +1,13 @@
+{
+  "language": {
+    "label": "言語",
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "ja": "日本語"
+  },
+  "region": {
+    "label": "地域",
+    "auto": "自動",
+    "fallback": "{{locale}} を表示中 — {{region}} のプールはまだありません"
+  }
+}

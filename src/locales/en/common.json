@@ -1,0 +1,13 @@
+{
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "ja": "日本語"
+  },
+  "region": {
+    "label": "Region",
+    "auto": "Auto",
+    "fallback": "Showing {{locale}} — no pool for {{region}} yet"
+  }
+}
