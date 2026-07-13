@@ -6,8 +6,9 @@
     "ja": "日本語"
   },
   "region": {
-    "label": "Khu vực",
     "auto": "Tự động",
+    "search": "Tìm quốc gia…",
+    "reset": "Về tự động nhận diện",
     "fallback": "Đang hiển thị {{locale}} — chưa có kho cho {{region}}"
   }
 }

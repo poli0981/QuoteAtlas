@@ -6,8 +6,9 @@
     "ja": "日本語"
   },
   "region": {
-    "label": "Region",
     "auto": "Auto",
+    "search": "Search countries…",
+    "reset": "Reset to auto-detect",
     "fallback": "Showing {{locale}} — no pool for {{region}} yet"
   }
 }

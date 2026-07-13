@@ -39,3 +39,19 @@ export interface QuoteRecord {
 }
 
 export type QuoteMode = 'per-load' | 'daily' | 'rotate';
+
+/** Locale index entry — the region→locale routing table (docs/04 §2). */
+export interface LocaleIndexEntry {
+  code: string;
+  file: string;
+  count: number;
+  dir: 'ltr' | 'rtl';
+  fontKey: string;
+  regions: string[];
+}
+
+export interface LocaleIndex {
+  dataVersion: number;
+  generated: string;
+  locales: LocaleIndexEntry[];
+}
