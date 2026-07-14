@@ -44,14 +44,26 @@ async function chooseMode(panel: Locator, mode: string): Promise<void> {
   await expect(button).toHaveAttribute('aria-pressed', 'true');
 }
 
+/** One distinct colour per library slot — see below. */
+const COLORS: [number, number, number][] = [
+  [22, 160, 133],
+  [142, 68, 173],
+  [230, 126, 34],
+];
+
 /**
  * Import one image. The real "Add image or video" button opens an OS picker, so the
  * only way in is the hidden <input type=file> it proxies to — setInputFiles drives
  * hidden inputs fine. Waiting on the grid count settles the async import
  * (sniff → decode → OPFS) before a second pick reuses the same input.
+ *
+ * Each slot gets its own colour so the bytes differ: import dedups on the file's
+ * SHA-256, so uploading the identical PNG twice is deliberately ONE item. Only the
+ * dedup test below re-picks the same colour on purpose.
  */
 async function upload(panel: Locator, expectedItems: number): Promise<void> {
-  await panel.locator('input[type="file"]').setInputFiles(tinyPng());
+  const color = COLORS[(expectedItems - 1) % COLORS.length]!;
+  await panel.locator('input[type="file"]').setInputFiles(tinyPng(color));
   await expect(panel.getByRole('listitem')).toHaveCount(expectedItems);
 }
 
@@ -103,6 +115,54 @@ test.describe('background media library', () => {
 
     // <main> paints the OPFS file itself; no other background mode yields url(blob:)
     await expect(app.locator('main')).toHaveCSS('background-image', /^url\("blob:/);
+  });
+
+  test('re-picking a file already in the library reuses it instead of storing a copy', async ({
+    app,
+  }) => {
+    const panel = await openSettings(app);
+    await chooseMode(panel, S.settings.background.image);
+    await upload(panel, 1);
+    const [firstId] = await mediaIds(app);
+
+    // the exact same bytes again: dedup must short-circuit before OPFS, so the user
+    // spends neither a second copy of the file nor a second slot in their cap
+    await panel.locator('input[type="file"]').setInputFiles(tinyPng(COLORS[0]));
+    await expect(panel.getByText(S.media.duplicate)).toBeVisible();
+
+    await expect(panel.getByRole('listitem')).toHaveCount(1);
+    // the SAME item — not a re-import that happens to look identical under a new uuid
+    expect(await mediaIds(app)).toEqual([firstId]);
+    expect((await persisted(app)).background.imageId).toBe(firstId);
+  });
+
+  test('dedup keys on content, so a different image still imports', async ({ app }) => {
+    // guards the test above from passing for the wrong reason: a dedup that matched
+    // everything (e.g. on mime or size, or a hash that never varies) would also keep
+    // the grid at one item. Two 1×1 PNGs differ only in their pixel bytes.
+    const panel = await openSettings(app);
+    await chooseMode(panel, S.settings.background.image);
+    await upload(panel, 1);
+    await upload(panel, 2);
+
+    await expect(panel.getByText(S.media.duplicate)).toBeHidden();
+    const ids = await mediaIds(app);
+    expect(ids).toHaveLength(2);
+    expect(new Set(ids).size).toBe(2);
+  });
+
+  test('a re-picked slide stays in the slideshow instead of being toggled out', async ({ app }) => {
+    // the duplicate path selects the existing item; for a slideshow that must be
+    // idempotent — a naive toggle would REMOVE the slide the user just re-added
+    const panel = await openSettings(app);
+    await chooseMode(panel, S.settings.background.slideshow);
+    await upload(panel, 1);
+    const [id] = await mediaIds(app);
+    expect((await persisted(app)).background.slideshow.ids).toEqual([id]);
+
+    await panel.locator('input[type="file"]').setInputFiles(tinyPng(COLORS[0]));
+    await expect(panel.getByText(S.media.duplicate)).toBeVisible();
+    expect((await persisted(app)).background.slideshow.ids).toEqual([id]);
   });
 
   test('tapping a library item swaps which image is applied', async ({ app }) => {

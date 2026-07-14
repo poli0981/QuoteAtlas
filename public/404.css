@@ -1,0 +1,66 @@
+/*
+ * Styles for the host-level 404 (public/404.html). A separate file rather than a
+ * <style> block because the shipped CSP is `style-src 'self'` with no
+ * 'unsafe-inline' (docs/09 §1). Mirrors the app's default gradient so the page
+ * doesn't look like it belongs to someone else.
+ *
+ * Logical properties only (docs/07 §6) — this page is served to every locale.
+ */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  block-size: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-block-size: 100dvh;
+  padding-inline: 1.5rem;
+  background-image: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #fafafa;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  text-align: center;
+}
+
+main {
+  max-inline-size: 34ch;
+}
+
+.mark {
+  margin: 0;
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+h1 {
+  margin-block: 0.5rem 0;
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.sub {
+  margin-block: 0.5rem 0;
+  opacity: 0.6;
+}
+
+.home {
+  display: inline-block;
+  margin-block-start: 2rem;
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 0.9);
+  padding: 0.6rem 1.25rem;
+  color: #171717;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.home:hover {
+  background: #fff;
+}

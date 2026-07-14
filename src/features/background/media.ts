@@ -19,6 +19,14 @@ export interface MediaItem {
   h: number;
   duration?: number;
   addedAt: number;
+  /**
+   * SHA-256 of the ORIGINAL picked file, used to spot a re-upload of the same
+   * file (docs/04 §6). Hashing the source rather than the stored blob matters for
+   * images: those are re-encoded to WebP on import, so the stored bytes differ
+   * even when the user picked the identical file. Optional — items imported
+   * before dedup existed have no hash and simply never match.
+   */
+  hash?: string;
 }
 
 const EXT: Record<MediaMime, string> = {
@@ -96,7 +104,6 @@ export function decideVideoImport(
   caps: MediaCaps,
   currentCount: number,
 ): VideoDecision {
-  if (currentCount >= caps.videoMaxFiles) return { action: 'reject', reason: 'library-full' };
   // A non-finite duration (Infinity/NaN — e.g. MediaRecorder WebM without a
   // Duration element) is unknown, not "too long"; only reject a measured one.
   if (
@@ -107,10 +114,29 @@ export function decideVideoImport(
   }
   if (height > caps.videoMaxHeight) return { action: 'reject', reason: 'resolution' };
   if (bytes > videoCapBytes(height, caps)) return { action: 'reject', reason: 'size' };
+  // Library-full is checked LAST on purpose: a 'library-full' reject then also
+  // *proves the file itself is within caps*, which is what lets the importer hash
+  // it for dedup — so re-picking a file you already have says "already in your
+  // library" rather than "library full", without ever reading an oversized file.
+  if (currentCount >= caps.videoMaxFiles) return { action: 'reject', reason: 'library-full' };
   return { action: 'accept' };
+}
+
+/**
+ * Find an already-imported item with the same content hash (docs/04 §6).
+ *
+ * Re-picking a file the library already holds should be idempotent — storing a
+ * second OPFS copy would burn the user's quota and their file-count cap for a
+ * byte-identical background. Items predating the hash field never match, so an
+ * existing library degrades to the old behaviour instead of mis-matching.
+ */
+export function findDuplicate(hash: string, items: readonly MediaItem[]): MediaItem | undefined {
+  return items.find((m) => m.hash === hash);
 }
 
 /** Result of importing a media file (shared by the image + video importers). */
 export type ImportResult =
   | { ok: true; item: MediaItem }
+  /** the picked file is already in the library — `existing` is the item to reuse */
+  | { ok: false; reason: 'duplicate'; existing: MediaItem }
   | { ok: false; reason: 'unsupported' | VideoRejectReason | 'uncompressible' };

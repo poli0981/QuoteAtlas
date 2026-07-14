@@ -1,7 +1,16 @@
 import type { Page } from '@playwright/test';
 import jaLegal from '../src/locales/ja/legal.json' with { type: 'json' };
 import viLegal from '../src/locales/vi/legal.json' with { type: 'json' };
-import { LEGAL_VERSION, S, clickToolbar, expect, readStore, seed, test } from './fixtures';
+import {
+  LEGAL_VERSION,
+  S,
+  clickToolbar,
+  expect,
+  readStore,
+  seed,
+  test,
+  waitForInteractive,
+} from './fixtures';
 
 /**
  * The blocking legal gate (CLAUDE.md R11 / docs/06 §10): it can never be bypassed,
@@ -208,6 +217,10 @@ test.describe('legal gate', () => {
     // ArrowRight advanced the quote and `f` favorited + persisted it, all before
     // the user had accepted anything. The handler is now gated on consentVersion.
     await page.goto('/');
+    // Without this the test would pass for the WRONG reason: keys pressed before
+    // React attaches the listener are dropped anyway, so "nothing happened" would
+    // prove nothing about the gate. Wait until the app is genuinely listening.
+    await waitForInteractive(page);
     const gate = page.getByRole('dialog');
     await expect(gate).toBeVisible();
 

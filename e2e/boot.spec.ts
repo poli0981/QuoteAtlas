@@ -2,6 +2,11 @@ import { S, expect, fill, test } from './fixtures';
 
 /** Boot flow (docs/03 §1): settings → legal gate → region → locale chain → quote. */
 test.describe('boot', () => {
+  // Real wall-clock here: the rest of the suite pins Date to a holiday-free day, but
+  // a pinned Date can never *advance*, and the whole point below is that it does.
+  // Nothing in this describe depends on the pool size, so the calendar can't bite.
+  test.use({ fixedTime: false });
+
   test('renders a quote with its attribution line', async ({ app }) => {
     const quote = app.locator('blockquote');
     await expect(quote).toBeVisible();
