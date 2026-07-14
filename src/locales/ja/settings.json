@@ -4,6 +4,10 @@
   "close": "閉じる",
   "copy": "引用をコピー",
   "fullscreen": "全画面",
+  "prev": "前の引用",
+  "next": "次の引用",
+  "favorite": "お気に入り",
+  "unfavorite": "お気に入り解除",
   "background": {
     "title": "背景",
     "mode": "モード",
@@ -33,5 +37,10 @@
     "export": "ログを書き出す",
     "copiedHint": "ログをコピーしました — 報告の Logs 欄に貼り付けてください。",
     "reopenLegal": "法的通知を再表示"
+  },
+  "data": {
+    "title": "データ",
+    "favorites": "お気に入り: {{count}}",
+    "clearFavorites": "お気に入りを消去"
   }
 }

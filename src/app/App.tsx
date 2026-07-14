@@ -1,20 +1,11 @@
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactElement,
-} from 'react';
+import { useCallback, useEffect, useState, type CSSProperties, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import enData from '../../data/quotes/en.json';
 import indexData from '../../data/quotes/index.json';
 import { Clock } from '../features/clock/Clock';
-import type { HolidayTags } from '../features/holidays/types';
 import { Gate } from '../features/legal/Gate';
 import { LEGAL_VERSION } from '../features/legal/legal-version';
 import { attributionText } from '../features/quote/attribution';
-import { select } from '../features/quote/engine';
 import { QuoteView } from '../features/quote/QuoteView';
 import type { LocaleIndex, QuoteRecord } from '../features/quote/types';
 import { detect } from '../features/region/detect';
@@ -28,6 +19,7 @@ import { ErrorView } from './ErrorView';
 import { UpdateToast } from './UpdateToast';
 import { useAutoHide } from './use-auto-hide';
 import { useFullscreen } from './use-fullscreen';
+import { useQuoteStack } from './use-quote-stack';
 
 const INDEX = indexData as unknown as LocaleIndex;
 const POOL = enData.quotes as unknown as QuoteRecord[];
@@ -35,11 +27,6 @@ const POOL_REGIONS = regionsWithPool(INDEX);
 const ALL_REGIONS = [
   ...new Set([...Object.values(tzData.map), ...INDEX.locales.flatMap((l) => l.regions)]),
 ];
-const NO_HOLIDAYS: HolidayTags = { national: [], international: [] };
-
-function pad2(n: number): string {
-  return String(n).padStart(2, '0');
-}
 
 function backgroundStyle(bg: BackgroundSettings): CSSProperties {
   if (bg.mode === 'gradient') {
@@ -58,6 +45,8 @@ function scrimColor(fontColor: string): string {
   return lum > 0.5 ? '#000000' : '#ffffff';
 }
 
+const TOOLBAR_BTN = 'rounded-full px-3 py-2 text-lg opacity-70 hover:bg-white/10 hover:opacity-100';
+
 export function App(): ReactElement {
   const { t } = useTranslation();
   const uiLanguage = useSettings((s) => s.uiLanguage);
@@ -68,13 +57,13 @@ export function App(): ReactElement {
   const hour12 = useSettings((s) => s.hour12);
   const bilingual = useSettings((s) => s.bilingual);
   const consentVersion = useSettings((s) => s.consentVersion);
+  const favorites = useSettings((s) => s.favorites);
   const update = useSettings((s) => s.update);
+  const toggleFavorite = useSettings((s) => s.toggleFavorite);
 
-  const [quote, setQuote] = useState<QuoteRecord | null>(null);
   const [detected, setDetected] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [online, setOnline] = useState(() => navigator.onLine);
-  const historyRef = useRef<string[]>([]);
   const toolbarVisible = useAutoHide();
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
 
@@ -85,6 +74,14 @@ export function App(): ReactElement {
   const regionName = effective
     ? (new Intl.DisplayNames([uiLanguage], { type: 'region' }).of(effective) ?? effective)
     : '';
+
+  const { quote, goPrev, goNext, canPrev } = useQuoteStack({
+    pool: POOL,
+    mode: quoteMode,
+    locale,
+    rotateSeconds,
+  });
+  const isFavorite = quote != null && favorites.includes(quote.id);
 
   useEffect(() => {
     // keep the i18n runtime in sync with the persisted UI language
@@ -113,35 +110,6 @@ export function App(): ReactElement {
     };
   }, []);
 
-  useEffect(() => {
-    // pick a quote when the locale or mode changes; rotate re-picks on an interval
-    // (docs/03 §3). Keyed on `locale` (not `detected`) so daily stays stable.
-    const doPick = (): void => {
-      const now = new Date();
-      const dateKey = `${now.getFullYear()}${pad2(now.getMonth() + 1)}${pad2(now.getDate())}`;
-      const result = select({
-        pool: POOL,
-        mode: quoteMode,
-        history: historyRef.current,
-        holidayTags: NO_HOLIDAYS,
-        locale,
-        dateKey,
-      });
-      if (result) {
-        historyRef.current = result.history;
-        setQuote(result.quote);
-      }
-    };
-    doPick();
-    if (quoteMode === 'rotate') {
-      const id = setInterval(doPick, rotateSeconds * 1000);
-      return () => {
-        clearInterval(id);
-      };
-    }
-    return undefined;
-  }, [locale, quoteMode, rotateSeconds]);
-
   const copyQuote = useCallback((): void => {
     if (!quote) return;
     void navigator.clipboard
@@ -149,8 +117,12 @@ export function App(): ReactElement {
       .catch(() => undefined);
   }, [quote]);
 
+  const favorite = useCallback((): void => {
+    if (quote) toggleFavorite(quote.id);
+  }, [quote, toggleFavorite]);
+
   useEffect(() => {
-    // keyboard shortcuts: F11 fullscreen, C copy (docs/06 §12)
+    // keyboard (docs/06 §12): arrows prev/next, F favorite, C copy, F11 fullscreen
     const onKey = (e: KeyboardEvent): void => {
       if (
         e.target instanceof HTMLElement &&
@@ -158,18 +130,34 @@ export function App(): ReactElement {
       ) {
         return;
       }
-      if (e.key === 'F11') {
-        e.preventDefault();
-        toggleFullscreen();
-      } else if (e.key === 'c' || e.key === 'C') {
-        copyQuote();
+      switch (e.key) {
+        case 'F11':
+          e.preventDefault();
+          toggleFullscreen();
+          break;
+        case 'ArrowLeft':
+          goPrev();
+          break;
+        case 'ArrowRight':
+          goNext();
+          break;
+        case 'f':
+        case 'F':
+          favorite();
+          break;
+        case 'c':
+        case 'C':
+          copyQuote();
+          break;
+        default:
+          break;
       }
     };
     window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener('keydown', onKey);
     };
-  }, [toggleFullscreen, copyQuote]);
+  }, [toggleFullscreen, goPrev, goNext, favorite, copyQuote]);
 
   const path = window.location.pathname;
   if (path !== '/' && path !== '/index.html') {
@@ -248,9 +236,35 @@ export function App(): ReactElement {
       >
         <button
           type="button"
+          onClick={goPrev}
+          disabled={!canPrev}
+          aria-label={t('settings:prev')}
+          className={`${TOOLBAR_BTN} disabled:opacity-30 disabled:hover:bg-transparent`}
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          onClick={goNext}
+          aria-label={t('settings:next')}
+          className={TOOLBAR_BTN}
+        >
+          ›
+        </button>
+        <button
+          type="button"
+          onClick={favorite}
+          aria-pressed={isFavorite}
+          aria-label={t(isFavorite ? 'settings:unfavorite' : 'settings:favorite')}
+          className={TOOLBAR_BTN}
+        >
+          {isFavorite ? '♥' : '♡'}
+        </button>
+        <button
+          type="button"
           onClick={copyQuote}
           aria-label={t('settings:copy')}
-          className="rounded-full px-3 py-2 text-lg opacity-70 hover:bg-white/10 hover:opacity-100"
+          className={TOOLBAR_BTN}
         >
           ⧉
         </button>
@@ -259,7 +273,7 @@ export function App(): ReactElement {
           onClick={toggleFullscreen}
           aria-label={t('settings:fullscreen')}
           aria-pressed={isFullscreen}
-          className="rounded-full px-3 py-2 text-lg opacity-70 hover:bg-white/10 hover:opacity-100"
+          className={TOOLBAR_BTN}
         >
           ⛶
         </button>
@@ -269,7 +283,7 @@ export function App(): ReactElement {
             setSettingsOpen(true);
           }}
           aria-label={t('settings:open')}
-          className="rounded-full px-3 py-2 text-lg opacity-70 hover:bg-white/10 hover:opacity-100"
+          className={TOOLBAR_BTN}
         >
           ⚙
         </button>

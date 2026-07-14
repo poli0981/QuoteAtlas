@@ -4,6 +4,10 @@
   "close": "Close",
   "copy": "Copy quote",
   "fullscreen": "Fullscreen",
+  "prev": "Previous quote",
+  "next": "Next quote",
+  "favorite": "Favorite",
+  "unfavorite": "Remove favorite",
   "background": {
     "title": "Background",
     "mode": "Mode",
@@ -33,5 +37,10 @@
     "export": "Export logs",
     "copiedHint": "Logs copied — paste into the report's Logs field.",
     "reopenLegal": "Reopen legal notice"
+  },
+  "data": {
+    "title": "Data",
+    "favorites": "Favorites: {{count}}",
+    "clearFavorites": "Clear favorites"
   }
 }

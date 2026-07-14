@@ -4,6 +4,10 @@
   "close": "Đóng",
   "copy": "Sao chép câu trích",
   "fullscreen": "Toàn màn hình",
+  "prev": "Câu trước",
+  "next": "Câu sau",
+  "favorite": "Yêu thích",
+  "unfavorite": "Bỏ yêu thích",
   "background": {
     "title": "Hình nền",
     "mode": "Chế độ",
@@ -33,5 +37,10 @@
     "export": "Xuất log",
     "copiedHint": "Đã sao chép log — dán vào ô Logs của báo cáo.",
     "reopenLegal": "Mở lại thông báo pháp lý"
+  },
+  "data": {
+    "title": "Dữ liệu",
+    "favorites": "Yêu thích: {{count}}",
+    "clearFavorites": "Xóa yêu thích"
   }
 }
