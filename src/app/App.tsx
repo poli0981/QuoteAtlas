@@ -1,8 +1,16 @@
-import { useCallback, useEffect, useState, type CSSProperties, type ReactElement } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+  type ReactElement,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import enData from '../../data/quotes/en.json';
 import indexData from '../../data/quotes/index.json';
 import { Clock } from '../features/clock/Clock';
+import { resolveActiveHolidays } from '../features/holidays/boot-holidays';
 import { Gate } from '../features/legal/Gate';
 import { LEGAL_VERSION } from '../features/legal/legal-version';
 import { attributionText } from '../features/quote/attribution';
@@ -75,11 +83,14 @@ export function App(): ReactElement {
     ? (new Intl.DisplayNames([uiLanguage], { type: 'region' }).of(effective) ?? effective)
     : '';
 
+  const holidayTags = useMemo(() => resolveActiveHolidays(new Date(), effective), [effective]);
+
   const { quote, goPrev, goNext, canPrev } = useQuoteStack({
     pool: POOL,
     mode: quoteMode,
     locale,
     rotateSeconds,
+    holidayTags,
   });
   const isFavorite = quote != null && favorites.includes(quote.id);
 
