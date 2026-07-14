@@ -173,6 +173,20 @@ export default tseslint.config(
     },
   },
 
+  // E2E specs (docs/11 §3): Node-side Playwright, no React and no shipped code.
+  // `rules-of-hooks` would misfire on Playwright's `use` fixture callback.
+  {
+    files: ['e2e/**/*.ts', 'playwright.config.ts'],
+    languageOptions: {
+      globals: { ...globals.node },
+    },
+    rules: {
+      'react-hooks/rules-of-hooks': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-magic-numbers': 'off',
+    },
+  },
+
   // Decorative, muted background videos — captions do not apply (docs/06 §3).
   {
     files: [

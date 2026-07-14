@@ -3,5 +3,5 @@
   "ignoreExportsUsedInFile": true,
   "ignoreDependencies": ["tailwindcss"],
   "entry": ["scripts/*.ts"],
-  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.ts"]
+  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.ts", "e2e/**/*.ts"]
 }

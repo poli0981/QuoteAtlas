@@ -44,8 +44,12 @@ export function select(ctx: SelectContext): SelectResult | null {
   let history = ctx.history;
   let candidates = filtered.filter((q) => !seen.has(q.id));
   if (candidates.length === 0) {
+    // Ring exhausted: clear it rather than blank the screen. The whole pool is
+    // eligible again — except the quote currently on screen, since re-picking it
+    // makes `next` look broken. (A one-quote pool has nothing else to show.)
     history = [];
-    candidates = filtered;
+    const current = ctx.history.at(-1);
+    candidates = filtered.length > 1 ? filtered.filter((q) => q.id !== current) : filtered;
   }
 
   const rng =
