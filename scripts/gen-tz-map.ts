@@ -55,11 +55,53 @@ const MAP: Record<string, string> = {
   'Asia/Kolkata': 'IN',
 };
 
+/**
+ * IANA "backward" links — alternate spellings of the zones above.
+ *
+ * Browsers do NOT agree on which spelling `Intl.DateTimeFormat().resolvedOptions()
+ * .timeZone` returns: ICU/CLDR canonicalizes several zones away from the IANA
+ * canonical name (Chromium reports `Asia/Saigon`, not `Asia/Ho_Chi_Minh`; and
+ * `Asia/Calcutta`, not `Asia/Kolkata`). A zone we route must therefore be listed
+ * under EVERY spelling, or detection silently falls through to the language
+ * subtag and reports the wrong country (e.g. a Vietnamese user on an en-US build
+ * would be detected as US). Caught by e2e/boot.spec.ts.
+ */
+const ALIASES: Record<string, string> = {
+  'Asia/Saigon': 'Asia/Ho_Chi_Minh',
+  'Asia/Calcutta': 'Asia/Kolkata',
+  'Asia/Macao': 'Asia/Macau',
+  'Asia/Chungking': 'Asia/Chongqing',
+  'Asia/Harbin': 'Asia/Shanghai',
+  'Asia/Tel_Aviv': 'Asia/Jerusalem',
+  'America/Montreal': 'America/Toronto',
+  'Australia/Canberra': 'Australia/Sydney',
+  'Australia/Victoria': 'Australia/Melbourne',
+  'Australia/West': 'Australia/Perth',
+  'Europe/Belfast': 'Europe/London',
+  'US/Eastern': 'America/New_York',
+  'US/Central': 'America/Chicago',
+  'US/Mountain': 'America/Denver',
+  'US/Pacific': 'America/Los_Angeles',
+  'US/Alaska': 'America/Anchorage',
+  'US/Hawaii': 'Pacific/Honolulu',
+  'Canada/Eastern': 'America/Toronto',
+  'Canada/Pacific': 'America/Vancouver',
+};
+
+for (const [alias, canonical] of Object.entries(ALIASES)) {
+  const country = MAP[canonical];
+  if (!country) throw new Error(`alias ${alias} points at unrouted zone ${canonical}`);
+  MAP[alias] = country;
+}
+
 const out = {
   _generated: 'scripts/gen-tz-map.ts — seed table; regenerate, do not hand-edit',
-  map: MAP,
+  map: Object.fromEntries(Object.entries(MAP).sort(([a], [b]) => a.localeCompare(b))),
 };
 
 const target = join(process.cwd(), 'src/features/region/tz-to-country.json');
 writeFileSync(target, `${JSON.stringify(out, null, 2)}\n`, 'utf8');
-console.log(`gen:tzmap — wrote ${Object.keys(MAP).length} zones → ${target}`);
+console.log(
+  `gen:tzmap — wrote ${String(Object.keys(MAP).length)} zones ` +
+    `(incl. ${String(Object.keys(ALIASES).length)} aliases) → ${target}`,
+);

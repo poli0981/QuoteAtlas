@@ -87,6 +87,23 @@ describe('select — anti-repeat ring', () => {
     expect(r?.history).toEqual([r?.quote.id]); // ring was cleared, then this pick pushed
   });
 
+  it('does not re-serve the on-screen quote when the ring resets', () => {
+    const p = pool(['a', 'b', 'c']);
+    // 'c' is on screen (last in history) and every id is used, so the ring resets.
+    // Whatever the rng lands on, `next` must actually move — re-picking the visible
+    // quote makes the button look broken.
+    for (const r of [0, 0.5, 0.99]) {
+      const next = select(ctx({ pool: p, history: ['a', 'b', 'c'], rng: () => r }));
+      expect(next?.quote.id).not.toBe('c');
+    }
+  });
+
+  it('still serves the only quote of a one-quote pool after a reset', () => {
+    const p = pool(['solo']);
+    const r = select(ctx({ pool: p, history: ['solo'], rng: () => 0 }));
+    expect(r?.quote.id).toBe('solo');
+  });
+
   it('evicts oldest ids beyond the 50-entry cap', () => {
     const p = pool(Array.from({ length: 60 }, (_, i) => `q${i}`));
     let history = Array.from({ length: 50 }, (_, i) => `old${i}`);

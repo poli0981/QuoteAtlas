@@ -176,6 +176,10 @@ export function App(): ReactElement {
   useEffect(() => {
     // keyboard (docs/06 §12): arrows prev/next, F favorite, C copy, F11 fullscreen
     const onKey = (e: KeyboardEvent): void => {
+      // R11 — the legal gate is *blocking*. It is only a pointer overlay, so the
+      // shortcuts must be disarmed too; otherwise arrows/F/C drive the app (and
+      // persist settings) behind the gate before consent is ever given.
+      if (consentVersion !== LEGAL_VERSION) return;
       if (
         e.target instanceof HTMLElement &&
         ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)
@@ -209,7 +213,7 @@ export function App(): ReactElement {
     return () => {
       window.removeEventListener('keydown', onKey);
     };
-  }, [toggleFullscreen, goPrev, goNext, favorite, copyQuote]);
+  }, [toggleFullscreen, goPrev, goNext, favorite, copyQuote, consentVersion]);
 
   const path = window.location.pathname;
   if (path !== '/' && path !== '/index.html') {
