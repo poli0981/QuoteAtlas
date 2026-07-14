@@ -13,6 +13,7 @@
     "mode": "Mode",
     "color": "Color",
     "gradient": "Gradient",
+    "image": "Image",
     "from": "From",
     "to": "To",
     "angle": "Angle",

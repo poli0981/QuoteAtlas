@@ -2,12 +2,15 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import type { UiLanguage } from '../../lib/i18n';
 import { settingsStorage } from '../../lib/storage/settings-adapter';
+import type { MediaItem } from '../background/media';
 import type { QuoteMode } from '../quote/types';
 
 export interface BackgroundSettings {
-  mode: 'color' | 'gradient';
+  mode: 'color' | 'gradient' | 'image';
   color: string;
   gradient: { from: string; to: string; angle: number };
+  /** selected image media id (mode = 'image') */
+  imageId: string | null;
   /** readability overlay, 0–80 % (docs/06 §3) */
   scrim: number;
   fontColor: string;
@@ -28,6 +31,8 @@ export interface Settings {
   consentVersion: number;
   /** favorited quote ids (docs/06 §11) */
   favorites: string[];
+  /** background media index — binaries live in OPFS, not here (docs/04 §6) */
+  media: MediaItem[];
 }
 
 interface SettingsActions {
@@ -36,6 +41,8 @@ interface SettingsActions {
   acceptLegal: (version: number) => void;
   toggleFavorite: (id: string) => void;
   clearFavorites: () => void;
+  addMedia: (item: MediaItem) => void;
+  removeMedia: (id: string) => void;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -50,12 +57,14 @@ export const DEFAULT_SETTINGS: Settings = {
     mode: 'gradient',
     color: '#0a0a0a',
     gradient: { from: '#1e293b', to: '#0f172a', angle: 135 },
+    imageId: null,
     scrim: 0,
     fontColor: '#fafafa',
     textShadow: false,
   },
   consentVersion: 0,
   favorites: [],
+  media: [],
 };
 
 export const useSettings = create<Settings & SettingsActions>()(
@@ -80,6 +89,18 @@ export const useSettings = create<Settings & SettingsActions>()(
       },
       clearFavorites: () => {
         set({ favorites: [] });
+      },
+      addMedia: (item) => {
+        set((s) => ({ media: [...s.media, item] }));
+      },
+      removeMedia: (id) => {
+        set((s) => ({
+          media: s.media.filter((m) => m.id !== id),
+          background:
+            s.background.imageId === id
+              ? { ...s.background, imageId: null, mode: 'gradient' }
+              : s.background,
+        }));
       },
     }),
     {

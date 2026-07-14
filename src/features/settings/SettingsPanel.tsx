@@ -1,5 +1,6 @@
 import { useEffect, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MediaLibrary } from '../background/MediaLibrary';
 import { BugReportActions } from '../bug-report/BugReportActions';
 import type { QuoteMode } from '../quote/types';
 import { useSettings } from './store';
@@ -54,7 +55,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
           </h3>
 
           <div className="mb-3 flex gap-2" role="group" aria-label={t('background.mode')}>
-            {(['color', 'gradient'] as const).map((mode) => (
+            {(['color', 'gradient', 'image'] as const).map((mode) => (
               <button
                 key={mode}
                 type="button"
@@ -71,7 +72,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
             ))}
           </div>
 
-          {background.mode === 'color' ? (
+          {background.mode === 'color' && (
             <label className="mb-3 flex items-center justify-between text-sm">
               <span>{t('background.color')}</span>
               <input
@@ -83,7 +84,9 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
                 className="h-8 w-12 rounded border-0 bg-transparent"
               />
             </label>
-          ) : (
+          )}
+
+          {background.mode === 'gradient' && (
             <>
               <label className="mb-3 flex items-center justify-between text-sm">
                 <span>{t('background.from')}</span>
@@ -125,6 +128,12 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
                 />
               </label>
             </>
+          )}
+
+          {background.mode === 'image' && (
+            <div className="mb-3">
+              <MediaLibrary />
+            </div>
           )}
 
           <label className="mb-3 block text-sm">
