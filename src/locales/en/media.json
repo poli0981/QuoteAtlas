@@ -1,0 +1,13 @@
+{
+  "upload": "Add image",
+  "delete": "Delete",
+  "select": "Use as background",
+  "used": "{{count}} / {{cap}} images",
+  "storage": "{{used}} used",
+  "empty": "No images yet.",
+  "err": {
+    "unsupported": "Unsupported file type.",
+    "libraryFull": "Library full — delete some to add more.",
+    "uncompressible": "Couldn't fit this image under the size limit — shrink it and try again."
+  }
+}

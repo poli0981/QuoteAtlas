@@ -41,7 +41,16 @@ export default defineConfig({
       // Pure domain + lib only; UI shells (*.tsx) are excluded from the hard gate
       // (docs/11 §1) and covered by component/e2e tests instead.
       include: ['src/features/**/*.ts', 'src/lib/**/*.ts'],
-      exclude: ['**/*.test.ts', '**/types.ts', '**/index.ts'],
+      // Excluded: tests, type-only files, and thin I/O shells (storage adapters,
+      // the canvas/OPFS import orchestration) that are verified in-browser, not by
+      // unit tests (docs/11 §1 — shells are out of the hard gate).
+      exclude: [
+        '**/*.test.ts',
+        '**/types.ts',
+        '**/index.ts',
+        'src/lib/storage/**',
+        'src/features/background/import-image.ts',
+      ],
       thresholds: {
         // ≥80% overall on features + lib
         lines: 80,

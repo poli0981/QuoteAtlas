@@ -1,0 +1,13 @@
+{
+  "upload": "Thêm ảnh",
+  "delete": "Xóa",
+  "select": "Dùng làm nền",
+  "used": "{{count}} / {{cap}} ảnh",
+  "storage": "Đã dùng {{used}}",
+  "empty": "Chưa có ảnh nào.",
+  "err": {
+    "unsupported": "Định dạng tệp không hỗ trợ.",
+    "libraryFull": "Thư viện đã đầy — xóa bớt để thêm mới.",
+    "uncompressible": "Không thể nén ảnh dưới giới hạn — hãy giảm dung lượng rồi thử lại."
+  }
+}

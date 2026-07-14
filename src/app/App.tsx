@@ -23,6 +23,7 @@ import tzData from '../features/region/tz-to-country.json';
 import { SettingsPanel } from '../features/settings/SettingsPanel';
 import { useSettings, type BackgroundSettings } from '../features/settings/store';
 import i18n, { UI_LANGUAGES } from '../lib/i18n';
+import { mediaUrl } from '../lib/storage/media-adapter';
 import { ErrorView } from './ErrorView';
 import { UpdateToast } from './UpdateToast';
 import { useAutoHide } from './use-auto-hide';
@@ -36,10 +37,18 @@ const ALL_REGIONS = [
   ...new Set([...Object.values(tzData.map), ...INDEX.locales.flatMap((l) => l.regions)]),
 ];
 
-function backgroundStyle(bg: BackgroundSettings): CSSProperties {
+function backgroundStyle(bg: BackgroundSettings, imageUrl: string | null): CSSProperties {
   if (bg.mode === 'gradient') {
     return {
       backgroundImage: `linear-gradient(${bg.gradient.angle}deg, ${bg.gradient.from}, ${bg.gradient.to})`,
+    };
+  }
+  if (bg.mode === 'image' && imageUrl != null) {
+    return {
+      backgroundImage: `url("${imageUrl}")`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
     };
   }
   return { backgroundColor: bg.color };
@@ -66,12 +75,14 @@ export function App(): ReactElement {
   const bilingual = useSettings((s) => s.bilingual);
   const consentVersion = useSettings((s) => s.consentVersion);
   const favorites = useSettings((s) => s.favorites);
+  const media = useSettings((s) => s.media);
   const update = useSettings((s) => s.update);
   const toggleFavorite = useSettings((s) => s.toggleFavorite);
 
   const [detected, setDetected] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [online, setOnline] = useState(() => navigator.onLine);
+  const [bgImageUrl, setBgImageUrl] = useState<string | null>(null);
   const toolbarVisible = useAutoHide();
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
 
@@ -120,6 +131,35 @@ export function App(): ReactElement {
       window.removeEventListener('offline', off);
     };
   }, []);
+
+  useEffect(() => {
+    // resolve the selected image's object URL for the background (revoke on change)
+    if (background.mode !== 'image' || background.imageId == null) {
+      setBgImageUrl(null);
+      return undefined;
+    }
+    const item = media.find((m) => m.id === background.imageId);
+    if (!item) {
+      setBgImageUrl(null);
+      return undefined;
+    }
+    let live = true;
+    let created: string | null = null;
+    void mediaUrl(`${item.id}.${item.ext}`)
+      .then((u) => {
+        if (live) {
+          created = u;
+          setBgImageUrl(u);
+        } else {
+          URL.revokeObjectURL(u);
+        }
+      })
+      .catch(() => undefined);
+    return () => {
+      live = false;
+      if (created != null) URL.revokeObjectURL(created);
+    };
+  }, [background.mode, background.imageId, media]);
 
   const copyQuote = useCallback((): void => {
     if (!quote) return;
@@ -181,7 +221,7 @@ export function App(): ReactElement {
         isFullscreen && !toolbarVisible ? 'cursor-none' : ''
       }`}
       style={{
-        ...backgroundStyle(background),
+        ...backgroundStyle(background, bgImageUrl),
         color: background.fontColor,
         ...(background.textShadow ? { textShadow: '0 2px 10px rgba(0,0,0,0.55)' } : {}),
       }}
