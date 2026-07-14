@@ -12,20 +12,43 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'prompt',
-      includeAssets: ['icon.svg'],
+      // The app registers the SW itself (useRegisterSW in app/UpdateToast.tsx), so
+      // the plugin must NOT inject its own registration <script> into index.html:
+      // an inline script would need `script-src 'unsafe-inline'`, which docs/09 §1
+      // makes a blocking review item. Keeping this null keeps the CSP strict.
+      injectRegister: null,
+      includeAssets: ['icon.svg', '404.html', '404.css'],
       manifest: {
+        id: '/',
         name: 'QuoteAtlas',
         short_name: 'QuoteAtlas',
         description: 'Ambient quote display — offline-first.',
         lang: 'en',
+        dir: 'ltr',
         theme_color: '#0f172a',
         background_color: '#0a0a0a',
         display: 'standalone',
+        orientation: 'any',
+        categories: ['lifestyle', 'productivity'],
+        scope: '/',
         start_url: '/',
+        // TODO(human asset): real 192/512 PNGs — Android's install prompt wants a
+        // raster maskable icon; icon.svg is the placeholder (docs/00 §8).
         icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,woff2,svg,json}'],
+        // The quote pool + tz map are bundled into the JS chunk, so the app shell
+        // glob already carries the data; woff2 covers the subset fonts once a human
+        // supplies them (docs/07 §7). Full offline after the first visit.
+        globPatterns: ['**/*.{js,css,html,woff2,svg,json,webmanifest}'],
+        // A subset font can exceed Workbox's 2 MiB default and would be dropped
+        // from the precache *silently* — offline would then lose its typeface.
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        cleanupOutdatedCaches: true,
+        // Unknown paths resolve to the app shell, which renders the translated
+        // notFound view. /404.html is the host-level page and must serve itself.
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/404\.html$/],
       },
     }),
   ],

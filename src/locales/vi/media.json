@@ -9,6 +9,7 @@
   "used": "{{count}} / {{cap}}",
   "storage": "Đã dùng {{used}}",
   "empty": "Chưa có mục nào.",
+  "duplicate": "Tệp đã có trong thư viện — đã chọn lại mục đó.",
   "slideshow": {
     "hint": "Chạm để chọn mục vào trình chiếu.",
     "interval": "Khoảng (giây)",

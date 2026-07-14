@@ -1,0 +1,17 @@
+## Cloudflare Pages response headers (docs/09 §1).
+##
+## No third-party origins anywhere, so 'self' holds and NOTHING needs
+## 'unsafe-inline'. Vite emits external scripts/styles, and React applies dynamic
+## styles through the CSSOM (element.style), which CSP does not police — only
+## inline style *markup* would. Any build change that starts requiring
+## 'unsafe-inline' is a blocking review item (docs/09 §1); e2e/csp.spec.ts loads
+## the app under exactly these headers and fails on any violation.
+##
+## Permissions-Policy denies geolocation outright — hard rule R1, enforced at the
+## platform level and not just by lint.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'; object-src 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin

@@ -9,6 +9,7 @@
   "used": "{{count}} / {{cap}}",
   "storage": "{{used}} used",
   "empty": "No media yet.",
+  "duplicate": "Already in your library — selected it instead.",
   "slideshow": {
     "hint": "Tap items to include in the slideshow.",
     "interval": "Interval (seconds)",

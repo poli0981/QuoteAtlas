@@ -42,6 +42,7 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
   const [urls, setUrls] = useState<Record<string, string>>({});
   const [storage, setStorage] = useState<{ usage: number; quota: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const caps = capsFor('web');
 
   const items =
@@ -69,6 +70,20 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
   const onSelect = (m: MediaItem): void => {
     if (purpose === 'slideshow') {
       toggleSlideshowItem(m.id);
+    } else if (m.kind === 'image') {
+      setBackground({ mode: 'image', imageId: m.id });
+    } else {
+      setBackground({ mode: 'video', videoId: m.id });
+    }
+  };
+
+  /**
+   * Select `m` for the current purpose — idempotent, unlike onSelect. Re-importing
+   * a file that is already a slideshow slide must not *toggle it off*.
+   */
+  const ensureSelected = (m: MediaItem): void => {
+    if (purpose === 'slideshow') {
+      if (!slideshow.ids.includes(m.id)) toggleSlideshowItem(m.id);
     } else if (m.kind === 'image') {
       setBackground({ mode: 'image', imageId: m.id });
     } else {
@@ -124,22 +139,22 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
     e.target.value = '';
     if (!file) return;
     setError(null);
-    const imageCount = media.filter((m) => m.kind === 'image').length;
-    const videoCount = media.filter((m) => m.kind === 'video').length;
-    void importMedia(file, 'web', imageCount, videoCount)
+    setNotice(null);
+    void importMedia(file, 'web', media)
       .then((r) => {
         if (!r.ok) {
+          if (r.reason === 'duplicate') {
+            // The library already holds these exact bytes — reuse that item rather
+            // than burning a second OPFS copy and a second slot in the cap.
+            setNotice(t('duplicate'));
+            ensureSelected(r.existing);
+            return;
+          }
           setError(t(`err.${errKey(r.reason)}`));
           return;
         }
         addMedia(r.item);
-        if (purpose === 'slideshow') {
-          toggleSlideshowItem(r.item.id);
-        } else if (r.item.kind === 'image') {
-          setBackground({ mode: 'image', imageId: r.item.id });
-        } else {
-          setBackground({ mode: 'video', videoId: r.item.id });
-        }
+        ensureSelected(r.item);
       })
       .catch(() => {
         setError(t('err.unsupported'));
@@ -162,7 +177,18 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
         {t('upload')}
       </button>
 
-      {error != null && <p className="mb-2 text-xs text-red-300">{error}</p>}
+      {/* Live regions: an import resolves asynchronously, so without these a screen
+          reader announces nothing at all when a file is rejected or deduplicated. */}
+      {error != null && (
+        <p role="alert" className="mb-2 text-xs text-red-300">
+          {error}
+        </p>
+      )}
+      {notice != null && (
+        <p role="status" className="mb-2 text-xs text-emerald-300">
+          {notice}
+        </p>
+      )}
       {purpose === 'slideshow' && items.length > 0 && (
         <p className="mb-2 text-xs opacity-50">{t('slideshow.hint')}</p>
       )}

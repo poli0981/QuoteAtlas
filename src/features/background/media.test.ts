@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { decideImageImport, decideVideoImport, extFor, isImageMime, sniffMediaType } from './media';
+import {
+  decideImageImport,
+  decideVideoImport,
+  extFor,
+  findDuplicate,
+  isImageMime,
+  sniffMediaType,
+  type MediaItem,
+} from './media';
 import { capsFor, videoCapBytes } from './limits';
 
 function bytesOf(...vals: number[]): Uint8Array {
@@ -84,6 +92,41 @@ describe('decideImageImport', () => {
   });
 });
 
+describe('findDuplicate', () => {
+  const item = (id: string, hash?: string): MediaItem => ({
+    id,
+    kind: 'image',
+    mime: 'image/png',
+    ext: 'png',
+    bytes: 10,
+    w: 1,
+    h: 1,
+    addedAt: 0,
+    ...(hash == null ? {} : { hash }),
+  });
+
+  it('matches an item with the same content hash', () => {
+    const items = [item('a', 'aaa'), item('b', 'bbb')];
+    expect(findDuplicate('bbb', items)?.id).toBe('b');
+  });
+
+  it('returns undefined when nothing matches', () => {
+    expect(findDuplicate('zzz', [item('a', 'aaa')])).toBeUndefined();
+  });
+
+  it('never matches legacy items that predate the hash field', () => {
+    // An item imported before dedup existed has no hash — it must not collide
+    // with a freshly hashed file just because both are "missing" a value.
+    const legacy = [item('old')];
+    expect(findDuplicate('aaa', legacy)).toBeUndefined();
+    expect(legacy[0]?.hash).toBeUndefined();
+  });
+
+  it('finds nothing in an empty library', () => {
+    expect(findDuplicate('aaa', [])).toBeUndefined();
+  });
+});
+
 describe('videoCapBytes', () => {
   const caps = capsFor('web'); // 1080 ≤50MB, 4K ≤125MB
   it('picks the cap by height', () => {
@@ -103,6 +146,20 @@ describe('decideVideoImport', () => {
     expect(decideVideoImport(10, 720, 100, caps, 10)).toEqual({
       action: 'reject',
       reason: 'library-full',
+    });
+  });
+
+  it('reports the cap breach, not "library full", when the file is ALSO unusable', () => {
+    // Precedence matters beyond the message: a 'library-full' reject is the caller's
+    // proof that the FILE is fine, which is what lets the importer hash it for dedup
+    // without risking a huge read on a file it was going to reject anyway.
+    expect(decideVideoImport(300, 1080, 100, caps, 10)).toEqual({
+      action: 'reject',
+      reason: 'duration',
+    });
+    expect(decideVideoImport(10, 1080, 60_000_000, caps, 10)).toEqual({
+      action: 'reject',
+      reason: 'size',
     });
   });
 

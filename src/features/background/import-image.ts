@@ -6,7 +6,15 @@
 import { putMedia } from '../../lib/storage/media-adapter';
 import { compressViaLadder } from './compressor';
 import { capsFor, type MediaProfile } from './limits';
-import { decideImageImport, extFor, isImageMime, sniffMediaType, type ImportResult } from './media';
+import {
+  decideImageImport,
+  extFor,
+  findDuplicate,
+  isImageMime,
+  sniffMediaType,
+  type ImportResult,
+  type MediaItem,
+} from './media';
 
 function webpEncodeSupported(): boolean {
   return typeof OffscreenCanvas !== 'undefined';
@@ -37,15 +45,23 @@ async function compressImage(blob: Blob, edge: number, capBytes: number): Promis
 export async function importImage(
   file: File,
   profile: MediaProfile,
-  currentCount: number,
+  media: readonly MediaItem[],
+  hashFile: () => Promise<string>,
 ): Promise<ImportResult> {
   const head = new Uint8Array(await file.slice(0, 16).arrayBuffer());
   const mime = sniffMediaType(head);
   if (!mime || !isImageMime(mime)) return { ok: false, reason: 'unsupported' };
 
   const caps = capsFor(profile);
+  const imageCount = media.filter((m) => m.kind === 'image').length;
   const dims = await dimensions(file);
-  const decision = decideImageImport(Math.max(dims.w, dims.h), file.size, caps, currentCount);
+  const decision = decideImageImport(Math.max(dims.w, dims.h), file.size, caps, imageCount);
+  // decideImageImport only ever rejects for 'library-full' (an over-cap image is
+  // compressed, not refused), so the file is known-importable here either way —
+  // dedup first, so re-picking one you already have beats a "library full" error.
+  const hash = await hashFile();
+  const existing = findDuplicate(hash, media);
+  if (existing) return { ok: false, reason: 'duplicate', existing };
   if (decision.action === 'reject') return { ok: false, reason: decision.reason };
 
   let blob: Blob = file;
@@ -76,6 +92,7 @@ export async function importImage(
       w: outDims.w,
       h: outDims.h,
       addedAt: Date.now(),
+      hash,
     },
   };
 }

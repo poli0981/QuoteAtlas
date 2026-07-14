@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>QuoteAtlas — page not found</title>
+    <!--
+      The host-level 404 (docs/08 §5): served by Cloudflare Pages for an unknown
+      path before any JS runs. Once the app or its service worker is in charge,
+      the in-app ErrorView takes over and *is* translated.
+
+      Styles live in an external file, not a <style> block: the shipped CSP is
+      `style-src 'self'` with no 'unsafe-inline' (docs/09 §1), which would block
+      inline CSS on this page too.
+    -->
+    <link rel="stylesheet" href="/404.css" />
+  </head>
+  <body>
+    <main>
+      <p class="mark">◆</p>
+      <h1>This page wandered off.</h1>
+      <p class="sub" lang="vi">Trang này không tồn tại.</p>
+      <a class="home" href="/">Back to quotes</a>
+    </main>
+  </body>
+</html>
