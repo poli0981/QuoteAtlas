@@ -1,13 +1,29 @@
 {
-  "upload": "Add image",
+  "upload": "Add image or video",
   "delete": "Delete",
   "select": "Use as background",
-  "used": "{{count}} / {{cap}} images",
+  "kind": {
+    "image": "Image",
+    "video": "Video"
+  },
+  "used": "{{count}} / {{cap}}",
   "storage": "{{used}} used",
-  "empty": "No images yet.",
+  "empty": "No media yet.",
+  "slideshow": {
+    "hint": "Tap items to include in the slideshow.",
+    "interval": "Interval (seconds)",
+    "shuffle": "Shuffle",
+    "kenBurns": "Ken Burns (images)",
+    "transition": "Transition",
+    "crossfade": "Crossfade",
+    "fade": "Fade to black"
+  },
   "err": {
     "unsupported": "Unsupported file type.",
     "libraryFull": "Library full — delete some to add more.",
-    "uncompressible": "Couldn't fit this image under the size limit — shrink it and try again."
+    "uncompressible": "Couldn't fit this image under the size limit — shrink it and try again.",
+    "duration": "Video longer than 3:00 — trim it first (e.g. LosslessCut).",
+    "resolution": "Video resolution is above 4K.",
+    "size": "Video over the size limit — compress it (HandBrake / ffmpeg)."
   }
 }

@@ -9,6 +9,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import enData from '../../data/quotes/en.json';
 import indexData from '../../data/quotes/index.json';
+import { BackgroundLayer } from '../features/background/BackgroundLayer';
 import { Clock } from '../features/clock/Clock';
 import { resolveActiveHolidays } from '../features/holidays/boot-holidays';
 import { Gate } from '../features/legal/Gate';
@@ -226,9 +227,11 @@ export function App(): ReactElement {
         ...(background.textShadow ? { textShadow: '0 2px 10px rgba(0,0,0,0.55)' } : {}),
       }}
     >
+      <BackgroundLayer background={background} media={media} />
+
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           backgroundColor: scrimColor(background.fontColor),
           opacity: background.scrim / 100,

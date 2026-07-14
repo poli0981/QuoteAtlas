@@ -6,11 +6,7 @@
 import { putMedia } from '../../lib/storage/media-adapter';
 import { compressViaLadder } from './compressor';
 import { capsFor, type MediaProfile } from './limits';
-import { decideImageImport, extFor, isImageMime, sniffMediaType, type MediaItem } from './media';
-
-export type ImportResult =
-  | { ok: true; item: MediaItem }
-  | { ok: false; reason: 'unsupported' | 'library-full' | 'uncompressible' };
+import { decideImageImport, extFor, isImageMime, sniffMediaType, type ImportResult } from './media';
 
 function webpEncodeSupported(): boolean {
   return typeof OffscreenCanvas !== 'undefined';

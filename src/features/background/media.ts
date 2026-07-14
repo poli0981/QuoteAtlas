@@ -3,7 +3,7 @@
  * by magic bytes (never trusting extensions) and the accept/compress/reject
  * decision live here; the DOM parts (decode, canvas) sit in import-image.ts.
  */
-import { classifyImage, imageCapBytes, targetEdge, type MediaCaps } from './limits';
+import { classifyImage, imageCapBytes, targetEdge, videoCapBytes, type MediaCaps } from './limits';
 
 export type ImageMime = 'image/jpeg' | 'image/png' | 'image/webp' | 'image/avif' | 'image/gif';
 export type VideoMime = 'video/mp4' | 'video/webm';
@@ -81,3 +81,36 @@ export function decideImageImport(
   // Longer than the max edge → always resize down to the 4K edge and re-encode.
   return { action: 'compress', targetEdge: caps.imageMaxLongEdge, capBytes: caps.imageMaxBytes4k };
 }
+
+export type VideoRejectReason = 'library-full' | 'duration' | 'resolution' | 'size';
+export type VideoDecision = { action: 'accept' } | { action: 'reject'; reason: VideoRejectReason };
+
+/**
+ * Decide whether to accept a video (docs/03 §4). No client-side transcoding —
+ * over-limit videos are rejected with guidance rather than compressed.
+ */
+export function decideVideoImport(
+  durationSec: number,
+  height: number,
+  bytes: number,
+  caps: MediaCaps,
+  currentCount: number,
+): VideoDecision {
+  if (currentCount >= caps.videoMaxFiles) return { action: 'reject', reason: 'library-full' };
+  // A non-finite duration (Infinity/NaN — e.g. MediaRecorder WebM without a
+  // Duration element) is unknown, not "too long"; only reject a measured one.
+  if (
+    Number.isFinite(durationSec) &&
+    durationSec > caps.videoMaxSeconds + caps.videoToleranceSeconds
+  ) {
+    return { action: 'reject', reason: 'duration' };
+  }
+  if (height > caps.videoMaxHeight) return { action: 'reject', reason: 'resolution' };
+  if (bytes > videoCapBytes(height, caps)) return { action: 'reject', reason: 'size' };
+  return { action: 'accept' };
+}
+
+/** Result of importing a media file (shared by the image + video importers). */
+export type ImportResult =
+  | { ok: true; item: MediaItem }
+  | { ok: false; reason: 'unsupported' | VideoRejectReason | 'uncompressible' };

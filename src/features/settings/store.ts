@@ -5,12 +5,23 @@ import { settingsStorage } from '../../lib/storage/settings-adapter';
 import type { MediaItem } from '../background/media';
 import type { QuoteMode } from '../quote/types';
 
+export interface SlideshowSettings {
+  ids: string[];
+  intervalSeconds: number;
+  transition: 'crossfade' | 'fade';
+  shuffle: boolean;
+  kenBurns: boolean;
+}
+
 export interface BackgroundSettings {
-  mode: 'color' | 'gradient' | 'image';
+  mode: 'color' | 'gradient' | 'image' | 'video' | 'slideshow';
   color: string;
   gradient: { from: string; to: string; angle: number };
   /** selected image media id (mode = 'image') */
   imageId: string | null;
+  /** selected video media id (mode = 'video') */
+  videoId: string | null;
+  slideshow: SlideshowSettings;
   /** readability overlay, 0–80 % (docs/06 §3) */
   scrim: number;
   fontColor: string;
@@ -43,6 +54,8 @@ interface SettingsActions {
   clearFavorites: () => void;
   addMedia: (item: MediaItem) => void;
   removeMedia: (id: string) => void;
+  setSlideshow: (patch: Partial<SlideshowSettings>) => void;
+  toggleSlideshowItem: (id: string) => void;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -58,6 +71,14 @@ export const DEFAULT_SETTINGS: Settings = {
     color: '#0a0a0a',
     gradient: { from: '#1e293b', to: '#0f172a', angle: 135 },
     imageId: null,
+    videoId: null,
+    slideshow: {
+      ids: [],
+      intervalSeconds: 8,
+      transition: 'crossfade',
+      shuffle: false,
+      kenBurns: true,
+    },
     scrim: 0,
     fontColor: '#fafafa',
     textShadow: false,
@@ -94,13 +115,31 @@ export const useSettings = create<Settings & SettingsActions>()(
         set((s) => ({ media: [...s.media, item] }));
       },
       removeMedia: (id) => {
+        set((s) => {
+          const bg = { ...s.background };
+          if (bg.imageId === id) {
+            bg.imageId = null;
+            if (bg.mode === 'image') bg.mode = 'gradient';
+          }
+          if (bg.videoId === id) {
+            bg.videoId = null;
+            if (bg.mode === 'video') bg.mode = 'gradient';
+          }
+          bg.slideshow = { ...bg.slideshow, ids: bg.slideshow.ids.filter((x) => x !== id) };
+          return { media: s.media.filter((m) => m.id !== id), background: bg };
+        });
+      },
+      setSlideshow: (patch) => {
         set((s) => ({
-          media: s.media.filter((m) => m.id !== id),
-          background:
-            s.background.imageId === id
-              ? { ...s.background, imageId: null, mode: 'gradient' }
-              : s.background,
+          background: { ...s.background, slideshow: { ...s.background.slideshow, ...patch } },
         }));
+      },
+      toggleSlideshowItem: (id) => {
+        set((s) => {
+          const cur = s.background.slideshow.ids;
+          const ids = cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id];
+          return { background: { ...s.background, slideshow: { ...s.background.slideshow, ids } } };
+        });
       },
     }),
     {
