@@ -54,8 +54,12 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
             {t('background.title')}
           </h3>
 
-          <div className="mb-3 flex gap-2" role="group" aria-label={t('background.mode')}>
-            {(['color', 'gradient', 'image'] as const).map((mode) => (
+          <div
+            className="mb-3 grid grid-cols-3 gap-2"
+            role="group"
+            aria-label={t('background.mode')}
+          >
+            {(['color', 'gradient', 'image', 'video', 'slideshow'] as const).map((mode) => (
               <button
                 key={mode}
                 type="button"
@@ -63,7 +67,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
                   setBackground({ mode });
                 }}
                 aria-pressed={background.mode === mode}
-                className={`flex-1 rounded px-3 py-2 text-sm ${
+                className={`rounded px-2 py-2 text-sm ${
                   background.mode === mode ? 'bg-white/20' : 'bg-white/5 hover:bg-white/10'
                 }`}
               >
@@ -130,9 +134,11 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
             </>
           )}
 
-          {background.mode === 'image' && (
+          {(background.mode === 'image' ||
+            background.mode === 'video' ||
+            background.mode === 'slideshow') && (
             <div className="mb-3">
-              <MediaLibrary />
+              <MediaLibrary purpose={background.mode} />
             </div>
           )}
 

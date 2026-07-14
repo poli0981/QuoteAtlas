@@ -173,6 +173,17 @@ export default tseslint.config(
     },
   },
 
+  // Decorative, muted background videos — captions do not apply (docs/06 §3).
+  {
+    files: [
+      'src/features/background/BackgroundLayer.tsx',
+      'src/features/background/SlideshowPlayer.tsx',
+    ],
+    rules: {
+      'jsx-a11y/media-has-caption': 'off',
+    },
+  },
+
   // Plain JS config files: disable type-checked rules (not in the TS program).
   {
     files: ['**/*.{js,mjs,cjs}'],

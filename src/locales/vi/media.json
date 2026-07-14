@@ -1,13 +1,29 @@
 {
-  "upload": "Thêm ảnh",
+  "upload": "Thêm ảnh hoặc video",
   "delete": "Xóa",
   "select": "Dùng làm nền",
-  "used": "{{count}} / {{cap}} ảnh",
+  "kind": {
+    "image": "Ảnh",
+    "video": "Video"
+  },
+  "used": "{{count}} / {{cap}}",
   "storage": "Đã dùng {{used}}",
-  "empty": "Chưa có ảnh nào.",
+  "empty": "Chưa có mục nào.",
+  "slideshow": {
+    "hint": "Chạm để chọn mục vào trình chiếu.",
+    "interval": "Khoảng (giây)",
+    "shuffle": "Ngẫu nhiên",
+    "kenBurns": "Ken Burns (ảnh)",
+    "transition": "Hiệu ứng chuyển",
+    "crossfade": "Mờ chồng",
+    "fade": "Mờ về đen"
+  },
   "err": {
     "unsupported": "Định dạng tệp không hỗ trợ.",
     "libraryFull": "Thư viện đã đầy — xóa bớt để thêm mới.",
-    "uncompressible": "Không thể nén ảnh dưới giới hạn — hãy giảm dung lượng rồi thử lại."
+    "uncompressible": "Không thể nén ảnh dưới giới hạn — hãy giảm dung lượng rồi thử lại.",
+    "duration": "Video dài quá 3:00 — hãy cắt bớt (gợi ý: LosslessCut).",
+    "resolution": "Độ phân giải video vượt quá 4K.",
+    "size": "Video vượt giới hạn dung lượng — hãy nén lại (HandBrake / ffmpeg)."
   }
 }

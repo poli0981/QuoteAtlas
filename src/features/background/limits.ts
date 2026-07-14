@@ -68,3 +68,8 @@ export function imageCapBytes(klass: 'P1080' | 'P4K', caps: MediaCaps): number {
 export function targetEdge(klass: 'P1080' | 'P4K', caps: MediaCaps): number {
   return klass === 'P1080' ? P1080_MAX_EDGE : caps.imageMaxLongEdge;
 }
+
+/** Byte cap for a video by its height (docs/04 §7): ≤1080p vs 4K-class. */
+export function videoCapBytes(height: number, caps: MediaCaps): number {
+  return height <= 1080 ? caps.videoMaxBytes1080 : caps.videoMaxBytes4k;
+}

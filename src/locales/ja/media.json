@@ -1,13 +1,29 @@
 {
-  "upload": "画像を追加",
+  "upload": "画像・動画を追加",
   "delete": "削除",
   "select": "背景に使う",
-  "used": "{{count}} / {{cap}} 枚",
+  "kind": {
+    "image": "画像",
+    "video": "動画"
+  },
+  "used": "{{count}} / {{cap}}",
   "storage": "{{used}} 使用中",
-  "empty": "画像はまだありません。",
+  "empty": "メディアはまだありません。",
+  "slideshow": {
+    "hint": "項目をタップしてスライドショーに追加します。",
+    "interval": "間隔（秒）",
+    "shuffle": "シャッフル",
+    "kenBurns": "ケンバーンズ（画像）",
+    "transition": "切り替え",
+    "crossfade": "クロスフェード",
+    "fade": "フェードアウト"
+  },
   "err": {
     "unsupported": "対応していないファイル形式です。",
     "libraryFull": "ライブラリが満杯です — 削除してから追加してください。",
-    "uncompressible": "サイズ上限内に収められませんでした — 縮小してから再試行してください。"
+    "uncompressible": "サイズ上限内に収められませんでした — 縮小してから再試行してください。",
+    "duration": "動画が3:00を超えています — トリミングしてください（例：LosslessCut）。",
+    "resolution": "動画の解像度が4Kを超えています。",
+    "size": "動画がサイズ上限を超えています — 圧縮してください（HandBrake / ffmpeg）。"
   }
 }

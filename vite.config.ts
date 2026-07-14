@@ -49,7 +49,7 @@ export default defineConfig({
         '**/types.ts',
         '**/index.ts',
         'src/lib/storage/**',
-        'src/features/background/import-image.ts',
+        'src/features/background/import*.ts',
       ],
       thresholds: {
         // ≥80% overall on features + lib
