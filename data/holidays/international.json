@@ -1,0 +1,4 @@
+{
+  "_note": "International holidays applied for every region (scope=international in tags.json). Merged with per-country overrides at boot.",
+  "add": [{ "tag": "new-year", "rule": "1-1" }]
+}

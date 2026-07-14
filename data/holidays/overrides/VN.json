@@ -1,0 +1,8 @@
+{
+  "country": "VN",
+  "add": [
+    { "tag": "tet", "rule": "lunar:1-1", "days": 5 },
+    { "tag": "hung-kings", "rule": "lunar:3-10" },
+    { "tag": "mid-autumn", "rule": "lunar:8-15" }
+  ]
+}

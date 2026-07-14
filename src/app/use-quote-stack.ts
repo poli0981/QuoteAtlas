@@ -3,7 +3,6 @@ import type { HolidayTags } from '../features/holidays/types';
 import { select } from '../features/quote/engine';
 import type { QuoteMode, QuoteRecord } from '../features/quote/types';
 
-const NO_HOLIDAYS: HolidayTags = { national: [], international: [] };
 /** cap the session stack so a long rotate session doesn't grow unbounded */
 const STACK_CAP = 100;
 
@@ -30,8 +29,9 @@ export function useQuoteStack(params: {
   mode: QuoteMode;
   locale: string;
   rotateSeconds: number;
+  holidayTags: HolidayTags;
 }): QuoteNav {
-  const { pool, mode, locale, rotateSeconds } = params;
+  const { pool, mode, locale, rotateSeconds, holidayTags } = params;
   const [nav, setNav] = useState<{ stack: QuoteRecord[]; pos: number }>({ stack: [], pos: -1 });
   const historyRef = useRef<string[]>([]);
 
@@ -40,7 +40,7 @@ export function useQuoteStack(params: {
       pool,
       mode,
       history: historyRef.current,
-      holidayTags: NO_HOLIDAYS,
+      holidayTags,
       locale,
       dateKey: dateKeyNow(),
     });
@@ -50,7 +50,7 @@ export function useQuoteStack(params: {
       const stack = [...n.stack, result.quote].slice(-STACK_CAP);
       return { stack, pos: stack.length - 1 };
     });
-  }, [pool, mode, locale]);
+  }, [pool, mode, locale, holidayTags]);
 
   useEffect(() => {
     // (re)start the session on locale/mode change; rotate advances on a timer
