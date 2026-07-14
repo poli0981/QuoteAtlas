@@ -26,12 +26,16 @@ export interface Settings {
   background: BackgroundSettings;
   /** accepted LEGAL_VERSION; 0 = not yet accepted (docs/14 §1) */
   consentVersion: number;
+  /** favorited quote ids (docs/06 §11) */
+  favorites: string[];
 }
 
 interface SettingsActions {
   update: (patch: Partial<Settings>) => void;
   setBackground: (patch: Partial<BackgroundSettings>) => void;
   acceptLegal: (version: number) => void;
+  toggleFavorite: (id: string) => void;
+  clearFavorites: () => void;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -51,6 +55,7 @@ export const DEFAULT_SETTINGS: Settings = {
     textShadow: false,
   },
   consentVersion: 0,
+  favorites: [],
 };
 
 export const useSettings = create<Settings & SettingsActions>()(
@@ -65,6 +70,16 @@ export const useSettings = create<Settings & SettingsActions>()(
       },
       acceptLegal: (version) => {
         set({ consentVersion: version });
+      },
+      toggleFavorite: (id) => {
+        set((s) => ({
+          favorites: s.favorites.includes(id)
+            ? s.favorites.filter((f) => f !== id)
+            : [...s.favorites, id],
+        }));
+      },
+      clearFavorites: () => {
+        set({ favorites: [] });
       },
     }),
     {

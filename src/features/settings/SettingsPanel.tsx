@@ -13,7 +13,9 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
   const rotateSeconds = useSettings((s) => s.rotateSeconds);
   const hour12 = useSettings((s) => s.hour12);
   const bilingual = useSettings((s) => s.bilingual);
+  const favorites = useSettings((s) => s.favorites);
   const update = useSettings((s) => s.update);
+  const clearFavorites = useSettings((s) => s.clearFavorites);
 
   useEffect(() => {
     // close on Escape (docs/06 §10 pattern) — the drawer is dismissible
@@ -223,6 +225,21 @@ export function SettingsPanel({ onClose }: { onClose: () => void }): ReactElemen
               }}
             />
           </label>
+        </section>
+
+        <section className="mt-8">
+          <h3 className="mb-3 text-xs tracking-wide uppercase opacity-60">{t('data.title')}</h3>
+          <p className="mb-3 text-sm opacity-70">
+            {t('data.favorites', { count: favorites.length })}
+          </p>
+          <button
+            type="button"
+            onClick={clearFavorites}
+            disabled={favorites.length === 0}
+            className="rounded bg-white/10 px-3 py-1 text-sm hover:bg-white/20 disabled:opacity-40"
+          >
+            {t('data.clearFavorites')}
+          </button>
         </section>
 
         <section className="mt-8">
