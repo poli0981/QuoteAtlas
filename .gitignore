@@ -16,9 +16,12 @@ test-results/
 blob-report/
 .playwright/
 
-# Tauri (wired in Phase 3/4)
+# Tauri. The generated src-tauri/gen/android project IS tracked (for reproducible
+# signed builds + committed manifest/gradle hardening); its own .gitignore excludes
+# build artifacts (build/, .gradle/, .cxx/, keystore.properties, local.properties).
 src-tauri/target/
-src-tauri/gen/
+src-tauri/gen/schemas/
+src-tauri/gen/apple/
 
 # Font source workspace — source OFL TTFs are supplied by a human, not committed;
 # only the subset public/fonts/*.woff2 outputs are tracked

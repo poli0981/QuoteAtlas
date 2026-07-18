@@ -11,8 +11,9 @@ regional calendar, and holiday-aware selection — over a background you customi
 ## Privacy & data
 
 QuoteAtlas collects **no personal data** (no accounts, analytics, telemetry, ads,
-or cookies). The only optional network call is a desktop/Android update check to
-`api.github.com`. See [`legal/PRIVACY.md`](legal/PRIVACY.md).
+or cookies). The only optional network call is an Android update check to
+`api.github.com` (the desktop build makes no network call). See
+[`legal/PRIVACY.md`](legal/PRIVACY.md).
 
 ## Licensing
 

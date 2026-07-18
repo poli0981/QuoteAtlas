@@ -1,5 +1,10 @@
 {
   "updateAvailable": "新しいバージョンがあります。",
   "reload": "再読み込み",
-  "dismiss": "閉じる"
+  "dismiss": "閉じる",
+  "newVersionTitle": "アップデートがあります",
+  "newVersionBody": "QuoteAtlas {{version}} が利用可能です（現在 {{current}}）。",
+  "openReleasePage": "リリースページを開く",
+  "later": "後で",
+  "skipThisVersion": "このバージョンをスキップ"
 }

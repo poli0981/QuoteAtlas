@@ -1,6 +1,6 @@
 [package]
 name = "quoteatlas"
-version = "0.0.0"
+version = "0.1.0"
 description = "QuoteAtlas — offline-first ambient quote display"
 authors = ["poli0981 / SkullMute"]
 license = "GPL-3.0-only"
@@ -16,7 +16,7 @@ name = "quoteatlas_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2" }
+tauri-build = { version = "2", features = [] }
 
 # All-platform plugins (desktop + Android). Desktop-only plugins
 # (single-instance, window-state) are added in the desktop round. The desktop

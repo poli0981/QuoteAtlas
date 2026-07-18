@@ -1,5 +1,10 @@
 {
   "updateAvailable": "A new version is available.",
   "reload": "Reload",
-  "dismiss": "Dismiss"
+  "dismiss": "Dismiss",
+  "newVersionTitle": "Update available",
+  "newVersionBody": "QuoteAtlas {{version}} is available. You're on {{current}}.",
+  "openReleasePage": "Open release page",
+  "later": "Later",
+  "skipThisVersion": "Skip this version"
 }

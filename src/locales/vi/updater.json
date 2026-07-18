@@ -1,5 +1,10 @@
 {
   "updateAvailable": "Đã có phiên bản mới.",
   "reload": "Tải lại",
-  "dismiss": "Bỏ qua"
+  "dismiss": "Bỏ qua",
+  "newVersionTitle": "Có bản cập nhật",
+  "newVersionBody": "QuoteAtlas {{version}} đã có. Bạn đang dùng {{current}}.",
+  "openReleasePage": "Mở trang phát hành",
+  "later": "Để sau",
+  "skipThisVersion": "Bỏ qua phiên bản này"
 }
