@@ -1,7 +1,8 @@
 # QuoteAtlas release (docs/12 §3, docs/13). Runs on a v* tag: build + sign the
-# Android APK, deploy the web build to Cloudflare Pages, then cut a GitHub Release
-# with the APK + SHA256SUMS. Desktop bundles + the minisign updater are out of
-# scope this round (desktop updater skipped). All actions SHA-pinned (R10).
+# Android APK, then cut a GitHub Release with the APK + SHA256SUMS. Web is deployed
+# by the Cloudflare Workers Builds git integration on the main push (not from here —
+# the account has no classic Pages project to `wrangler pages deploy` into). Desktop
+# bundles + the minisign updater are out of scope this round. All actions SHA-pinned.
 name: Release
 
 on:
@@ -63,25 +64,8 @@ jobs:
           retention-days: 7
           if-no-files-found: error
 
-  web:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: '24'
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=quoteatlas --branch=main
-
   release:
-    needs: [android, web]
+    needs: [android]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
