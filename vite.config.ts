@@ -4,13 +4,27 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 import pkg from './package.json';
 
+// Set by the Tauri CLI when it invokes `npm run dev`/`build` (docs/02 §3). Absent
+// for a plain web/Cloudflare build, so the PWA path below stays the web default.
+const tauriPlatform = process.env.TAURI_ENV_PLATFORM;
+const tauriDevHost = process.env.TAURI_DEV_HOST;
+const tauriDebug = !!process.env.TAURI_ENV_DEBUG;
+
 // Offline-first PWA (docs/08 §5): precache the app shell + bundled data + fonts;
 // `prompt` surfaces a reload toast on SW update rather than auto-reloading.
 export default defineConfig({
+  // Tauri: keep the Rust compiler output visible and expose TAURI_ENV_* to the app.
+  clearScreen: false,
+  envPrefix: ['VITE_', 'TAURI_ENV_'],
   plugins: [
     react(),
     tailwindcss(),
     VitePWA({
+      // Native (Tauri) build: skip SW + manifest emission so the webview never
+      // registers a service worker (which would serve a stale bundle after an app
+      // update). `disable` still leaves `virtual:pwa-register/react` resolvable as a
+      // no-op, so app/UpdateToast.tsx's unconditional import keeps compiling.
+      disable: !!tauriPlatform,
       registerType: 'prompt',
       // The app registers the SW itself (useRegisterSW in app/UpdateToast.tsx), so
       // the plugin must NOT inject its own registration <script> into index.html:
@@ -55,6 +69,27 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
+  // Tauri needs a fixed dev URL (tauri.conf.json devUrl → localhost:5173). On
+  // `tauri android dev`, TAURI_DEV_HOST is the machine LAN IP so the phone can
+  // reach the Vite server; HMR then talks back over that host.
+  server: {
+    port: 5173,
+    strictPort: true,
+    host: tauriDevHost ?? false,
+    ...(tauriDevHost ? { hmr: { protocol: 'ws', host: tauriDevHost, port: 1421 } } : {}),
+    watch: { ignored: ['**/src-tauri/**'] },
+  },
+  // Only override the build target for native webviews (WebView2 / Android System
+  // WebView / WKWebView). The web/Cloudflare build keeps Vite's defaults.
+  ...(tauriPlatform
+    ? {
+        build: {
+          target: tauriPlatform === 'windows' ? 'chrome105' : 'safari13',
+          minify: tauriDebug ? false : ('esbuild' as const),
+          sourcemap: tauriDebug,
+        },
+      }
+    : {}),
   test: {
     environment: 'jsdom',
     include: ['src/**/*.test.{ts,tsx}'],

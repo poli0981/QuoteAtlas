@@ -1,0 +1,17 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "QuoteAtlas default capabilities (docs/09 §3, minus desktop updater + process + dialog).",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "store:default",
+    "os:default",
+    { "identifier": "opener:allow-open-url", "allow": [{ "url": "https://github.com/*" }] },
+    { "identifier": "fs:allow-read-dir", "allow": [{ "path": "$APPDATA/backgrounds" }] },
+    { "identifier": "fs:allow-read-file", "allow": [{ "path": "$APPDATA/backgrounds/**" }] },
+    { "identifier": "fs:allow-write-file", "allow": [{ "path": "$APPDATA/backgrounds/**" }] },
+    { "identifier": "fs:allow-remove", "allow": [{ "path": "$APPDATA/backgrounds/**" }] },
+    { "identifier": "fs:allow-mkdir", "allow": [{ "path": "$APPDATA/backgrounds" }] }
+  ]
+}
