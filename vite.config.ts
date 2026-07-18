@@ -4,6 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 import pkg from './package.json';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 // Set by the Tauri CLI when it invokes `npm run dev`/`build` (docs/02 §3). Absent
 // for a plain web/Cloudflare build, so the PWA path below stays the web default.
 const tauriPlatform = process.env.TAURI_ENV_PLATFORM;
@@ -16,56 +18,52 @@ export default defineConfig({
   // Tauri: keep the Rust compiler output visible and expose TAURI_ENV_* to the app.
   clearScreen: false,
   envPrefix: ['VITE_', 'TAURI_ENV_'],
-  plugins: [
-    react(),
-    tailwindcss(),
-    VitePWA({
-      // Native (Tauri) build: skip SW + manifest emission so the webview never
-      // registers a service worker (which would serve a stale bundle after an app
-      // update). `disable` still leaves `virtual:pwa-register/react` resolvable as a
-      // no-op, so app/UpdateToast.tsx's unconditional import keeps compiling.
-      disable: !!tauriPlatform,
-      registerType: 'prompt',
-      // The app registers the SW itself (useRegisterSW in app/UpdateToast.tsx), so
-      // the plugin must NOT inject its own registration <script> into index.html:
-      // an inline script would need `script-src 'unsafe-inline'`, which docs/09 §1
-      // makes a blocking review item. Keeping this null keeps the CSP strict.
-      injectRegister: null,
-      includeAssets: ['icon.svg', '404.html', '404.css'],
-      manifest: {
-        id: '/',
-        name: 'QuoteAtlas',
-        short_name: 'QuoteAtlas',
-        description: 'Ambient quote display — offline-first.',
-        lang: 'en',
-        dir: 'ltr',
-        theme_color: '#0f172a',
-        background_color: '#0a0a0a',
-        display: 'standalone',
-        orientation: 'any',
-        categories: ['lifestyle', 'productivity'],
-        scope: '/',
-        start_url: '/',
-        // TODO(human asset): real 192/512 PNGs — Android's install prompt wants a
-        // raster maskable icon; icon.svg is the placeholder (docs/00 §8).
-        icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
-      },
-      workbox: {
-        // The quote pool + tz map are bundled into the JS chunk, so the app shell
-        // glob already carries the data; woff2 covers the subset fonts once a human
-        // supplies them (docs/07 §7). Full offline after the first visit.
-        globPatterns: ['**/*.{js,css,html,woff2,svg,json,webmanifest}'],
-        // A subset font can exceed Workbox's 2 MiB default and would be dropped
-        // from the precache *silently* — offline would then lose its typeface.
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        cleanupOutdatedCaches: true,
-        // Unknown paths resolve to the app shell, which renders the translated
-        // notFound view. /404.html is the host-level page and must serve itself.
-        navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/404\.html$/],
-      },
-    }),
-  ],
+  plugins: [react(), tailwindcss(), VitePWA({
+    // Native (Tauri) build: skip SW + manifest emission so the webview never
+    // registers a service worker (which would serve a stale bundle after an app
+    // update). `disable` still leaves `virtual:pwa-register/react` resolvable as a
+    // no-op, so app/UpdateToast.tsx's unconditional import keeps compiling.
+    disable: !!tauriPlatform,
+    registerType: 'prompt',
+    // The app registers the SW itself (useRegisterSW in app/UpdateToast.tsx), so
+    // the plugin must NOT inject its own registration <script> into index.html:
+    // an inline script would need `script-src 'unsafe-inline'`, which docs/09 §1
+    // makes a blocking review item. Keeping this null keeps the CSP strict.
+    injectRegister: null,
+    includeAssets: ['icon.svg', '404.html', '404.css'],
+    manifest: {
+      id: '/',
+      name: 'QuoteAtlas',
+      short_name: 'QuoteAtlas',
+      description: 'Ambient quote display — offline-first.',
+      lang: 'en',
+      dir: 'ltr',
+      theme_color: '#0f172a',
+      background_color: '#0a0a0a',
+      display: 'standalone',
+      orientation: 'any',
+      categories: ['lifestyle', 'productivity'],
+      scope: '/',
+      start_url: '/',
+      // TODO(human asset): real 192/512 PNGs — Android's install prompt wants a
+      // raster maskable icon; icon.svg is the placeholder (docs/00 §8).
+      icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
+    },
+    workbox: {
+      // The quote pool + tz map are bundled into the JS chunk, so the app shell
+      // glob already carries the data; woff2 covers the subset fonts once a human
+      // supplies them (docs/07 §7). Full offline after the first visit.
+      globPatterns: ['**/*.{js,css,html,woff2,svg,json,webmanifest}'],
+      // A subset font can exceed Workbox's 2 MiB default and would be dropped
+      // from the precache *silently* — offline would then lose its typeface.
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+      cleanupOutdatedCaches: true,
+      // Unknown paths resolve to the app shell, which renders the translated
+      // notFound view. /404.html is the host-level page and must serve itself.
+      navigateFallback: 'index.html',
+      navigateFallbackDenylist: [/^\/404\.html$/],
+    },
+  }), cloudflare()],
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
