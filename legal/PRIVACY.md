@@ -13,9 +13,9 @@ there is no server to send it to.
 
 Network connections:
 
-1. On desktop/Android, an optional update check contacts `api.github.com` (GitHub
-   then sees your IP address per GitHub's Privacy Statement); you can disable it
-   in Settings.
+1. On Android, an optional update check contacts `api.github.com` (GitHub then
+   sees your IP address per GitHub's Privacy Statement); you can disable it in
+   Settings. The desktop build makes no network call.
 2. The web version is served by Cloudflare Pages, whose standard server logs are
    governed by Cloudflare's privacy policy.
 3. Attribution links open in your browser only when you tap them.
@@ -33,9 +33,9 @@ mục yêu thích, ảnh/video nền) chỉ lưu **trên thiết bị của bạ
 
 Kết nối mạng:
 
-1. Trên desktop/Android, tính năng kiểm tra cập nhật (tắt được trong Cài đặt) gọi
-   tới `api.github.com` — GitHub thấy địa chỉ IP của bạn theo chính sách riêng tư
-   của GitHub.
+1. Trên Android, tính năng kiểm tra cập nhật (tắt được trong Cài đặt) gọi tới
+   `api.github.com` — GitHub thấy địa chỉ IP của bạn theo chính sách riêng tư của
+   GitHub. Bản desktop không gọi mạng.
 2. Bản web được phục vụ bởi Cloudflare Pages với log máy chủ tiêu chuẩn theo chính
    sách của Cloudflare.
 3. Các liên kết nguồn chỉ mở khi bạn chủ động bấm.

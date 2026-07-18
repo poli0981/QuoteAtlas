@@ -28,6 +28,7 @@ import { mediaUrl } from '../lib/storage/media-adapter';
 import { ErrorView } from './ErrorView';
 import { UpdateToast } from './UpdateToast';
 import { platformKind } from '../lib/platform';
+import { UpdateDialog } from '../features/updater/UpdateDialog';
 import { useAutoHide } from './use-auto-hide';
 import { useFullscreen } from './use-fullscreen';
 import { useQuoteStack } from './use-quote-stack';
@@ -361,6 +362,10 @@ export function App(): ReactElement {
       {/* PWA reload toast is web-only; native builds ship no service worker
           (vite.config disables it) and update via the platform's own flow. */}
       {platformKind() === 'web' && <UpdateToast />}
+
+      {/* Android checks GitHub for a newer release and opens the release page in
+          the browser (docs/03 §5). Desktop has no updater this round. */}
+      {platformKind() === 'android' && <UpdateDialog />}
     </main>
   );
 }

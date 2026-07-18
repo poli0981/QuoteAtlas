@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- docs/09 §4: block all cleartext traffic. Release talks only HTTPS
+     (api.github.com update check). The debug variant overrides this to permit
+     cleartext so `tauri android dev` can reach the LAN Vite dev server. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+</network-security-config>

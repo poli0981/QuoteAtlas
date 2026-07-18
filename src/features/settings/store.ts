@@ -28,6 +28,15 @@ export interface BackgroundSettings {
   textShadow: boolean;
 }
 
+/** Android in-app update-check state (docs/03 §5). Persisted so the ETag + 24h
+ * throttle + "skip this version" survive restarts. Unused on web/desktop. */
+export interface UpdaterState {
+  etag: string | null;
+  lastCheckAt: number;
+  dismissedVersion: string | null;
+  autoCheck: boolean;
+}
+
 export interface Settings {
   version: number;
   uiLanguage: UiLanguage;
@@ -44,6 +53,8 @@ export interface Settings {
   favorites: string[];
   /** background media index — binaries live in OPFS, not here (docs/04 §6) */
   media: MediaItem[];
+  /** Android update-check state (docs/03 §5) */
+  updater: UpdaterState;
 }
 
 interface SettingsActions {
@@ -56,6 +67,7 @@ interface SettingsActions {
   removeMedia: (id: string) => void;
   setSlideshow: (patch: Partial<SlideshowSettings>) => void;
   toggleSlideshowItem: (id: string) => void;
+  setUpdater: (patch: Partial<UpdaterState>) => void;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -86,6 +98,7 @@ export const DEFAULT_SETTINGS: Settings = {
   consentVersion: 0,
   favorites: [],
   media: [],
+  updater: { etag: null, lastCheckAt: 0, dismissedVersion: null, autoCheck: true },
 };
 
 export const useSettings = create<Settings & SettingsActions>()(
@@ -141,6 +154,9 @@ export const useSettings = create<Settings & SettingsActions>()(
           return { background: { ...s.background, slideshow: { ...s.background.slideshow, ids } } };
         });
       },
+      setUpdater: (patch) => {
+        set((s) => ({ updater: { ...s.updater, ...patch } }));
+      },
     }),
     {
       name: 'qa.settings.v1',
@@ -154,6 +170,7 @@ export const useSettings = create<Settings & SettingsActions>()(
           ...current,
           ...p,
           background: { ...current.background, ...(p.background ?? {}) },
+          updater: { ...current.updater, ...(p.updater ?? {}) },
         };
       },
     },

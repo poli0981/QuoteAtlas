@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug variant only: permit cleartext so `tauri android dev` can load the
+     LAN Vite dev server over http. Release uses the main config (cleartext off). -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

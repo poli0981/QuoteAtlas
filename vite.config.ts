@@ -79,12 +79,14 @@ export default defineConfig({
     ...(tauriDevHost ? { hmr: { protocol: 'ws', host: tauriDevHost, port: 1421 } } : {}),
     watch: { ignored: ['**/src-tauri/**'] },
   },
-  // Only override the build target for native webviews (WebView2 / Android System
-  // WebView / WKWebView). The web/Cloudflare build keeps Vite's defaults.
+  // Only override the build target for native webviews. Windows (WebView2) and
+  // Android (System WebView) are Chromium; macOS/Linux (deferred desktop round)
+  // are WebKit. The web/Cloudflare build keeps Vite's defaults.
   ...(tauriPlatform
     ? {
         build: {
-          target: tauriPlatform === 'windows' ? 'chrome105' : 'safari13',
+          target:
+            tauriPlatform === 'windows' || tauriPlatform === 'android' ? 'chrome105' : 'safari13',
           minify: tauriDebug ? false : ('esbuild' as const),
           sourcemap: tauriDebug,
         },
@@ -108,6 +110,9 @@ export default defineConfig({
         '**/index.ts',
         'src/lib/storage/**',
         'src/features/background/import*.ts',
+        // React-effect shell (platform gate + 24h throttle + dynamic opener import);
+        // the testable logic lives in updater/check.ts. Verified in-app/e2e.
+        'src/features/updater/useUpdateCheck.ts',
       ],
       thresholds: {
         // ≥80% overall on features + lib
