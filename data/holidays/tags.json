@@ -1,6 +1,156 @@
 {
-  "tet": { "scope": "national", "countries": ["VN"] },
-  "new-year": { "scope": "international" },
-  "mid-autumn": { "scope": "national", "countries": ["VN", "CN", "TW", "HK", "KR"] },
-  "hung-kings": { "scope": "national", "countries": ["VN"] }
+  "new-year": {
+    "scope": "international"
+  },
+  "valentine": {
+    "scope": "international"
+  },
+  "womens-day": {
+    "scope": "international"
+  },
+  "halloween": {
+    "scope": "international"
+  },
+  "christmas": {
+    "scope": "international"
+  },
+  "new-year-eve": {
+    "scope": "international"
+  },
+  "easter": {
+    "scope": "international"
+  },
+  "mothers-day": {
+    "scope": "international"
+  },
+  "fathers-day": {
+    "scope": "international"
+  },
+  "thanksgiving": {
+    "scope": "international"
+  },
+  "burns-night": {
+    "scope": "national",
+    "countries": ["GB"]
+  },
+  "pancake-day": {
+    "scope": "national",
+    "countries": ["GB"]
+  },
+  "st-georges-day": {
+    "scope": "national",
+    "countries": ["GB"]
+  },
+  "bonfire-night": {
+    "scope": "national",
+    "countries": ["GB"]
+  },
+  "boxing-day": {
+    "scope": "national",
+    "countries": ["GB"]
+  },
+  "tet": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "tet-han-thuc": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "hung-kings": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "tet-doan-ngo": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "vu-lan": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "trung-thu": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "ong-cong-ong-tao": {
+    "scope": "national",
+    "countries": ["VN"]
+  },
+  "oshogatsu": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "setsubun": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "hinamatsuri": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "kodomo-no-hi": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "tanabata": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "obon": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "tsukimi": {
+    "scope": "national",
+    "countries": ["JP"]
+  },
+  "seollal": {
+    "scope": "national",
+    "countries": ["KR"]
+  },
+  "daeboreum": {
+    "scope": "national",
+    "countries": ["KR"]
+  },
+  "dano": {
+    "scope": "national",
+    "countries": ["KR"]
+  },
+  "chuseok": {
+    "scope": "national",
+    "countries": ["KR"]
+  },
+  "hangul-day": {
+    "scope": "national",
+    "countries": ["KR"]
+  },
+  "chunjie": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  },
+  "yuanxiao": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  },
+  "qingming": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  },
+  "duanwu": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  },
+  "qixi": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  },
+  "zhongqiu": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  },
+  "chongyang": {
+    "scope": "national",
+    "countries": ["CN", "TW", "HK"]
+  }
 }

@@ -5,4 +5,26 @@
 Third-party lines included as short, attributed quotations; rights remain their
 owners'. Removal requests: see the takedown policy (README / DISCLAIMER).
 
-_No third-party attributed quotes yet._
+## en
+
+- — Will Durant
+
+## vi
+
+- — Will Durant
+
+## ja
+
+- — Will Durant
+
+## ko
+
+- — Will Durant
+
+## zh-Hans
+
+- — Will Durant
+
+## zh-Hant
+
+- — Will Durant

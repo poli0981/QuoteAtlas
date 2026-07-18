@@ -7,8 +7,9 @@ import { LEGAL_VERSION, S, expect, fill, readStore, seed, test } from './fixture
 /**
  * Region picker + UI language (docs/03 §2, docs/06 §6, docs/07).
  *
- * The config pins Asia/Ho_Chi_Minh + en-US, so detect() resolves VN while the only
- * shipped pool is `en` — i.e. every test starts on the locale-fallback path (R4).
+ * The config pins Asia/Bangkok + en-US, so detect() resolves TH, which has no
+ * native pool — every test starts on the locale-fallback path to `en` (R4).
+ * (VN/JP/KR/CN now ship pools, so TH/EG stand in for the pool-less regions.)
  */
 
 /** Every region the picker must offer: the tz map ∪ the pool regions, both from shipped data. */
@@ -78,24 +79,24 @@ async function openPicker(page: Page): Promise<Locator> {
   return listbox;
 }
 
-/** The trailing <span> of an option row holds the `US ✓` / bare `JP` pool marker. */
+/** The trailing <span> of an option row holds the `US ✓` / bare `EG` pool marker. */
 function optionMarker(option: Locator): Locator {
   return option.locator('span').last();
 }
 
 test.describe('region + i18n', () => {
-  test('detects Vietnam from the timezone and surfaces the locale fallback (R4)', async ({
+  test('detects Thailand from the timezone and surfaces the locale fallback (R4)', async ({
     app,
   }) => {
-    // data guard: the whole spec is built on VN having no native pool
-    expect(POOL_REGIONS.has('VN')).toBe(false);
+    // data guard: the whole spec is built on TH having no native pool
+    expect(POOL_REGIONS.has('TH')).toBe(false);
 
     // detection ran: the toggle names the country, not the untouched "Auto" placeholder
-    await expect(pickerToggle(app)).toHaveAccessibleName(regionName('VN'));
+    await expect(pickerToggle(app)).toHaveAccessibleName(regionName('TH'));
     await expect(pickerToggle(app)).not.toHaveAccessibleName(S.common.region.auto);
 
-    // …and because VN has no pool, the app must SAY it fell back to English — never silently
-    await expect(app.getByText(bannerText('en', 'VN'), { exact: true })).toBeVisible();
+    // …and because TH has no pool, the app must SAY it fell back to English — never silently
+    await expect(app.getByText(bannerText('en', 'TH'), { exact: true })).toBeVisible();
   });
 
   test('searching the picker narrows the list and choosing a country persists regionOverride', async ({
@@ -103,41 +104,41 @@ test.describe('region + i18n', () => {
   }) => {
     const listbox = await openPicker(app);
     const options = listbox.getByRole('option');
-    // unfiltered, the picker offers every region the app knows about (~32) — this is the
-    // baseline that gives "narrows" below its teeth: without filtering it would stay at 32
+    // unfiltered, the picker offers every region the app knows about — this is the
+    // baseline that gives "narrows" below its teeth: without filtering it stays full
     await expect(options).toHaveCount(ALL_REGIONS.length);
     expect(ALL_REGIONS.length).toBeGreaterThan(1);
 
-    await searchBox(app).fill('japan');
+    await searchBox(app).fill('egypt');
     await expect(options).toHaveCount(1);
-    const japan = options.first();
-    await expect(japan).toContainText(regionName('JP'));
-    // JP is absent from data/quotes/index.json (guard below), so the row must show a BARE code
-    expect(POOL_REGIONS.has('JP')).toBe(false);
-    await expect(optionMarker(japan)).toHaveText('JP');
+    const egypt = options.first();
+    await expect(egypt).toContainText(regionName('EG'));
+    // EG is absent from data/quotes/index.json (guard below), so the row shows a BARE code
+    expect(POOL_REGIONS.has('EG')).toBe(false);
+    await expect(optionMarker(egypt)).toHaveText('EG');
 
-    await japan.click();
+    await egypt.click();
     await expect(listbox).toBeHidden();
-    await expect(pickerToggle(app)).toHaveAccessibleName(regionName('JP'));
-    // JP has no pool either, so R4 still applies — the banner now names Japan, not Vietnam
-    await expect(app.getByText(bannerText('en', 'JP'), { exact: true })).toBeVisible();
-    await expect(app.getByText(bannerText('en', 'VN'), { exact: true })).toHaveCount(0);
+    await expect(pickerToggle(app)).toHaveAccessibleName(regionName('EG'));
+    // EG has no pool either, so R4 still applies — the banner now names Egypt, not Thailand
+    await expect(app.getByText(bannerText('en', 'EG'), { exact: true })).toBeVisible();
+    await expect(app.getByText(bannerText('en', 'TH'), { exact: true })).toHaveCount(0);
 
-    expect(await readStore(app)).toMatchObject({ regionOverride: 'JP' });
+    expect(await readStore(app)).toMatchObject({ regionOverride: 'EG' });
 
-    // reopening: choose() cleared the query (full list again) and JP is the sole selected option
+    // reopening: choose() cleared the query (full list again) and EG is the sole selected option
     const reopened = await openPicker(app);
     await expect(reopened.getByRole('option')).toHaveCount(ALL_REGIONS.length);
     await expect(searchBox(app)).toHaveValue('');
     const selected = reopened.locator('[role="option"][aria-selected="true"]');
     await expect(selected).toHaveCount(1);
-    await expect(selected).toContainText(regionName('JP'));
+    await expect(selected).toContainText(regionName('EG'));
   });
 
   test('choosing a region backed by a pool hides the fallback banner', async ({ app }) => {
     // data guard: the `en` pool claims US, so US must resolve natively
     expect(POOL_REGIONS.has('US')).toBe(true);
-    await expect(app.getByText(bannerText('en', 'VN'), { exact: true })).toBeVisible();
+    await expect(app.getByText(bannerText('en', 'TH'), { exact: true })).toBeVisible();
 
     const listbox = await openPicker(app);
     await searchBox(app).fill('United States');
@@ -159,7 +160,7 @@ test.describe('region + i18n', () => {
     );
   });
 
-  test('reset to auto-detect clears the override and re-detects Vietnam', async ({ page }) => {
+  test('reset to auto-detect clears the override and re-detects Thailand', async ({ page }) => {
     // boot already overridden to a pool-backed region, so "reset" has something to undo
     await seed(page, { consentVersion: LEGAL_VERSION, regionOverride: 'US' });
     await page.goto('/');
@@ -171,9 +172,9 @@ test.describe('region + i18n', () => {
     await listbox.getByRole('button', { name: S.common.region.reset }).click();
     await expect(listbox).toBeHidden();
 
-    // override cleared → the detected region (VN) takes over again, fallback and all
-    await expect(pickerToggle(page)).toHaveAccessibleName(regionName('VN'));
-    await expect(page.getByText(bannerText('en', 'VN'), { exact: true })).toBeVisible();
+    // override cleared → the detected region (TH) takes over again, fallback and all
+    await expect(pickerToggle(page)).toHaveAccessibleName(regionName('TH'));
+    await expect(page.getByText(bannerText('en', 'TH'), { exact: true })).toBeVisible();
     expect(await readStore(page)).toMatchObject({ regionOverride: null });
   });
 
@@ -182,7 +183,7 @@ test.describe('region + i18n', () => {
   }) => {
     // settle on the detected region first, so the quote we snapshot is the post-detection one
     // (the daily pick is keyed on region-derived holiday tags, App.tsx → useQuoteStack)
-    await expect(app.getByText(bannerText('en', 'VN'), { exact: true })).toBeVisible();
+    await expect(app.getByText(bannerText('en', 'TH'), { exact: true })).toBeVisible();
 
     const quote = app.locator('blockquote');
     const before = await quote.textContent();
@@ -202,11 +203,11 @@ test.describe('region + i18n', () => {
     await expect(app.getByRole('group', { name: viCommon.language.label })).toBeVisible();
     await expect(app.getByRole('group', { name: S.common.language.label })).toHaveCount(0);
 
-    // …and the Intl-derived names follow the UI language too: "Việt Nam", not "Vietnam"
-    await expect(pickerToggle(app)).toHaveAccessibleName(regionName('VN', 'vi'));
+    // …and the Intl-derived names follow the UI language too: "Thái Lan", not "Thailand"
+    await expect(pickerToggle(app)).toHaveAccessibleName(regionName('TH', 'vi'));
     // the R4 banner is re-rendered from the vi template AND re-interpolated with vi names
-    await expect(app.getByText(bannerText('en', 'VN', 'vi'), { exact: true })).toBeVisible();
-    await expect(app.getByText(bannerText('en', 'VN'), { exact: true })).toHaveCount(0);
+    await expect(app.getByText(bannerText('en', 'TH', 'vi'), { exact: true })).toBeVisible();
+    await expect(app.getByText(bannerText('en', 'TH'), { exact: true })).toHaveCount(0);
 
     // the picker's internals come from the vi bundle as well
     const listbox = await openPicker(app);

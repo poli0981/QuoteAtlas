@@ -1,0 +1,25 @@
+{
+  "country": "KR",
+  "add": [
+    {
+      "tag": "seollal",
+      "rule": "lunar:1-1"
+    },
+    {
+      "tag": "daeboreum",
+      "rule": "lunar:1-15"
+    },
+    {
+      "tag": "dano",
+      "rule": "lunar:5-5"
+    },
+    {
+      "tag": "chuseok",
+      "rule": "lunar:8-15"
+    },
+    {
+      "tag": "hangul-day",
+      "rule": "10-9"
+    }
+  ]
+}

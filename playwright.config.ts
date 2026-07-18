@@ -25,9 +25,11 @@ export default defineConfig({
     baseURL: `http://localhost:${String(PORT)}`,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    // Deterministic boot: Asia/Ho_Chi_Minh + en-US means detect() resolves VN
-    // while the quote pool stays `en` — i.e. the locale-fallback path is live.
-    timezoneId: 'Asia/Ho_Chi_Minh',
+    // Deterministic boot: Asia/Bangkok + en-US means detect() resolves TH, which
+    // has NO native pool, so the app takes the locale-fallback path to `en` (R4) —
+    // giving specs a stable `en` pool AND a live fallback banner. (VN/JP/KR/CN now
+    // ship pools, so they no longer exercise the fallback path.)
+    timezoneId: 'Asia/Bangkok',
     locale: 'en-US',
   },
 

@@ -1,152 +1,42 @@
 {
-  "locale": "en",
+  "locale": "ja",
   "quotes": [
     {
-      "id": "en-0001",
-      "type": "proverb",
-      "text": "Where there is a will, there is a way.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": null,
-        "developer": null,
-        "publisher": null,
-        "source": "English proverb",
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["US", "GB", "AU", "CA"],
-      "tags": ["perseverance"],
-      "holidays": []
-    },
-    {
-      "id": "en-0002",
-      "type": "proverb",
-      "text": "A journey of a thousand miles begins with a single step.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": null,
-        "developer": null,
-        "publisher": null,
-        "source": "Chinese proverb",
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["US", "GB", "AU", "CA"],
-      "tags": ["beginnings", "perseverance"],
-      "holidays": []
-    },
-    {
-      "id": "en-0003",
-      "type": "proverb",
-      "text": "Actions speak louder than words.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": null,
-        "developer": null,
-        "publisher": null,
-        "source": "English proverb",
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["US", "GB", "AU", "CA"],
-      "tags": ["action"],
-      "holidays": []
-    },
-    {
-      "id": "en-0004",
+      "id": "ja-0001",
       "type": "quote",
-      "text": "Knowledge is power.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": "Francis Bacon",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": 1597,
-        "links": {
-          "author": "https://en.wikipedia.org/wiki/Francis_Bacon"
-        },
-        "rights": "public-domain"
+      "text": "一年で最良の日は毎日であると、心に刻みなさい。",
+      "lang": "ja",
+      "translations": {
+        "en": "Write it on your heart that every day is the best day in the year.",
+        "vi": "Hãy khắc vào tim rằng mỗi ngày đều là ngày đẹp nhất trong năm.",
+        "ko": "매일이 일 년 중 가장 좋은 날이라고 마음에 새겨라.",
+        "zh-Hans": "请铭记于心：一年中最好的日子，就是每一天。",
+        "zh-Hant": "請銘記於心：一年中最好的日子，就是每一天。"
       },
-      "regions": ["US", "GB", "AU", "CA"],
-      "tags": ["knowledge"],
-      "holidays": []
-    },
-    {
-      "id": "en-0005",
-      "type": "quote",
-      "text": "That which does not kill us makes us stronger.",
-      "lang": "en",
-      "translations": {},
       "attribution": {
-        "work": null,
+        "work": "Society and Solitude",
         "character": null,
         "actor": null,
-        "author": "Friedrich Nietzsche",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": 1888,
-        "links": {
-          "author": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche"
-        },
-        "rights": "public-domain"
-      },
-      "regions": ["US", "GB", "AU", "CA"],
-      "tags": ["resilience"],
-      "holidays": []
-    },
-    {
-      "id": "en-0006",
-      "type": "quote",
-      "text": "Write it on your heart that every day is the best day in the year.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": "Ralph Waldo Emerson",
+        "author": "Emerson",
         "developer": null,
         "publisher": null,
         "source": null,
         "year": 1870,
-        "links": {
-          "author": "https://en.wikipedia.org/wiki/Ralph_Waldo_Emerson"
-        },
-        "rights": "public-domain"
+        "links": {},
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA"],
-      "tags": ["gratitude", "time"],
+      "regions": ["JP"],
+      "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0008",
+      "id": "ja-0002",
       "type": "quote",
-      "text": "New Year's Day is every man's birthday.",
-      "lang": "en",
+      "text": "元日は、すべての人の誕生日である。",
+      "lang": "ja",
       "translations": {
+        "en": "New Year's Day is every man's birthday.",
         "vi": "Ngày đầu năm là sinh nhật của tất cả mọi người.",
-        "ja": "元日は、すべての人の誕生日である。",
         "ko": "새해 첫날은 모든 사람의 생일이다.",
         "zh-Hans": "元旦是每个人的生日。",
         "zh-Hant": "元旦是每個人的生日。"
@@ -161,20 +51,20 @@
         "source": null,
         "year": 1821,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0009",
+      "id": "ja-0003",
       "type": "quote",
-      "text": "Ring out the old, ring in the new.",
-      "lang": "en",
+      "text": "古きを鐘で送り、新しきを鐘で迎えよ。",
+      "lang": "ja",
       "translations": {
+        "en": "Ring out the old, ring in the new.",
         "vi": "Rung chuông tiễn cái cũ, rung chuông đón cái mới.",
-        "ja": "古きを鐘で送り、新しきを鐘で迎えよ。",
         "ko": "종을 울려 옛것을 보내고, 종을 울려 새것을 맞이하라.",
         "zh-Hans": "鸣钟送旧，鸣钟迎新。",
         "zh-Hant": "鳴鐘送舊，鳴鐘迎新。"
@@ -189,20 +79,20 @@
         "source": null,
         "year": 1850,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0010",
+      "id": "ja-0004",
       "type": "quote",
-      "text": "Hope smiles from the threshold of the year to come.",
-      "lang": "en",
+      "text": "希望は、来たる年の敷居から微笑みかける。",
+      "lang": "ja",
       "translations": {
+        "en": "Hope smiles from the threshold of the year to come.",
         "vi": "Hy vọng mỉm cười từ ngưỡng cửa của năm sắp tới.",
-        "ja": "希望は、来たる年の敷居から微笑みかける。",
         "ko": "희망은 다가오는 해의 문턱에서 미소 짓는다.",
         "zh-Hans": "希望在来年的门槛上微笑。",
         "zh-Hant": "希望在來年的門檻上微笑。"
@@ -217,20 +107,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0011",
+      "id": "ja-0005",
       "type": "proverb",
-      "text": "Well begun is half done.",
-      "lang": "en",
+      "text": "始めよければ半ばよし。",
+      "lang": "ja",
       "translations": {
+        "en": "Well begun is half done.",
         "vi": "Khởi đầu tốt là đã xong một nửa.",
-        "ja": "始めよければ半ばよし。",
         "ko": "시작이 반이다.",
         "zh-Hans": "好的开始是成功的一半。",
         "zh-Hant": "好的開始是成功的一半。"
@@ -245,20 +135,20 @@
         "source": "Proverb (gốc Horace/Aristotle)",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0012",
+      "id": "ja-0006",
       "type": "proverb",
-      "text": "A good beginning makes a good ending.",
-      "lang": "en",
+      "text": "良い始まりは良い終わりをもたらす。",
+      "lang": "ja",
       "translations": {
+        "en": "A good beginning makes a good ending.",
         "vi": "Khởi đầu tốt đẹp làm nên kết thúc tốt đẹp.",
-        "ja": "良い始まりは良い終わりをもたらす。",
         "ko": "좋은 시작이 좋은 끝을 만든다.",
         "zh-Hans": "良好的开端造就良好的结局。",
         "zh-Hant": "良好的開端造就良好的結局。"
@@ -273,20 +163,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0013",
+      "id": "ja-0007",
       "type": "quote",
-      "text": "Finish each day and be done with it. Tomorrow is a new day.",
-      "lang": "en",
+      "text": "一日を終えたら、それで終わりにせよ。明日は新しい一日だ。",
+      "lang": "ja",
       "translations": {
+        "en": "Finish each day and be done with it. Tomorrow is a new day.",
         "vi": "Hãy kết thúc mỗi ngày và buông nó xuống. Ngày mai là một ngày mới.",
-        "ja": "一日を終えたら、それで終わりにせよ。明日は新しい一日だ。",
         "ko": "하루를 마쳤으면 그것으로 끝내라. 내일은 새로운 날이다.",
         "zh-Hans": "结束每一天，就让它过去。明天又是新的一天。",
         "zh-Hant": "結束每一天，就讓它過去。明天又是新的一天。"
@@ -301,20 +191,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0014",
+      "id": "ja-0008",
       "type": "proverb",
-      "text": "The first step is the hardest.",
-      "lang": "en",
+      "text": "最初の一歩が一番難しい。",
+      "lang": "ja",
       "translations": {
+        "en": "The first step is the hardest.",
         "vi": "Bước đầu tiên bao giờ cũng khó nhất.",
-        "ja": "最初の一歩が一番難しい。",
         "ko": "첫걸음이 가장 어렵다.",
         "zh-Hans": "万事开头难。",
         "zh-Hant": "萬事開頭難。"
@@ -329,20 +219,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year"]
     },
     {
-      "id": "en-0015",
+      "id": "ja-0009",
       "type": "quote",
-      "text": "Love conquers all things.",
-      "lang": "en",
+      "text": "愛はすべてに打ち勝つ。",
+      "lang": "ja",
       "translations": {
+        "en": "Love conquers all things.",
         "vi": "Tình yêu chinh phục tất cả.",
-        "ja": "愛はすべてに打ち勝つ。",
         "ko": "사랑은 모든 것을 이긴다.",
         "zh-Hans": "爱征服一切。",
         "zh-Hant": "愛征服一切。"
@@ -357,20 +247,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0016",
+      "id": "ja-0010",
       "type": "quote",
-      "text": "The course of true love never did run smooth.",
-      "lang": "en",
+      "text": "真実の恋の道が平坦であったためしはない。",
+      "lang": "ja",
       "translations": {
+        "en": "The course of true love never did run smooth.",
         "vi": "Đường tình chân thật chưa bao giờ bằng phẳng.",
-        "ja": "真実の恋の道が平坦であったためしはない。",
         "ko": "진실한 사랑의 길은 결코 순탄한 적이 없었다.",
         "zh-Hans": "真爱之路从来不曾平坦。",
         "zh-Hant": "真愛之路從來不曾平坦。"
@@ -385,20 +275,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0017",
+      "id": "ja-0011",
       "type": "quote",
-      "text": "Love looks not with the eyes, but with the mind.",
-      "lang": "en",
+      "text": "恋は目で見ず、心で見るもの。",
+      "lang": "ja",
       "translations": {
+        "en": "Love looks not with the eyes, but with the mind.",
         "vi": "Tình yêu không nhìn bằng mắt, mà nhìn bằng tâm trí.",
-        "ja": "恋は目で見ず、心で見るもの。",
         "ko": "사랑은 눈이 아니라 마음으로 보는 것이다.",
         "zh-Hans": "爱不是用眼睛看，而是用心去看。",
         "zh-Hant": "愛不是用眼睛看，而是用心去看。"
@@ -413,20 +303,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0018",
+      "id": "ja-0012",
       "type": "quote",
-      "text": "Love all, trust a few, do wrong to none.",
-      "lang": "en",
+      "text": "すべてを愛し、少数を信じ、誰にも害をなすな。",
+      "lang": "ja",
       "translations": {
+        "en": "Love all, trust a few, do wrong to none.",
         "vi": "Hãy yêu mọi người, tin một số ít, và đừng làm hại ai.",
-        "ja": "すべてを愛し、少数を信じ、誰にも害をなすな。",
         "ko": "모두를 사랑하되, 소수를 믿고, 누구에게도 해를 끼치지 말라.",
         "zh-Hans": "爱所有人，信少数人，不负任何人。",
         "zh-Hant": "愛所有人，信少數人，不負任何人。"
@@ -441,20 +331,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0019",
+      "id": "ja-0013",
       "type": "proverb",
-      "text": "Absence makes the heart grow fonder.",
-      "lang": "en",
+      "text": "会えない時間が愛を育てる。",
+      "lang": "ja",
       "translations": {
+        "en": "Absence makes the heart grow fonder.",
         "vi": "Xa mặt càng thêm nhớ.",
-        "ja": "会えない時間が愛を育てる。",
         "ko": "떨어져 있으면 그리움이 더 커진다.",
         "zh-Hans": "距离使爱意更浓。",
         "zh-Hant": "距離使愛意更濃。"
@@ -469,20 +359,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0020",
+      "id": "ja-0014",
       "type": "proverb",
-      "text": "Faint heart never won fair lady.",
-      "lang": "en",
+      "text": "気の弱い者に美人は落とせない。",
+      "lang": "ja",
       "translations": {
+        "en": "Faint heart never won fair lady.",
         "vi": "Nhát gan thì chẳng bao giờ chiếm được trái tim ai.",
-        "ja": "気の弱い者に美人は落とせない。",
         "ko": "소심한 마음으로는 결코 사랑을 얻지 못한다.",
         "zh-Hans": "心怯者难赢佳人心。",
         "zh-Hant": "心怯者難贏佳人心。"
@@ -497,20 +387,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0021",
+      "id": "ja-0015",
       "type": "proverb",
-      "text": "Love begets love.",
-      "lang": "en",
+      "text": "愛は愛を生む。",
+      "lang": "ja",
       "translations": {
+        "en": "Love begets love.",
         "vi": "Yêu thương sinh ra yêu thương.",
-        "ja": "愛は愛を生む。",
         "ko": "사랑은 사랑을 낳는다.",
         "zh-Hans": "爱能孕育爱。",
         "zh-Hant": "愛能孕育愛。"
@@ -525,20 +415,20 @@
         "source": "Proverb (gốc Theocritus)",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0022",
+      "id": "ja-0016",
       "type": "proverb",
-      "text": "Love is blind.",
-      "lang": "en",
+      "text": "恋は盲目。",
+      "lang": "ja",
       "translations": {
+        "en": "Love is blind.",
         "vi": "Yêu nhau củ ấu cũng tròn.",
-        "ja": "恋は盲目。",
         "ko": "눈에 콩깍지가 씌었다.",
         "zh-Hans": "情人眼里出西施。",
         "zh-Hant": "情人眼裡出西施。"
@@ -553,20 +443,20 @@
         "source": "Proverb (Chaucer, 1405)",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["valentine"]
     },
     {
-      "id": "en-0023",
+      "id": "ja-0017",
       "type": "quote",
-      "text": "Ain't I a woman?",
-      "lang": "en",
+      "text": "私は女ではないのですか。",
+      "lang": "ja",
       "translations": {
+        "en": "Ain't I a woman?",
         "vi": "Chẳng lẽ tôi không phải là một người phụ nữ sao?",
-        "ja": "私は女ではないのですか。",
         "ko": "나는 여자가 아니란 말입니까?",
         "zh-Hans": "难道我不是女人吗？",
         "zh-Hant": "難道我不是女人嗎？"
@@ -581,20 +471,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0024",
+      "id": "ja-0018",
       "type": "quote",
-      "text": "I do not wish them to have power over men, but over themselves.",
-      "lang": "en",
+      "text": "私は彼女たちが男性を支配することではなく、自分自身を支配することを願う。",
+      "lang": "ja",
       "translations": {
+        "en": "I do not wish them to have power over men, but over themselves.",
         "vi": "Tôi không mong họ có quyền lực trên đàn ông, mà là trên chính mình.",
-        "ja": "私は彼女たちが男性を支配することではなく、自分自身を支配することを願う。",
         "ko": "나는 그들이 남성을 지배하기를 바라지 않는다. 자기 자신을 지배하기를 바란다.",
         "zh-Hans": "我不希望她们凌驾于男人之上，而是掌控自己。",
         "zh-Hant": "我不希望她們凌駕於男人之上，而是掌控自己。"
@@ -609,20 +499,20 @@
         "source": null,
         "year": 1792,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0025",
+      "id": "ja-0019",
       "type": "quote",
-      "text": "I would rather be a rebel than a slave.",
-      "lang": "en",
+      "text": "私は奴隷であるより、反逆者でありたい。",
+      "lang": "ja",
       "translations": {
+        "en": "I would rather be a rebel than a slave.",
         "vi": "Tôi thà làm kẻ nổi loạn còn hơn làm nô lệ.",
-        "ja": "私は奴隷であるより、反逆者でありたい。",
         "ko": "나는 노예가 되느니 차라리 반역자가 되겠다.",
         "zh-Hans": "我宁做叛逆者，不做奴隶。",
         "zh-Hant": "我寧做叛逆者，不做奴隸。"
@@ -637,20 +527,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0026",
+      "id": "ja-0020",
       "type": "proverb",
-      "text": "Deeds, not words.",
-      "lang": "en",
+      "text": "言葉ではなく、行動を。",
+      "lang": "ja",
       "translations": {
+        "en": "Deeds, not words.",
         "vi": "Hành động, không phải lời nói.",
-        "ja": "言葉ではなく、行動を。",
         "ko": "말이 아니라 행동으로.",
         "zh-Hans": "行动，而非言语。",
         "zh-Hant": "行動，而非言語。"
@@ -665,20 +555,20 @@
         "source": "Khẩu hiệu WSPU",
         "year": 1903,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0027",
+      "id": "ja-0021",
       "type": "quote",
-      "text": "Nothing in life is to be feared, it is only to be understood.",
-      "lang": "en",
+      "text": "人生に恐れるべきものはない。ただ理解すべきものがあるだけだ。",
+      "lang": "ja",
       "translations": {
+        "en": "Nothing in life is to be feared, it is only to be understood.",
         "vi": "Không có gì trong đời đáng sợ, chỉ có điều cần được thấu hiểu.",
-        "ja": "人生に恐れるべきものはない。ただ理解すべきものがあるだけだ。",
         "ko": "인생에 두려워할 것은 없다. 이해해야 할 것이 있을 뿐이다.",
         "zh-Hans": "生活中没有什么可怕的，只有需要理解的。",
         "zh-Hant": "生活中沒有什麼可怕的，只有需要理解的。"
@@ -693,20 +583,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0028",
+      "id": "ja-0022",
       "type": "quote",
-      "text": "Failure is impossible.",
-      "lang": "en",
+      "text": "失敗などありえない。",
+      "lang": "ja",
       "translations": {
+        "en": "Failure is impossible.",
         "vi": "Thất bại là điều không thể xảy ra.",
-        "ja": "失敗などありえない。",
         "ko": "실패란 있을 수 없다.",
         "zh-Hans": "失败是不可能的。",
         "zh-Hant": "失敗是不可能的。"
@@ -721,20 +611,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0029",
+      "id": "ja-0023",
       "type": "quote",
-      "text": "The best protection any woman can have is courage.",
-      "lang": "en",
+      "text": "女性にとって最良の守りは、勇気である。",
+      "lang": "ja",
       "translations": {
+        "en": "The best protection any woman can have is courage.",
         "vi": "Sự bảo vệ tốt nhất mà một người phụ nữ có thể có là lòng can đảm.",
-        "ja": "女性にとって最良の守りは、勇気である。",
         "ko": "여성이 가질 수 있는 최고의 보호막은 용기다.",
         "zh-Hans": "女性最好的保护，就是勇气。",
         "zh-Hant": "女性最好的保護，就是勇氣。"
@@ -749,20 +639,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0030",
+      "id": "ja-0024",
       "type": "quote",
-      "text": "A woman must have money and a room of her own.",
-      "lang": "en",
+      "text": "女性は、お金と自分自身の部屋を持たねばならない。",
+      "lang": "ja",
       "translations": {
+        "en": "A woman must have money and a room of her own.",
         "vi": "Người phụ nữ phải có tiền và một căn phòng của riêng mình.",
-        "ja": "女性は、お金と自分自身の部屋を持たねばならない。",
         "ko": "여성은 돈과 자기만의 방을 가져야 한다.",
         "zh-Hans": "女人必须有钱，还要有一间自己的房间。",
         "zh-Hant": "女人必須有錢，還要有一間自己的房間。"
@@ -777,20 +667,20 @@
         "source": null,
         "year": 1929,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["womens-day"]
     },
     {
-      "id": "en-0031",
+      "id": "ja-0025",
       "type": "quote",
-      "text": "God has written the promise of resurrection on every leaf in springtime.",
-      "lang": "en",
+      "text": "神は復活の約束を、春のすべての葉に書き記された。",
+      "lang": "ja",
       "translations": {
+        "en": "God has written the promise of resurrection on every leaf in springtime.",
         "vi": "Thượng đế đã viết lời hứa phục sinh lên từng chiếc lá mùa xuân.",
-        "ja": "神は復活の約束を、春のすべての葉に書き記された。",
         "ko": "신은 부활의 약속을 봄날의 모든 잎사귀에 새겨 놓으셨다.",
         "zh-Hans": "神把复活的应许，写在春天的每一片叶子上。",
         "zh-Hant": "神把復活的應許，寫在春天的每一片葉子上。"
@@ -805,20 +695,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0032",
+      "id": "ja-0026",
       "type": "proverb",
-      "text": "Christ is risen! He is risen indeed!",
-      "lang": "en",
+      "text": "キリストは復活された！まことに復活された！",
+      "lang": "ja",
       "translations": {
+        "en": "Christ is risen! He is risen indeed!",
         "vi": "Chúa đã sống lại! Ngài đã sống lại thật!",
-        "ja": "キリストは復活された！まことに復活された！",
         "ko": "그리스도께서 부활하셨습니다! 참으로 부활하셨습니다!",
         "zh-Hans": "基督复活了！他真的复活了！",
         "zh-Hant": "基督復活了！祂真的復活了！"
@@ -833,20 +723,20 @@
         "source": "Paschal greeting",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0033",
+      "id": "ja-0027",
       "type": "proverb",
-      "text": "After winter comes spring.",
-      "lang": "en",
+      "text": "冬来たりなば春遠からじ。",
+      "lang": "ja",
       "translations": {
+        "en": "After winter comes spring.",
         "vi": "Sau mùa đông là mùa xuân.",
-        "ja": "冬来たりなば春遠からじ。",
         "ko": "고생 끝에 낙이 온다.",
         "zh-Hans": "冬去春来。",
         "zh-Hant": "冬去春來。"
@@ -861,20 +751,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0034",
+      "id": "ja-0028",
       "type": "proverb",
-      "text": "Hot cross buns, one a penny, two a penny.",
-      "lang": "en",
+      "text": "ホットクロスバン、一つ一ペニー、二つ二ペニー。",
+      "lang": "ja",
       "translations": {
+        "en": "Hot cross buns, one a penny, two a penny.",
         "vi": "Bánh thánh giá nóng hổi, một xu một chiếc, hai xu hai chiếc.",
-        "ja": "ホットクロスバン、一つ一ペニー、二つ二ペニー。",
         "ko": "핫 크로스 번, 한 개에 일 페니, 두 개에 이 페니.",
         "zh-Hans": "十字面包，一便士一个，两便士两个。",
         "zh-Hant": "十字麵包，一便士一個，兩便士兩個。"
@@ -889,20 +779,20 @@
         "source": "Nursery rhyme (Good Friday)",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0035",
+      "id": "ja-0029",
       "type": "quote",
-      "text": "Hope springs eternal.",
-      "lang": "en",
+      "text": "希望は永遠に湧き出る。",
+      "lang": "ja",
       "translations": {
+        "en": "Hope springs eternal.",
         "vi": "Hy vọng thì bất tận.",
-        "ja": "希望は永遠に湧き出る。",
         "ko": "희망은 영원히 샘솟는다.",
         "zh-Hans": "希望永不枯竭。",
         "zh-Hant": "希望永不枯竭。"
@@ -917,20 +807,20 @@
         "source": null,
         "year": 1734,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0036",
+      "id": "ja-0030",
       "type": "quote",
-      "text": "No cross, no crown.",
-      "lang": "en",
+      "text": "十字架なくして、栄冠なし。",
+      "lang": "ja",
       "translations": {
+        "en": "No cross, no crown.",
         "vi": "Không có thập giá thì không có vương miện.",
-        "ja": "十字架なくして、栄冠なし。",
         "ko": "십자가 없이는 면류관도 없다.",
         "zh-Hans": "没有十字架，就没有冠冕。",
         "zh-Hant": "沒有十字架，就沒有冠冕。"
@@ -945,20 +835,20 @@
         "source": null,
         "year": 1669,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0037",
+      "id": "ja-0031",
       "type": "quote",
-      "text": "The darkest hour is just before the dawn.",
-      "lang": "en",
+      "text": "夜明け前が最も暗い。",
+      "lang": "ja",
       "translations": {
+        "en": "The darkest hour is just before the dawn.",
         "vi": "Giờ khắc tối tăm nhất là ngay trước bình minh.",
-        "ja": "夜明け前が最も暗い。",
         "ko": "가장 어두운 시간은 바로 새벽 직전이다.",
         "zh-Hans": "黎明前的时刻最黑暗。",
         "zh-Hant": "黎明前的時刻最黑暗。"
@@ -973,20 +863,20 @@
         "source": null,
         "year": 1650,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0038",
+      "id": "ja-0032",
       "type": "proverb",
-      "text": "Except a corn of wheat fall into the ground and die, it abideth alone.",
-      "lang": "en",
+      "text": "一粒の麦が地に落ちて死ななければ、それは一粒のままである。",
+      "lang": "ja",
       "translations": {
+        "en": "Except a corn of wheat fall into the ground and die, it abideth alone.",
         "vi": "Nếu hạt lúa mì không rơi xuống đất mà chết đi, nó vẫn chỉ là một mình.",
-        "ja": "一粒の麦が地に落ちて死ななければ、それは一粒のままである。",
         "ko": "밀알 하나가 땅에 떨어져 죽지 않으면, 그것은 한 알 그대로 남는다.",
         "zh-Hans": "一粒麦子若不落在地里死了，仍旧是一粒。",
         "zh-Hant": "一粒麥子若不落在地裡死了，仍舊是一粒。"
@@ -1001,20 +891,20 @@
         "source": "John 12:24",
         "year": 1611,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["easter"]
     },
     {
-      "id": "en-0039",
+      "id": "ja-0033",
       "type": "proverb",
-      "text": "God could not be everywhere, so he made mothers.",
-      "lang": "en",
+      "text": "神はどこにでもいることはできない。だから母をつくった。",
+      "lang": "ja",
       "translations": {
+        "en": "God could not be everywhere, so he made mothers.",
         "vi": "Thượng đế không thể ở khắp mọi nơi, nên Người tạo ra những người mẹ.",
-        "ja": "神はどこにでもいることはできない。だから母をつくった。",
         "ko": "신은 어디에나 있을 수 없기에 어머니를 만들었다.",
         "zh-Hans": "神无法无处不在，所以造了母亲。",
         "zh-Hant": "神無法無處不在，所以造了母親。"
@@ -1029,20 +919,20 @@
         "source": "Jewish proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0040",
+      "id": "ja-0034",
       "type": "quote",
-      "text": "The hand that rocks the cradle rules the world.",
-      "lang": "en",
+      "text": "揺りかごを揺らす手が、世界を支配する。",
+      "lang": "ja",
       "translations": {
+        "en": "The hand that rocks the cradle rules the world.",
         "vi": "Bàn tay đưa nôi là bàn tay cai trị thế giới.",
-        "ja": "揺りかごを揺らす手が、世界を支配する。",
         "ko": "요람을 흔드는 손이 세상을 지배한다.",
         "zh-Hans": "摇动摇篮的手，主宰着世界。",
         "zh-Hant": "搖動搖籃的手，主宰著世界。"
@@ -1057,20 +947,20 @@
         "source": null,
         "year": 1865,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0041",
+      "id": "ja-0035",
       "type": "quote",
-      "text": "A mother's love endures through all.",
-      "lang": "en",
+      "text": "母の愛は、すべてに耐えて続く。",
+      "lang": "ja",
       "translations": {
+        "en": "A mother's love endures through all.",
         "vi": "Tình mẹ vượt qua tất cả.",
-        "ja": "母の愛は、すべてに耐えて続く。",
         "ko": "어머니의 사랑은 모든 것을 견뎌낸다.",
         "zh-Hans": "母爱能承受一切。",
         "zh-Hant": "母愛能承受一切。"
@@ -1085,20 +975,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0042",
+      "id": "ja-0036",
       "type": "proverb",
-      "text": "A mother understands what a child does not say.",
-      "lang": "en",
+      "text": "母は、子が言わないことまで理解する。",
+      "lang": "ja",
       "translations": {
+        "en": "A mother understands what a child does not say.",
         "vi": "Người mẹ hiểu cả những điều con không nói ra.",
-        "ja": "母は、子が言わないことまで理解する。",
         "ko": "어머니는 아이가 말하지 않는 것까지 이해한다.",
         "zh-Hans": "母亲能懂孩子没说出口的话。",
         "zh-Hant": "母親能懂孩子沒說出口的話。"
@@ -1113,20 +1003,20 @@
         "source": "Jewish proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0043",
+      "id": "ja-0037",
       "type": "proverb",
-      "text": "There is only one pretty child in the world, and every mother has it.",
-      "lang": "en",
+      "text": "世界に美しい子はただ一人、そしてどの母もその子を持っている。",
+      "lang": "ja",
       "translations": {
+        "en": "There is only one pretty child in the world, and every mother has it.",
         "vi": "Trên đời chỉ có một đứa trẻ xinh đẹp, và mẹ nào cũng có nó.",
-        "ja": "世界に美しい子はただ一人、そしてどの母もその子を持っている。",
         "ko": "세상에 예쁜 아이는 단 하나뿐인데, 모든 어머니가 그 아이를 갖고 있다.",
         "zh-Hans": "世上只有一个漂亮孩子，而每位母亲都拥有他。",
         "zh-Hant": "世上只有一個漂亮孩子，而每位母親都擁有他。"
@@ -1141,20 +1031,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0044",
+      "id": "ja-0038",
       "type": "proverb",
-      "text": "The mother's breath is always sweet.",
-      "lang": "en",
+      "text": "母の息は、いつも甘い。",
+      "lang": "ja",
       "translations": {
+        "en": "The mother's breath is always sweet.",
         "vi": "Hơi thở của mẹ luôn ngọt ngào.",
-        "ja": "母の息は、いつも甘い。",
         "ko": "어머니의 숨결은 언제나 달콤하다.",
         "zh-Hans": "母亲的气息永远是甜的。",
         "zh-Hant": "母親的氣息永遠是甜的。"
@@ -1169,20 +1059,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0045",
+      "id": "ja-0039",
       "type": "proverb",
-      "text": "An ounce of mother is worth a pound of clergy.",
-      "lang": "en",
+      "text": "母の一匙は、聖職者の一ポンドに値する。",
+      "lang": "ja",
       "translations": {
+        "en": "An ounce of mother is worth a pound of clergy.",
         "vi": "Một chút tình mẹ đáng giá hơn cả trăm lời giáo huấn.",
-        "ja": "母の一匙は、聖職者の一ポンドに値する。",
         "ko": "어머니 한 줌이 성직자 한 근보다 값지다.",
         "zh-Hans": "一分母爱，胜过一斤说教。",
         "zh-Hant": "一分母愛，勝過一斤說教。"
@@ -1197,20 +1087,20 @@
         "source": "Spanish proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0046",
+      "id": "ja-0040",
       "type": "quote",
-      "text": "Where there is a mother in the house, matters speed well.",
-      "lang": "en",
+      "text": "家に母がいれば、物事はうまく運ぶ。",
+      "lang": "ja",
       "translations": {
+        "en": "Where there is a mother in the house, matters speed well.",
         "vi": "Nơi nào có mẹ trong nhà, nơi đó mọi việc đều hanh thông.",
-        "ja": "家に母がいれば、物事はうまく運ぶ。",
         "ko": "집에 어머니가 있으면 모든 일이 잘 풀린다.",
         "zh-Hans": "家中有母亲，事事都顺遂。",
         "zh-Hant": "家中有母親，事事都順遂。"
@@ -1225,20 +1115,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["mothers-day"]
     },
     {
-      "id": "en-0047",
+      "id": "ja-0041",
       "type": "proverb",
-      "text": "A wise son maketh a glad father.",
-      "lang": "en",
+      "text": "賢い子は父を喜ばせる。",
+      "lang": "ja",
       "translations": {
+        "en": "A wise son maketh a glad father.",
         "vi": "Con khôn ngoan làm cha vui lòng.",
-        "ja": "賢い子は父を喜ばせる。",
         "ko": "지혜로운 아들은 아버지를 기쁘게 한다.",
         "zh-Hans": "智慧之子使父亲欢乐。",
         "zh-Hant": "智慧之子使父親歡樂。"
@@ -1253,20 +1143,20 @@
         "source": "Proverbs 10:1",
         "year": 1611,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0048",
+      "id": "ja-0042",
       "type": "quote",
-      "text": "It is a wise father that knows his own child.",
-      "lang": "en",
+      "text": "我が子を知る父こそ、賢い父である。",
+      "lang": "ja",
       "translations": {
+        "en": "It is a wise father that knows his own child.",
         "vi": "Phải là người cha khôn ngoan mới hiểu được con mình.",
-        "ja": "我が子を知る父こそ、賢い父である。",
         "ko": "자기 자식을 아는 아버지가 지혜로운 아버지다.",
         "zh-Hans": "能了解自己孩子的父亲，才是明智的父亲。",
         "zh-Hant": "能了解自己孩子的父親，才是明智的父親。"
@@ -1281,20 +1171,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0049",
+      "id": "ja-0043",
       "type": "proverb",
-      "text": "Like father, like son.",
-      "lang": "en",
+      "text": "蛙の子は蛙。",
+      "lang": "ja",
       "translations": {
+        "en": "Like father, like son.",
         "vi": "Cha nào con nấy.",
-        "ja": "蛙の子は蛙。",
         "ko": "그 아버지에 그 아들.",
         "zh-Hans": "有其父必有其子。",
         "zh-Hant": "有其父必有其子。"
@@ -1309,20 +1199,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0050",
+      "id": "ja-0044",
       "type": "quote",
-      "text": "One father is more than a hundred schoolmasters.",
-      "lang": "en",
+      "text": "一人の父は、百人の教師にまさる。",
+      "lang": "ja",
       "translations": {
+        "en": "One father is more than a hundred schoolmasters.",
         "vi": "Một người cha còn hơn cả trăm ông thầy.",
-        "ja": "一人の父は、百人の教師にまさる。",
         "ko": "아버지 한 사람이 스승 백 명보다 낫다.",
         "zh-Hans": "一位父亲胜过一百位老师。",
         "zh-Hant": "一位父親勝過一百位老師。"
@@ -1337,20 +1227,20 @@
         "source": null,
         "year": 1651,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0051",
+      "id": "ja-0045",
       "type": "proverb",
-      "text": "The father's virtue is the child's best inheritance.",
-      "lang": "en",
+      "text": "父の徳は、子にとって最良の遺産である。",
+      "lang": "ja",
       "translations": {
+        "en": "The father's virtue is the child's best inheritance.",
         "vi": "Đức của cha là gia tài quý nhất của con.",
-        "ja": "父の徳は、子にとって最良の遺産である。",
         "ko": "아버지의 덕은 자식에게 가장 좋은 유산이다.",
         "zh-Hans": "父亲的品德，是孩子最好的遗产。",
         "zh-Hant": "父親的品德，是孩子最好的遺產。"
@@ -1365,20 +1255,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0052",
+      "id": "ja-0046",
       "type": "quote",
-      "text": "It is not flesh and blood but the heart which makes us fathers.",
-      "lang": "en",
+      "text": "父にするのは血肉ではなく、心である。",
+      "lang": "ja",
       "translations": {
+        "en": "It is not flesh and blood but the heart which makes us fathers.",
         "vi": "Không phải máu thịt, mà chính trái tim mới làm nên người cha.",
-        "ja": "父にするのは血肉ではなく、心である。",
         "ko": "우리를 아버지로 만드는 것은 혈육이 아니라 마음이다.",
         "zh-Hans": "使我们成为父亲的，不是血肉，而是心。",
         "zh-Hant": "使我們成為父親的，不是血肉，而是心。"
@@ -1393,20 +1283,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0053",
+      "id": "ja-0047",
       "type": "proverb",
-      "text": "A father's a treasure; a brother's a comfort; a friend is both.",
-      "lang": "en",
+      "text": "父は宝、兄弟は慰め、友はその両方である。",
+      "lang": "ja",
       "translations": {
+        "en": "A father's a treasure; a brother's a comfort; a friend is both.",
         "vi": "Cha là kho báu; anh em là niềm an ủi; bạn bè là cả hai.",
-        "ja": "父は宝、兄弟は慰め、友はその両方である。",
         "ko": "아버지는 보물이요, 형제는 위안이며, 친구는 그 둘 다이다.",
         "zh-Hans": "父亲是财宝，兄弟是安慰，朋友兼而有之。",
         "zh-Hant": "父親是財寶，兄弟是安慰，朋友兼而有之。"
@@ -1421,20 +1311,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0054",
+      "id": "ja-0048",
       "type": "proverb",
-      "text": "A father is a banker provided by nature.",
-      "lang": "en",
+      "text": "父とは、自然が与えてくれた銀行家である。",
+      "lang": "ja",
       "translations": {
+        "en": "A father is a banker provided by nature.",
         "vi": "Người cha là ngân hàng mà tạo hoá ban tặng.",
-        "ja": "父とは、自然が与えてくれた銀行家である。",
         "ko": "아버지는 자연이 마련해 준 은행가다.",
         "zh-Hans": "父亲是大自然给的银行家。",
         "zh-Hant": "父親是大自然給的銀行家。"
@@ -1449,20 +1339,20 @@
         "source": "French proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["fathers-day"]
     },
     {
-      "id": "en-0055",
+      "id": "ja-0049",
       "type": "proverb",
-      "text": "Trick or treat!",
-      "lang": "en",
+      "text": "お菓子をくれなきゃイタズラするぞ！",
+      "lang": "ja",
       "translations": {
+        "en": "Trick or treat!",
         "vi": "Cho kẹo hay bị ghẹo!",
-        "ja": "お菓子をくれなきゃイタズラするぞ！",
         "ko": "과자 안 주면 장난칠 거예요!",
         "zh-Hans": "不给糖就捣蛋！",
         "zh-Hant": "不給糖就搗蛋！"
@@ -1477,20 +1367,20 @@
         "source": "Truyền thống",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0056",
+      "id": "ja-0050",
       "type": "quote",
-      "text": "By the pricking of my thumbs, something wicked this way comes.",
-      "lang": "en",
+      "text": "親指がうずく、何か邪悪なものがやって来る。",
+      "lang": "ja",
       "translations": {
+        "en": "By the pricking of my thumbs, something wicked this way comes.",
         "vi": "Ngón cái tôi giật giật — có điều gì đó tà ác đang tới.",
-        "ja": "親指がうずく、何か邪悪なものがやって来る。",
         "ko": "엄지가 쑤시는 걸 보니, 사악한 무언가가 다가오는구나.",
         "zh-Hans": "我的拇指发痒，有邪恶之物正在靠近。",
         "zh-Hant": "我的拇指發癢，有邪惡之物正在靠近。"
@@ -1505,20 +1395,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0057",
+      "id": "ja-0051",
       "type": "proverb",
-      "text": "From ghoulies and ghosties and long-leggedy beasties, good Lord deliver us!",
-      "lang": "en",
+      "text": "屍鬼と幽霊と足長の化け物から、主よ、我らを救いたまえ！",
+      "lang": "ja",
       "translations": {
+        "en": "From ghoulies and ghosties and long-leggedy beasties, good Lord deliver us!",
         "vi": "Khỏi lũ ma quỷ, hồn ma và những sinh vật chân dài — xin Chúa cứu chúng con!",
-        "ja": "屍鬼と幽霊と足長の化け物から、主よ、我らを救いたまえ！",
         "ko": "구울과 유령과 다리 긴 괴물들로부터, 주여, 우리를 구하소서!",
         "zh-Hans": "求主救我们脱离食尸鬼、幽灵和长腿怪物！",
         "zh-Hant": "求主救我們脫離食屍鬼、幽靈和長腿怪物！"
@@ -1533,20 +1423,20 @@
         "source": "Scottish traditional prayer",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0058",
+      "id": "ja-0052",
       "type": "proverb",
-      "text": "Samhain — the night when the veil between worlds grows thin.",
-      "lang": "en",
+      "text": "サウィン ── 二つの世界を隔てる帳が薄くなる夜。",
+      "lang": "ja",
       "translations": {
+        "en": "Samhain — the night when the veil between worlds grows thin.",
         "vi": "Samhain — đêm mà tấm màn giữa hai thế giới mỏng đi.",
-        "ja": "サウィン ── 二つの世界を隔てる帳が薄くなる夜。",
         "ko": "사윈 ─ 두 세계를 가르는 장막이 얇아지는 밤.",
         "zh-Hans": "萨温节——两个世界之间的帷幕变薄的夜晚。",
         "zh-Hant": "薩溫節——兩個世界之間的帷幕變薄的夜晚。"
@@ -1561,20 +1451,20 @@
         "source": "Celtic folklore",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0059",
+      "id": "ja-0053",
       "type": "proverb",
-      "text": "Speak of the devil and he shall appear.",
-      "lang": "en",
+      "text": "噂をすれば影がさす。",
+      "lang": "ja",
       "translations": {
+        "en": "Speak of the devil and he shall appear.",
         "vi": "Nhắc quỷ thì quỷ hiện.",
-        "ja": "噂をすれば影がさす。",
         "ko": "호랑이도 제 말 하면 온다.",
         "zh-Hans": "说曹操，曹操到。",
         "zh-Hant": "說曹操，曹操到。"
@@ -1589,20 +1479,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0060",
+      "id": "ja-0054",
       "type": "quote",
-      "text": "Hell is empty and all the devils are here.",
-      "lang": "en",
+      "text": "地獄はもぬけの殻だ、悪魔どもはみなここにいる。",
+      "lang": "ja",
       "translations": {
+        "en": "Hell is empty and all the devils are here.",
         "vi": "Địa ngục trống rỗng, bởi lũ quỷ đều ở đây cả rồi.",
-        "ja": "地獄はもぬけの殻だ、悪魔どもはみなここにいる。",
         "ko": "지옥은 텅 비었고, 악마들은 모두 여기 있다.",
         "zh-Hans": "地狱空荡荡，魔鬼在人间。",
         "zh-Hant": "地獄空蕩蕩，魔鬼在人間。"
@@ -1617,20 +1507,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0061",
+      "id": "ja-0055",
       "type": "proverb",
-      "text": "Every family has a skeleton in the closet.",
-      "lang": "en",
+      "text": "どの家にも、隠された骸骨が一つある。",
+      "lang": "ja",
       "translations": {
+        "en": "Every family has a skeleton in the closet.",
         "vi": "Nhà nào cũng có một bộ xương giấu trong tủ.",
-        "ja": "どの家にも、隠された骸骨が一つある。",
         "ko": "어느 집에나 벽장 속 해골이 있다.",
         "zh-Hans": "家家都有一具衣柜里的骷髅。",
         "zh-Hant": "家家都有一具衣櫃裡的骷髏。"
@@ -1645,20 +1535,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0062",
+      "id": "ja-0056",
       "type": "quote",
-      "text": "There are darknesses in life, and there are lights.",
-      "lang": "en",
+      "text": "人生には闇があり、そして光もある。",
+      "lang": "ja",
       "translations": {
+        "en": "There are darknesses in life, and there are lights.",
         "vi": "Trong đời có những vùng tối, và cũng có những vùng sáng.",
-        "ja": "人生には闇があり、そして光もある。",
         "ko": "삶에는 어둠이 있고, 또 빛이 있다.",
         "zh-Hans": "生命中有黑暗，也有光明。",
         "zh-Hant": "生命中有黑暗，也有光明。"
@@ -1673,20 +1563,20 @@
         "source": null,
         "year": 1897,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["halloween"]
     },
     {
-      "id": "en-0063",
+      "id": "ja-0057",
       "type": "quote",
-      "text": "Gratitude is the memory of the heart.",
-      "lang": "en",
+      "text": "感謝とは、心の記憶である。",
+      "lang": "ja",
       "translations": {
+        "en": "Gratitude is the memory of the heart.",
         "vi": "Lòng biết ơn là ký ức của trái tim.",
-        "ja": "感謝とは、心の記憶である。",
         "ko": "감사는 마음의 기억이다.",
         "zh-Hans": "感恩是心的记忆。",
         "zh-Hant": "感恩是心的記憶。"
@@ -1701,20 +1591,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0064",
+      "id": "ja-0058",
       "type": "quote",
-      "text": "Gratitude is not only the greatest of virtues, but the parent of all others.",
-      "lang": "en",
+      "text": "感謝は最大の徳であるだけでなく、他のすべての徳の親である。",
+      "lang": "ja",
       "translations": {
+        "en": "Gratitude is not only the greatest of virtues, but the parent of all others.",
         "vi": "Lòng biết ơn không chỉ là đức tính lớn nhất, mà còn là mẹ của mọi đức tính khác.",
-        "ja": "感謝は最大の徳であるだけでなく、他のすべての徳の親である。",
         "ko": "감사는 가장 큰 미덕일 뿐 아니라, 다른 모든 미덕의 어버이다.",
         "zh-Hans": "感恩不仅是最大的美德，更是其他一切美德之母。",
         "zh-Hant": "感恩不僅是最大的美德，更是其他一切美德之母。"
@@ -1729,20 +1619,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0065",
+      "id": "ja-0059",
       "type": "quote",
-      "text": "If the only prayer you say is thank you, that is enough.",
-      "lang": "en",
+      "text": "あなたが唱える祈りが「ありがとう」だけであっても、それで十分だ。",
+      "lang": "ja",
       "translations": {
+        "en": "If the only prayer you say is thank you, that is enough.",
         "vi": "Nếu lời cầu nguyện duy nhất bạn nói là \"cảm ơn\", thế là đủ.",
-        "ja": "あなたが唱える祈りが「ありがとう」だけであっても、それで十分だ。",
         "ko": "당신이 하는 유일한 기도가 \"감사합니다\"라면, 그것으로 충분하다.",
         "zh-Hans": "若你唯一的祈祷是\"谢谢\"，那就足够了。",
         "zh-Hant": "若你唯一的祈禱是「謝謝」，那就足夠了。"
@@ -1757,20 +1647,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0066",
+      "id": "ja-0060",
       "type": "proverb",
-      "text": "Count your blessings.",
-      "lang": "en",
+      "text": "恵みを数えなさい。",
+      "lang": "ja",
       "translations": {
+        "en": "Count your blessings.",
         "vi": "Hãy đếm những phúc lành của mình.",
-        "ja": "恵みを数えなさい。",
         "ko": "받은 복을 세어 보라.",
         "zh-Hans": "数一数你拥有的恩典。",
         "zh-Hant": "數一數你擁有的恩典。"
@@ -1785,20 +1675,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0067",
+      "id": "ja-0061",
       "type": "proverb",
-      "text": "Enough is as good as a feast.",
-      "lang": "en",
+      "text": "足るを知る者は富む。",
+      "lang": "ja",
       "translations": {
+        "en": "Enough is as good as a feast.",
         "vi": "Đủ đầy cũng ngon như một bữa tiệc.",
-        "ja": "足るを知る者は富む。",
         "ko": "족함을 아는 자가 부자다.",
         "zh-Hans": "知足常乐。",
         "zh-Hant": "知足常樂。"
@@ -1813,20 +1703,20 @@
         "source": "Middle English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0068",
+      "id": "ja-0062",
       "type": "quote",
-      "text": "He is a wise man who does not grieve for what he has not.",
-      "lang": "en",
+      "text": "持たぬものを嘆かぬ者こそ、賢者である。",
+      "lang": "ja",
       "translations": {
+        "en": "He is a wise man who does not grieve for what he has not.",
         "vi": "Người khôn ngoan là người không sầu não vì những thứ mình không có.",
-        "ja": "持たぬものを嘆かぬ者こそ、賢者である。",
         "ko": "갖지 못한 것을 슬퍼하지 않는 사람이 지혜로운 사람이다.",
         "zh-Hans": "不为自己没有的东西而悲伤的人，才是智者。",
         "zh-Hant": "不為自己沒有的東西而悲傷的人，才是智者。"
@@ -1841,20 +1731,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0069",
+      "id": "ja-0063",
       "type": "quote",
-      "text": "I can no other answer make but thanks, and thanks.",
-      "lang": "en",
+      "text": "私にできる返答は、感謝、そしてまた感謝のほかにない。",
+      "lang": "ja",
       "translations": {
+        "en": "I can no other answer make but thanks, and thanks.",
         "vi": "Tôi không thể đáp lại gì khác ngoài lời cảm ơn, và cảm ơn.",
-        "ja": "私にできる返答は、感謝、そしてまた感謝のほかにない。",
         "ko": "내가 드릴 수 있는 대답은 감사, 그리고 또 감사뿐입니다.",
         "zh-Hans": "除了感谢，再感谢，我别无以答。",
         "zh-Hant": "除了感謝，再感謝，我別無以答。"
@@ -1869,20 +1759,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0070",
+      "id": "ja-0064",
       "type": "quote",
-      "text": "Harvest comes not every day, though it comes every year.",
-      "lang": "en",
+      "text": "収穫は毎年来るが、毎日は来ない。",
+      "lang": "ja",
       "translations": {
+        "en": "Harvest comes not every day, though it comes every year.",
         "vi": "Mùa gặt không đến mỗi ngày, dù năm nào cũng có.",
-        "ja": "収穫は毎年来るが、毎日は来ない。",
         "ko": "수확은 해마다 오지만, 날마다 오지는 않는다.",
         "zh-Hans": "收获年年有，却不是天天有。",
         "zh-Hant": "收穫年年有，卻不是天天有。"
@@ -1897,20 +1787,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["thanksgiving"]
     },
     {
-      "id": "en-0071",
+      "id": "ja-0065",
       "type": "quote",
-      "text": "I will honour Christmas in my heart, and try to keep it all the year.",
-      "lang": "en",
+      "text": "私はクリスマスを心の中で敬い、一年中それを保とうと努める。",
+      "lang": "ja",
       "translations": {
+        "en": "I will honour Christmas in my heart, and try to keep it all the year.",
         "vi": "Tôi sẽ tôn vinh Giáng sinh trong tim, và cố giữ nó suốt cả năm.",
-        "ja": "私はクリスマスを心の中で敬い、一年中それを保とうと努める。",
         "ko": "나는 크리스마스를 마음속으로 기리고, 일 년 내내 간직하려 애쓰겠다.",
         "zh-Hans": "我要在心中敬奉圣诞，并努力将它保持一整年。",
         "zh-Hant": "我要在心中敬奉聖誕，並努力將它保持一整年。"
@@ -1925,20 +1815,20 @@
         "source": null,
         "year": 1843,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0072",
+      "id": "ja-0066",
       "type": "quote",
-      "text": "God bless us, every one!",
-      "lang": "en",
+      "text": "神よ、我ら一人ひとりに祝福を！",
+      "lang": "ja",
       "translations": {
+        "en": "God bless us, every one!",
         "vi": "Cầu Chúa ban phước cho tất cả chúng ta!",
-        "ja": "神よ、我ら一人ひとりに祝福を！",
         "ko": "신이여, 우리 모두를 축복하소서!",
         "zh-Hans": "愿神祝福我们每一个人！",
         "zh-Hant": "願神祝福我們每一個人！"
@@ -1953,20 +1843,20 @@
         "source": null,
         "year": 1843,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0073",
+      "id": "ja-0067",
       "type": "proverb",
-      "text": "Merry Christmas and a Happy New Year!",
-      "lang": "en",
+      "text": "メリークリスマス、そして新年おめでとう！",
+      "lang": "ja",
       "translations": {
+        "en": "Merry Christmas and a Happy New Year!",
         "vi": "Giáng sinh vui vẻ và Năm mới hạnh phúc!",
-        "ja": "メリークリスマス、そして新年おめでとう！",
         "ko": "메리 크리스마스, 그리고 새해 복 많이 받으세요!",
         "zh-Hans": "圣诞快乐，新年快乐！",
         "zh-Hant": "聖誕快樂，新年快樂！"
@@ -1981,20 +1871,20 @@
         "source": "Truyền thống",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0074",
+      "id": "ja-0068",
       "type": "quote",
-      "text": "Christmas comes but once a year.",
-      "lang": "en",
+      "text": "クリスマスは一年に一度きり。",
+      "lang": "ja",
       "translations": {
+        "en": "Christmas comes but once a year.",
         "vi": "Giáng sinh mỗi năm chỉ đến một lần.",
-        "ja": "クリスマスは一年に一度きり。",
         "ko": "크리스마스는 일 년에 단 한 번 온다.",
         "zh-Hans": "圣诞一年只有一回。",
         "zh-Hant": "聖誕一年只有一回。"
@@ -2009,20 +1899,20 @@
         "source": null,
         "year": 1557,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0075",
+      "id": "ja-0069",
       "type": "quote",
-      "text": "Christmas is not a time nor a season, but a state of mind.",
-      "lang": "en",
+      "text": "クリスマスは時でも季節でもなく、心のありようである。",
+      "lang": "ja",
       "translations": {
+        "en": "Christmas is not a time nor a season, but a state of mind.",
         "vi": "Giáng sinh không phải một thời điểm hay một mùa, mà là một trạng thái tâm hồn.",
-        "ja": "クリスマスは時でも季節でもなく、心のありようである。",
         "ko": "크리스마스는 시간도 계절도 아니라, 마음의 상태다.",
         "zh-Hans": "圣诞不是一个时刻，也不是一个季节，而是一种心境。",
         "zh-Hant": "聖誕不是一個時刻，也不是一個季節，而是一種心境。"
@@ -2037,20 +1927,20 @@
         "source": null,
         "year": 1927,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0076",
+      "id": "ja-0070",
       "type": "proverb",
-      "text": "A green Christmas makes a fat churchyard.",
-      "lang": "en",
+      "text": "雪のないクリスマスは、墓地を肥やす。",
+      "lang": "ja",
       "translations": {
+        "en": "A green Christmas makes a fat churchyard.",
         "vi": "Giáng sinh không tuyết thì nghĩa địa đầy.",
-        "ja": "雪のないクリスマスは、墓地を肥やす。",
         "ko": "눈 없는 크리스마스는 묘지를 살찌운다.",
         "zh-Hans": "无雪的圣诞，会让墓园变胖。",
         "zh-Hant": "無雪的聖誕，會讓墓園變胖。"
@@ -2065,20 +1955,20 @@
         "source": "English proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0077",
+      "id": "ja-0071",
       "type": "quote",
-      "text": "Blessed is the season which engages the whole world in a conspiracy of love.",
-      "lang": "en",
+      "text": "全世界を愛の共謀に巻き込む、この季節に祝福あれ。",
+      "lang": "ja",
       "translations": {
+        "en": "Blessed is the season which engages the whole world in a conspiracy of love.",
         "vi": "Phúc thay mùa lễ khiến cả thế giới đồng lòng trong một âm mưu của tình yêu.",
-        "ja": "全世界を愛の共謀に巻き込む、この季節に祝福あれ。",
         "ko": "온 세상을 사랑의 공모로 이끄는 이 계절에 축복이 있기를.",
         "zh-Hans": "祝福这个让全世界共谋于爱的季节。",
         "zh-Hant": "祝福這個讓全世界共謀於愛的季節。"
@@ -2093,20 +1983,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0078",
+      "id": "ja-0072",
       "type": "quote",
-      "text": "Yes, Virginia, there is a Santa Claus.",
-      "lang": "en",
+      "text": "そうだよヴァージニア、サンタクロースはいるんだ。",
+      "lang": "ja",
       "translations": {
+        "en": "Yes, Virginia, there is a Santa Claus.",
         "vi": "Đúng vậy Virginia, ông già Noel có thật.",
-        "ja": "そうだよヴァージニア、サンタクロースはいるんだ。",
         "ko": "그래 버지니아, 산타클로스는 있단다.",
         "zh-Hans": "是的，弗吉尼亚，圣诞老人是真的。",
         "zh-Hant": "是的，維吉尼亞，聖誕老人是真的。"
@@ -2121,20 +2011,20 @@
         "source": null,
         "year": 1897,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["christmas"]
     },
     {
-      "id": "en-0079",
+      "id": "ja-0073",
       "type": "quote",
-      "text": "What's past is prologue.",
-      "lang": "en",
+      "text": "過ぎたことは、すべて序章にすぎない。",
+      "lang": "ja",
       "translations": {
+        "en": "What's past is prologue.",
         "vi": "Quá khứ chỉ là lời mở đầu.",
-        "ja": "過ぎたことは、すべて序章にすぎない。",
         "ko": "지나간 것은 서막에 불과하다.",
         "zh-Hans": "过往皆为序章。",
         "zh-Hant": "過往皆為序章。"
@@ -2149,20 +2039,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0080",
+      "id": "ja-0074",
       "type": "proverb",
-      "text": "The end of one thing is the beginning of another.",
-      "lang": "en",
+      "text": "一つの終わりは、また一つの始まり。",
+      "lang": "ja",
       "translations": {
+        "en": "The end of one thing is the beginning of another.",
         "vi": "Kết thúc của điều này là khởi đầu của điều khác.",
-        "ja": "一つの終わりは、また一つの始まり。",
         "ko": "하나의 끝은 또 다른 하나의 시작이다.",
         "zh-Hans": "一事之终，即一事之始。",
         "zh-Hant": "一事之終，即一事之始。"
@@ -2177,20 +2067,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0081",
+      "id": "ja-0075",
       "type": "quote",
-      "text": "Confine yourself to the present.",
-      "lang": "en",
+      "text": "今この瞬間にとどまれ。",
+      "lang": "ja",
       "translations": {
+        "en": "Confine yourself to the present.",
         "vi": "Hãy an trú trong hiện tại.",
-        "ja": "今この瞬間にとどまれ。",
         "ko": "현재에 머물러라.",
         "zh-Hans": "安住于当下。",
         "zh-Hant": "安住於當下。"
@@ -2205,20 +2095,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0082",
+      "id": "ja-0076",
       "type": "quote",
-      "text": "While we are postponing, life speeds by.",
-      "lang": "en",
+      "text": "先延ばしにしている間に、人生は過ぎ去っていく。",
+      "lang": "ja",
       "translations": {
+        "en": "While we are postponing, life speeds by.",
         "vi": "Trong lúc ta trì hoãn, cuộc đời cứ vụt qua.",
-        "ja": "先延ばしにしている間に、人生は過ぎ去っていく。",
         "ko": "미루는 사이에 인생은 빠르게 지나간다.",
         "zh-Hans": "我们拖延之际，人生正飞驰而去。",
         "zh-Hant": "我們拖延之際，人生正飛馳而去。"
@@ -2233,20 +2123,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0083",
+      "id": "ja-0077",
       "type": "proverb",
-      "text": "Better late than never.",
-      "lang": "en",
+      "text": "遅くとも、やらないよりはまし。",
+      "lang": "ja",
       "translations": {
+        "en": "Better late than never.",
         "vi": "Muộn còn hơn không.",
-        "ja": "遅くとも、やらないよりはまし。",
         "ko": "늦었다고 생각할 때가 가장 빠른 때다.",
         "zh-Hans": "迟做总比不做好。",
         "zh-Hant": "遲做總比不做好。"
@@ -2261,20 +2151,20 @@
         "source": "Proverb",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0084",
+      "id": "ja-0078",
       "type": "quote",
-      "text": "Lost time is never found again.",
-      "lang": "en",
+      "text": "失った時間は、二度と戻らない。",
+      "lang": "ja",
       "translations": {
+        "en": "Lost time is never found again.",
         "vi": "Thời gian đã mất không bao giờ tìm lại được.",
-        "ja": "失った時間は、二度と戻らない。",
         "ko": "잃어버린 시간은 결코 다시 찾을 수 없다.",
         "zh-Hans": "失去的时间永远找不回来。",
         "zh-Hant": "失去的時間永遠找不回來。"
@@ -2289,20 +2179,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0085",
+      "id": "ja-0079",
       "type": "proverb",
-      "text": "New year, new luck.",
-      "lang": "en",
+      "text": "新しい年に、新しい幸運を。",
+      "lang": "ja",
       "translations": {
+        "en": "New year, new luck.",
         "vi": "Năm mới, vận mới.",
-        "ja": "新しい年に、新しい幸運を。",
         "ko": "새해엔 새로운 행운을.",
         "zh-Hans": "新年新气象。",
         "zh-Hant": "新年新氣象。"
@@ -2317,20 +2207,20 @@
         "source": "German proverb (\"Neues Jahr, neues Glück\")",
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0086",
+      "id": "ja-0080",
       "type": "quote",
-      "text": "Waste no more time arguing what a good man should be. Be one.",
-      "lang": "en",
+      "text": "善き人とは何かを論じて時を浪費するな。善き人であれ。",
+      "lang": "ja",
       "translations": {
+        "en": "Waste no more time arguing what a good man should be. Be one.",
         "vi": "Đừng phí thời gian tranh luận người tốt là thế nào. Hãy là một người tốt.",
-        "ja": "善き人とは何かを論じて時を浪費するな。善き人であれ。",
         "ko": "좋은 사람이 어떠해야 하는지 논하느라 시간을 낭비하지 말라. 그런 사람이 되라.",
         "zh-Hans": "别再浪费时间争论好人该是什么样。做一个好人就是了。",
         "zh-Hant": "別再浪費時間爭論好人該是什麼樣。做一個好人就是了。"
@@ -2345,20 +2235,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": [],
       "holidays": ["new-year-eve"]
     },
     {
-      "id": "en-0087",
+      "id": "ja-0081",
       "type": "quote",
-      "text": "Our greatest glory consists not in never falling, but in rising every time we fall.",
-      "lang": "en",
+      "text": "最大の栄光は、一度も倒れないことではなく、倒れるたびに起き上がることにある。",
+      "lang": "ja",
       "translations": {
+        "en": "Our greatest glory consists not in never falling, but in rising every time we fall.",
         "vi": "Vinh quang lớn nhất của ta không nằm ở chỗ không bao giờ ngã, mà ở chỗ lần nào ngã cũng đứng dậy.",
-        "ja": "最大の栄光は、一度も倒れないことではなく、倒れるたびに起き上がることにある。",
         "ko": "우리의 가장 큰 영광은 결코 넘어지지 않는 데 있지 않고, 넘어질 때마다 일어서는 데 있다.",
         "zh-Hans": "我们最大的光荣不在于从不跌倒，而在于每次跌倒后都能站起来。",
         "zh-Hant": "我們最大的光榮不在於從不跌倒，而在於每次跌倒後都能站起來。"
@@ -2373,20 +2263,20 @@
         "source": null,
         "year": 1760,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0088",
+      "id": "ja-0082",
       "type": "quote",
-      "text": "Energy and persistence conquer all things.",
-      "lang": "en",
+      "text": "気力と粘り強さは、すべてを征服する。",
+      "lang": "ja",
       "translations": {
+        "en": "Energy and persistence conquer all things.",
         "vi": "Nghị lực và sự bền bỉ chinh phục tất cả.",
-        "ja": "気力と粘り強さは、すべてを征服する。",
         "ko": "열정과 끈기는 모든 것을 정복한다.",
         "zh-Hans": "精力与坚持征服一切。",
         "zh-Hant": "精力與堅持征服一切。"
@@ -2401,20 +2291,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0089",
+      "id": "ja-0083",
       "type": "quote",
-      "text": "Genius is one percent inspiration and ninety-nine percent perspiration.",
-      "lang": "en",
+      "text": "天才とは、一パーセントのひらめきと、九十九パーセントの汗である。",
+      "lang": "ja",
       "translations": {
+        "en": "Genius is one percent inspiration and ninety-nine percent perspiration.",
         "vi": "Thiên tài là một phần trăm cảm hứng và chín mươi chín phần trăm mồ hôi.",
-        "ja": "天才とは、一パーセントのひらめきと、九十九パーセントの汗である。",
         "ko": "천재란 1퍼센트의 영감과 99퍼센트의 땀이다.",
         "zh-Hans": "天才是百分之一的灵感加百分之九十九的汗水。",
         "zh-Hant": "天才是百分之一的靈感加百分之九十九的汗水。"
@@ -2429,20 +2319,20 @@
         "source": null,
         "year": 1932,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0090",
+      "id": "ja-0084",
       "type": "quote",
-      "text": "Nothing in the world can take the place of persistence.",
-      "lang": "en",
+      "text": "この世で粘り強さに取って代われるものはない。",
+      "lang": "ja",
       "translations": {
+        "en": "Nothing in the world can take the place of persistence.",
         "vi": "Không gì trên đời có thể thay thế được sự kiên trì.",
-        "ja": "この世で粘り強さに取って代われるものはない。",
         "ko": "세상에서 끈기를 대신할 수 있는 것은 없다.",
         "zh-Hans": "世上没有任何东西可以取代坚持。",
         "zh-Hant": "世上沒有任何東西可以取代堅持。"
@@ -2457,20 +2347,20 @@
         "source": null,
         "year": 1929,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0091",
+      "id": "ja-0085",
       "type": "quote",
-      "text": "Patience and time do more than strength or passion.",
-      "lang": "en",
+      "text": "忍耐と時間は、力や情熱よりも多くを成し遂げる。",
+      "lang": "ja",
       "translations": {
+        "en": "Patience and time do more than strength or passion.",
         "vi": "Kiên nhẫn và thời gian làm được nhiều hơn sức mạnh hay đam mê.",
-        "ja": "忍耐と時間は、力や情熱よりも多くを成し遂げる。",
         "ko": "인내와 시간은 힘이나 열정보다 더 많은 일을 해낸다.",
         "zh-Hans": "耐心和时间比力量或热情做得更多。",
         "zh-Hant": "耐心和時間比力量或熱情做得更多。"
@@ -2485,20 +2375,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0092",
+      "id": "ja-0086",
       "type": "quote",
-      "text": "Difficulties strengthen the mind, as labour does the body.",
-      "lang": "en",
+      "text": "労働が体を鍛えるように、困難は心を鍛える。",
+      "lang": "ja",
       "translations": {
+        "en": "Difficulties strengthen the mind, as labour does the body.",
         "vi": "Khó khăn rèn luyện tâm trí, như lao động rèn luyện thân thể.",
-        "ja": "労働が体を鍛えるように、困難は心を鍛える。",
         "ko": "노동이 몸을 단련하듯, 어려움은 정신을 단련한다.",
         "zh-Hans": "困难磨砺心智，正如劳作锻炼身体。",
         "zh-Hant": "困難磨礪心智，正如勞作鍛鍊身體。"
@@ -2513,20 +2403,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0093",
+      "id": "ja-0087",
       "type": "quote",
-      "text": "He conquers who endures.",
-      "lang": "en",
+      "text": "耐える者が勝つ。",
+      "lang": "ja",
       "translations": {
+        "en": "He conquers who endures.",
         "vi": "Ai chịu đựng được, người ấy chiến thắng.",
-        "ja": "耐える者が勝つ。",
         "ko": "견디는 자가 이긴다.",
         "zh-Hans": "能忍者胜。",
         "zh-Hant": "能忍者勝。"
@@ -2541,20 +2431,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0094",
+      "id": "ja-0088",
       "type": "quote",
-      "text": "Success is the sum of small efforts repeated day in and day out.",
-      "lang": "en",
+      "text": "成功とは、日々繰り返される小さな努力の積み重ねである。",
+      "lang": "ja",
       "translations": {
+        "en": "Success is the sum of small efforts repeated day in and day out.",
         "vi": "Thành công là tổng của những nỗ lực nhỏ được lặp lại ngày qua ngày.",
-        "ja": "成功とは、日々繰り返される小さな努力の積み重ねである。",
         "ko": "성공은 날마다 반복되는 작은 노력들의 합이다.",
         "zh-Hans": "成功是日复一日重复的小努力之和。",
         "zh-Hant": "成功是日復一日重複的小努力之和。"
@@ -2569,20 +2459,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["perseverance"],
       "holidays": []
     },
     {
-      "id": "en-0095",
+      "id": "ja-0089",
       "type": "quote",
-      "text": "Courage is resistance to fear, mastery of fear, not absence of fear.",
-      "lang": "en",
+      "text": "勇気とは恐怖への抵抗であり、恐怖の克服であって、恐怖の欠如ではない。",
+      "lang": "ja",
       "translations": {
+        "en": "Courage is resistance to fear, mastery of fear, not absence of fear.",
         "vi": "Dũng cảm là chống lại nỗi sợ, làm chủ nỗi sợ — chứ không phải không có nỗi sợ.",
-        "ja": "勇気とは恐怖への抵抗であり、恐怖の克服であって、恐怖の欠如ではない。",
         "ko": "용기란 두려움에 맞서고 두려움을 다스리는 것이지, 두려움이 없는 것이 아니다.",
         "zh-Hans": "勇气是抵抗恐惧、掌控恐惧，而非没有恐惧。",
         "zh-Hant": "勇氣是抵抗恐懼、掌控恐懼，而非沒有恐懼。"
@@ -2597,20 +2487,20 @@
         "source": null,
         "year": 1894,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0096",
+      "id": "ja-0090",
       "type": "quote",
-      "text": "Fortune favours the bold.",
-      "lang": "en",
+      "text": "幸運は大胆な者に味方する。",
+      "lang": "ja",
       "translations": {
+        "en": "Fortune favours the bold.",
         "vi": "Vận may mỉm cười với người dám.",
-        "ja": "幸運は大胆な者に味方する。",
         "ko": "행운은 대담한 자의 편이다.",
         "zh-Hans": "命运眷顾勇敢者。",
         "zh-Hant": "命運眷顧勇敢者。"
@@ -2625,20 +2515,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0097",
+      "id": "ja-0091",
       "type": "quote",
-      "text": "Do the thing you fear, and the death of fear is certain.",
-      "lang": "en",
+      "text": "恐れていることを行え。そうすれば恐怖の死は確実だ。",
+      "lang": "ja",
       "translations": {
+        "en": "Do the thing you fear, and the death of fear is certain.",
         "vi": "Hãy làm điều bạn sợ, và cái chết của nỗi sợ là điều chắc chắn.",
-        "ja": "恐れていることを行え。そうすれば恐怖の死は確実だ。",
         "ko": "두려운 일을 하라. 그러면 두려움의 죽음은 확실하다.",
         "zh-Hans": "去做你害怕的事，恐惧的死亡就是必然。",
         "zh-Hant": "去做你害怕的事，恐懼的死亡就是必然。"
@@ -2653,20 +2543,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0098",
+      "id": "ja-0092",
       "type": "quote",
-      "text": "Valour is the contempt of death and pain.",
-      "lang": "en",
+      "text": "勇武とは、死と苦痛を軽んじることである。",
+      "lang": "ja",
       "translations": {
+        "en": "Valour is the contempt of death and pain.",
         "vi": "Dũng khí là sự coi thường cái chết và nỗi đau.",
-        "ja": "勇武とは、死と苦痛を軽んじることである。",
         "ko": "용맹이란 죽음과 고통을 경멸하는 것이다.",
         "zh-Hans": "英勇就是蔑视死亡与痛苦。",
         "zh-Hant": "英勇就是蔑視死亡與痛苦。"
@@ -2681,20 +2571,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0099",
+      "id": "ja-0093",
       "type": "quote",
-      "text": "None but the brave deserves the fair.",
-      "lang": "en",
+      "text": "勇者のみが美女を得るに値する。",
+      "lang": "ja",
       "translations": {
+        "en": "None but the brave deserves the fair.",
         "vi": "Chỉ người dũng cảm mới xứng đáng với người đẹp.",
-        "ja": "勇者のみが美女を得るに値する。",
         "ko": "용감한 자만이 아름다운 이를 얻을 자격이 있다.",
         "zh-Hans": "唯有勇者配得佳人。",
         "zh-Hant": "唯有勇者配得佳人。"
@@ -2709,20 +2599,20 @@
         "source": null,
         "year": 1697,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0100",
+      "id": "ja-0094",
       "type": "quote",
-      "text": "To see what is right and not do it is want of courage.",
-      "lang": "en",
+      "text": "義を見てせざるは勇なきなり。",
+      "lang": "ja",
       "translations": {
+        "en": "To see what is right and not do it is want of courage.",
         "vi": "Thấy điều đúng mà không làm là thiếu dũng khí.",
-        "ja": "義を見てせざるは勇なきなり。",
         "ko": "옳은 것을 보고도 하지 않음은 용기가 없는 것이다.",
         "zh-Hans": "见义不为，无勇也。",
         "zh-Hant": "見義不為，無勇也。"
@@ -2739,18 +2629,18 @@
         "links": {},
         "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0101",
+      "id": "ja-0095",
       "type": "quote",
-      "text": "Boldness, be my friend.",
-      "lang": "en",
+      "text": "大胆さよ、我が友となれ。",
+      "lang": "ja",
       "translations": {
+        "en": "Boldness, be my friend.",
         "vi": "Táo bạo ơi, hãy làm bạn với ta.",
-        "ja": "大胆さよ、我が友となれ。",
         "ko": "대담함이여, 나의 벗이 되어다오.",
         "zh-Hans": "勇敢啊，做我的朋友吧。",
         "zh-Hant": "勇敢啊，做我的朋友吧。"
@@ -2765,20 +2655,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0102",
+      "id": "ja-0096",
       "type": "quote",
-      "text": "Necessity makes even the timid brave.",
-      "lang": "en",
+      "text": "必要に迫られれば、臆病者さえ勇敢になる。",
+      "lang": "ja",
       "translations": {
+        "en": "Necessity makes even the timid brave.",
         "vi": "Cùng đường thì kẻ nhút nhát cũng hoá gan dạ.",
-        "ja": "必要に迫られれば、臆病者さえ勇敢になる。",
         "ko": "절박함은 겁쟁이마저 용감하게 만든다.",
         "zh-Hans": "情势所迫，怯者亦勇。",
         "zh-Hant": "情勢所迫，怯者亦勇。"
@@ -2793,20 +2683,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["courage"],
       "holidays": []
     },
     {
-      "id": "en-0103",
+      "id": "ja-0097",
       "type": "quote",
-      "text": "I know that I know nothing.",
-      "lang": "en",
+      "text": "私は、自分が何も知らないということを知っている。",
+      "lang": "ja",
       "translations": {
+        "en": "I know that I know nothing.",
         "vi": "Tôi biết rằng tôi không biết gì cả.",
-        "ja": "私は、自分が何も知らないということを知っている。",
         "ko": "나는 내가 아무것도 모른다는 것을 안다.",
         "zh-Hans": "我知道我一无所知。",
         "zh-Hant": "我知道我一無所知。"
@@ -2821,20 +2711,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0104",
+      "id": "ja-0098",
       "type": "quote",
-      "text": "He who knows others is wise; he who knows himself is enlightened.",
-      "lang": "en",
+      "text": "人を知る者は智なり、己を知る者は明なり。",
+      "lang": "ja",
       "translations": {
+        "en": "He who knows others is wise; he who knows himself is enlightened.",
         "vi": "Biết người là khôn; biết mình là sáng.",
-        "ja": "人を知る者は智なり、己を知る者は明なり。",
         "ko": "남을 아는 자는 지혜롭고, 자기를 아는 자는 밝다.",
         "zh-Hans": "知人者智，自知者明。",
         "zh-Hant": "知人者智，自知者明。"
@@ -2851,18 +2741,18 @@
         "links": {},
         "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0105",
+      "id": "ja-0099",
       "type": "quote",
-      "text": "Real knowledge is to know the extent of one's ignorance.",
-      "lang": "en",
+      "text": "真の知とは、己の無知の範囲を知ることである。",
+      "lang": "ja",
       "translations": {
+        "en": "Real knowledge is to know the extent of one's ignorance.",
         "vi": "Tri thức thật sự là biết được giới hạn hiểu biết của mình.",
-        "ja": "真の知とは、己の無知の範囲を知ることである。",
         "ko": "참된 앎이란 자기 무지의 크기를 아는 것이다.",
         "zh-Hans": "真正的知识，是知道自己无知的边界。",
         "zh-Hant": "真正的知識，是知道自己無知的邊界。"
@@ -2879,18 +2769,18 @@
         "links": {},
         "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0106",
+      "id": "ja-0100",
       "type": "quote",
-      "text": "The happiness of your life depends upon the quality of your thoughts.",
-      "lang": "en",
+      "text": "人生の幸福は、思考の質によって決まる。",
+      "lang": "ja",
       "translations": {
+        "en": "The happiness of your life depends upon the quality of your thoughts.",
         "vi": "Hạnh phúc của đời bạn phụ thuộc vào phẩm chất những suy nghĩ của bạn.",
-        "ja": "人生の幸福は、思考の質によって決まる。",
         "ko": "삶의 행복은 생각의 질에 달려 있다.",
         "zh-Hans": "你生命的幸福，取决于你思想的品质。",
         "zh-Hant": "你生命的幸福，取決於你思想的品質。"
@@ -2905,20 +2795,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0107",
+      "id": "ja-0101",
       "type": "quote",
-      "text": "As long as you live, keep learning how to live.",
-      "lang": "en",
+      "text": "生きている限り、生き方を学び続けよ。",
+      "lang": "ja",
       "translations": {
+        "en": "As long as you live, keep learning how to live.",
         "vi": "Còn sống ngày nào, hãy còn học cách sống ngày ấy.",
-        "ja": "生きている限り、生き方を学び続けよ。",
         "ko": "살아 있는 한, 사는 법을 계속 배워라.",
         "zh-Hans": "只要活着，就要不断学习如何生活。",
         "zh-Hant": "只要活著，就要不斷學習如何生活。"
@@ -2933,20 +2823,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0108",
+      "id": "ja-0102",
       "type": "quote",
-      "text": "We have two ears and one mouth, so we should listen more than we say.",
-      "lang": "en",
+      "text": "耳が二つ口が一つなのは、話すより多く聞くためだ。",
+      "lang": "ja",
       "translations": {
+        "en": "We have two ears and one mouth, so we should listen more than we say.",
         "vi": "Ta có hai tai và một miệng, nên hãy nghe nhiều hơn nói.",
-        "ja": "耳が二つ口が一つなのは、話すより多く聞くためだ。",
         "ko": "귀가 둘이고 입이 하나인 것은, 말하기보다 많이 들으라는 뜻이다.",
         "zh-Hans": "我们有两只耳朵一张嘴，就该多听少说。",
         "zh-Hant": "我們有兩隻耳朵一張嘴，就該多聽少說。"
@@ -2961,20 +2851,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0109",
+      "id": "ja-0103",
       "type": "quote",
-      "text": "Nothing is so firmly believed as that which we least know.",
-      "lang": "en",
+      "text": "最も知らないことほど、固く信じられている。",
+      "lang": "ja",
       "translations": {
+        "en": "Nothing is so firmly believed as that which we least know.",
         "vi": "Không gì được tin chắc bằng thứ ta ít biết nhất.",
-        "ja": "最も知らないことほど、固く信じられている。",
         "ko": "가장 모르는 것일수록 가장 굳게 믿어진다.",
         "zh-Hans": "我们最不了解的东西，反而信得最牢。",
         "zh-Hant": "我們最不了解的東西，反而信得最牢。"
@@ -2989,20 +2879,48 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["wisdom"],
       "holidays": []
     },
     {
-      "id": "en-0111",
+      "id": "ja-0104",
       "type": "quote",
-      "text": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
-      "lang": "en",
+      "text": "知は力なり。",
+      "lang": "ja",
       "translations": {
+        "en": "Knowledge is power.",
+        "vi": "Tri thức là sức mạnh.",
+        "ko": "아는 것이 힘이다.",
+        "zh-Hans": "知识就是力量。",
+        "zh-Hant": "知識就是力量。"
+      },
+      "attribution": {
+        "work": "Meditationes Sacrae",
+        "character": null,
+        "actor": null,
+        "author": "Francis Bacon",
+        "developer": null,
+        "publisher": null,
+        "source": null,
+        "year": 1597,
+        "links": {},
+        "rights": "own-translation"
+      },
+      "regions": ["JP"],
+      "tags": ["wisdom"],
+      "holidays": []
+    },
+    {
+      "id": "ja-0105",
+      "type": "quote",
+      "text": "人は繰り返す行いそのものである。ゆえに卓越とは行為ではなく、習慣である。",
+      "lang": "ja",
+      "translations": {
+        "en": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
         "vi": "Ta là những gì ta lặp đi lặp lại. Vậy nên xuất sắc không phải một hành động, mà là một thói quen.",
-        "ja": "人は繰り返す行いそのものである。ゆえに卓越とは行為ではなく、習慣である。",
         "ko": "우리는 반복해서 하는 행동 그 자체다. 따라서 탁월함은 행위가 아니라 습관이다.",
         "zh-Hans": "我们是自己反复做的事。所以卓越不是一种行为，而是一种习惯。",
         "zh-Hant": "我們是自己反覆做的事。所以卓越不是一種行為，而是一種習慣。"
@@ -3021,18 +2939,18 @@
         },
         "rights": "quoted-with-attribution"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0112",
+      "id": "ja-0106",
       "type": "quote",
-      "text": "Whether you think you can, or you think you can't — you're right.",
-      "lang": "en",
+      "text": "できると思おうと、できないと思おうと、どちらもあなたが正しい。",
+      "lang": "ja",
       "translations": {
+        "en": "Whether you think you can, or you think you can't — you're right.",
         "vi": "Dù bạn nghĩ mình làm được hay không làm được — bạn đều đúng.",
-        "ja": "できると思おうと、できないと思おうと、どちらもあなたが正しい。",
         "ko": "할 수 있다고 생각하든, 할 수 없다고 생각하든 — 당신이 옳다.",
         "zh-Hans": "无论你认为你能还是不能——你都是对的。",
         "zh-Hant": "無論你認為你能還是不能——你都是對的。"
@@ -3047,20 +2965,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0113",
+      "id": "ja-0107",
       "type": "quote",
-      "text": "Success is measured by the obstacles overcome, not the position reached.",
-      "lang": "en",
+      "text": "成功は到達した地位ではなく、乗り越えた障害で測られる。",
+      "lang": "ja",
       "translations": {
+        "en": "Success is measured by the obstacles overcome, not the position reached.",
         "vi": "Thành công được đo bằng những trở ngại đã vượt qua, không phải vị trí đã đạt tới.",
-        "ja": "成功は到達した地位ではなく、乗り越えた障害で測られる。",
         "ko": "성공은 도달한 위치가 아니라, 극복한 장애물로 측정된다.",
         "zh-Hans": "衡量成功的是克服的障碍，而非达到的位置。",
         "zh-Hant": "衡量成功的是克服的障礙，而非達到的位置。"
@@ -3075,20 +2993,20 @@
         "source": null,
         "year": 1901,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0114",
+      "id": "ja-0108",
       "type": "quote",
-      "text": "Far better it is to dare mighty things than to take rank with those poor spirits.",
-      "lang": "en",
+      "text": "偉大なことに挑む方が、臆病者たちと並ぶよりはるかに良い。",
+      "lang": "ja",
       "translations": {
+        "en": "Far better it is to dare mighty things than to take rank with those poor spirits.",
         "vi": "Dám làm điều lớn lao còn hơn nhiều so với đứng chung hàng với những kẻ nhu nhược.",
-        "ja": "偉大なことに挑む方が、臆病者たちと並ぶよりはるかに良い。",
         "ko": "위대한 일에 도전하는 것이, 소심한 자들과 나란히 서는 것보다 훨씬 낫다.",
         "zh-Hans": "敢于挑战伟业，远胜于与懦弱之辈为伍。",
         "zh-Hant": "敢於挑戰偉業，遠勝於與懦弱之輩為伍。"
@@ -3103,20 +3021,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0115",
+      "id": "ja-0109",
       "type": "quote",
-      "text": "Success is dependent on effort.",
-      "lang": "en",
+      "text": "成功は努力にかかっている。",
+      "lang": "ja",
       "translations": {
+        "en": "Success is dependent on effort.",
         "vi": "Thành công phụ thuộc vào nỗ lực.",
-        "ja": "成功は努力にかかっている。",
         "ko": "성공은 노력에 달려 있다.",
         "zh-Hans": "成功取决于努力。",
         "zh-Hant": "成功取決於努力。"
@@ -3131,20 +3049,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0116",
+      "id": "ja-0110",
       "type": "quote",
-      "text": "Chance favours only the prepared mind.",
-      "lang": "en",
+      "text": "幸運は、準備された心にのみ味方する。",
+      "lang": "ja",
       "translations": {
+        "en": "Chance favours only the prepared mind.",
         "vi": "Cơ hội chỉ mỉm cười với tâm trí đã chuẩn bị.",
-        "ja": "幸運は、準備された心にのみ味方する。",
         "ko": "기회는 준비된 자에게만 찾아온다.",
         "zh-Hans": "机遇只偏爱有准备的头脑。",
         "zh-Hant": "機遇只偏愛有準備的頭腦。"
@@ -3159,20 +3077,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0117",
+      "id": "ja-0111",
       "type": "quote",
-      "text": "The men who have succeeded are men who have chosen one line and stuck to it.",
-      "lang": "en",
+      "text": "成功した者とは、一つの道を選び、それを貫いた者である。",
+      "lang": "ja",
       "translations": {
+        "en": "The men who have succeeded are men who have chosen one line and stuck to it.",
         "vi": "Những người thành công là những người chọn một con đường và bám lấy nó.",
-        "ja": "成功した者とは、一つの道を選び、それを貫いた者である。",
         "ko": "성공한 사람들은 한 길을 택해 그것을 고수한 사람들이다.",
         "zh-Hans": "成功者，是那些选定一条路并坚持到底的人。",
         "zh-Hant": "成功者，是那些選定一條路並堅持到底的人。"
@@ -3187,20 +3105,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0118",
+      "id": "ja-0112",
       "type": "quote",
-      "text": "Great things are not done by impulse, but by a series of small things brought together.",
-      "lang": "en",
+      "text": "偉大なことは衝動ではなく、小さなことの積み重ねによって成される。",
+      "lang": "ja",
       "translations": {
+        "en": "Great things are not done by impulse, but by a series of small things brought together.",
         "vi": "Việc lớn không thành nhờ bốc đồng, mà nhờ nhiều việc nhỏ được ghép lại.",
-        "ja": "偉大なことは衝動ではなく、小さなことの積み重ねによって成される。",
         "ko": "위대한 일은 충동이 아니라, 작은 일들이 모여 이루어진다.",
         "zh-Hans": "伟业不靠一时冲动，而靠许多小事汇聚而成。",
         "zh-Hant": "偉業不靠一時衝動，而靠許多小事匯聚而成。"
@@ -3215,20 +3133,20 @@
         "source": null,
         "year": 1882,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["success"],
       "holidays": []
     },
     {
-      "id": "en-0119",
+      "id": "ja-0113",
       "type": "quote",
-      "text": "Happiness depends upon ourselves.",
-      "lang": "en",
+      "text": "幸福は、我々自身にかかっている。",
+      "lang": "ja",
       "translations": {
+        "en": "Happiness depends upon ourselves.",
         "vi": "Hạnh phúc phụ thuộc vào chính chúng ta.",
-        "ja": "幸福は、我々自身にかかっている。",
         "ko": "행복은 우리 자신에게 달려 있다.",
         "zh-Hans": "幸福取决于我们自己。",
         "zh-Hant": "幸福取決於我們自己。"
@@ -3243,20 +3161,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0120",
+      "id": "ja-0114",
       "type": "quote",
-      "text": "True happiness is to enjoy the present, without anxious dependence upon the future.",
-      "lang": "en",
+      "text": "真の幸福とは、未来に不安げに頼ることなく、今を楽しむことである。",
+      "lang": "ja",
       "translations": {
+        "en": "True happiness is to enjoy the present, without anxious dependence upon the future.",
         "vi": "Hạnh phúc thật sự là tận hưởng hiện tại, không phấp phỏng bám víu vào tương lai.",
-        "ja": "真の幸福とは、未来に不安げに頼ることなく、今を楽しむことである。",
         "ko": "참된 행복은 미래에 불안하게 매달리지 않고 현재를 누리는 것이다.",
         "zh-Hans": "真正的幸福，是享受当下，而不焦虑地依赖未来。",
         "zh-Hant": "真正的幸福，是享受當下，而不焦慮地依賴未來。"
@@ -3271,20 +3189,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0121",
+      "id": "ja-0115",
       "type": "quote",
-      "text": "That man is richest whose pleasures are cheapest.",
-      "lang": "en",
+      "text": "最も豊かな人とは、最も安上がりな喜びを持つ人である。",
+      "lang": "ja",
       "translations": {
+        "en": "That man is richest whose pleasures are cheapest.",
         "vi": "Người giàu nhất là người có những niềm vui rẻ nhất.",
-        "ja": "最も豊かな人とは、最も安上がりな喜びを持つ人である。",
         "ko": "가장 부유한 사람은 가장 값싼 즐거움을 가진 사람이다.",
         "zh-Hans": "快乐最廉价的人，才是最富有的人。",
         "zh-Hant": "快樂最廉價的人，才是最富有的人。"
@@ -3299,20 +3217,20 @@
         "source": null,
         "year": 1856,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0122",
+      "id": "ja-0116",
       "type": "quote",
-      "text": "It is not how much we have, but how much we enjoy, that makes happiness.",
-      "lang": "en",
+      "text": "幸福を生むのは、どれだけ持っているかではなく、どれだけ楽しんでいるかである。",
+      "lang": "ja",
       "translations": {
+        "en": "It is not how much we have, but how much we enjoy, that makes happiness.",
         "vi": "Hạnh phúc không nằm ở việc ta có bao nhiêu, mà ở việc ta tận hưởng bao nhiêu.",
-        "ja": "幸福を生むのは、どれだけ持っているかではなく、どれだけ楽しんでいるかである。",
         "ko": "행복을 만드는 것은 얼마나 가졌느냐가 아니라, 얼마나 누리느냐이다.",
         "zh-Hans": "幸福不在于我们拥有多少，而在于我们享受多少。",
         "zh-Hant": "幸福不在於我們擁有多少，而在於我們享受多少。"
@@ -3327,20 +3245,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0123",
+      "id": "ja-0117",
       "type": "quote",
-      "text": "The best way to cheer yourself is to try to cheer someone else up.",
-      "lang": "en",
+      "text": "自分を元気づける最良の方法は、誰か他の人を元気づけようとすることだ。",
+      "lang": "ja",
       "translations": {
+        "en": "The best way to cheer yourself is to try to cheer someone else up.",
         "vi": "Cách tốt nhất để vui lên là thử làm cho người khác vui.",
-        "ja": "自分を元気づける最良の方法は、誰か他の人を元気づけようとすることだ。",
         "ko": "자신을 기운 나게 하는 가장 좋은 방법은, 다른 누군가를 기운 나게 해주는 것이다.",
         "zh-Hans": "让自己开心的最好办法，是设法让别人开心。",
         "zh-Hant": "讓自己開心的最好辦法，是設法讓別人開心。"
@@ -3355,20 +3273,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0124",
+      "id": "ja-0118",
       "type": "quote",
-      "text": "Ask yourself whether you are happy, and you cease to be so.",
-      "lang": "en",
+      "text": "自分は幸せかと問うた途端、人は幸せでなくなる。",
+      "lang": "ja",
       "translations": {
+        "en": "Ask yourself whether you are happy, and you cease to be so.",
         "vi": "Hỏi mình có hạnh phúc không, là lúc bạn thôi hạnh phúc.",
-        "ja": "自分は幸せかと問うた途端、人は幸せでなくなる。",
         "ko": "자신이 행복한지 묻는 순간, 당신은 더 이상 행복하지 않게 된다.",
         "zh-Hans": "一问自己是否幸福，你就不再幸福了。",
         "zh-Hant": "一問自己是否幸福，你就不再幸福了。"
@@ -3383,20 +3301,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0125",
+      "id": "ja-0119",
       "type": "quote",
-      "text": "Be content with what you have; rejoice in the way things are.",
-      "lang": "en",
+      "text": "持てるもので満ち足り、あるがままを喜べ。",
+      "lang": "ja",
       "translations": {
+        "en": "Be content with what you have; rejoice in the way things are.",
         "vi": "Hãy bằng lòng với những gì mình có; hãy vui với những gì đang là.",
-        "ja": "持てるもので満ち足り、あるがままを喜べ。",
         "ko": "가진 것에 만족하고, 있는 그대로를 기뻐하라.",
         "zh-Hans": "知足于所有，欣然于所是。",
         "zh-Hant": "知足於所有，欣然於所是。"
@@ -3413,18 +3331,18 @@
         "links": {},
         "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0126",
+      "id": "ja-0120",
       "type": "quote",
-      "text": "There is no duty we so much underrate as the duty of being happy.",
-      "lang": "en",
+      "text": "幸福であるという義務ほど、我々が軽んじている義務はない。",
+      "lang": "ja",
       "translations": {
+        "en": "There is no duty we so much underrate as the duty of being happy.",
         "vi": "Không bổn phận nào bị ta xem nhẹ bằng bổn phận phải hạnh phúc.",
-        "ja": "幸福であるという義務ほど、我々が軽んじている義務はない。",
         "ko": "우리가 행복해야 할 의무만큼 과소평가하는 의무는 없다.",
         "zh-Hans": "没有哪项责任像\"要幸福\"这项一样被我们如此低估。",
         "zh-Hant": "沒有哪項責任像「要幸福」這項一樣被我們如此低估。"
@@ -3439,20 +3357,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["happiness"],
       "holidays": []
     },
     {
-      "id": "en-0127",
+      "id": "ja-0121",
       "type": "quote",
-      "text": "Learning without thought is labour lost; thought without learning is perilous.",
-      "lang": "en",
+      "text": "学びて思わざれば則ち罔し、思いて学ばざれば則ち殆うし。",
+      "lang": "ja",
       "translations": {
+        "en": "Learning without thought is labour lost; thought without learning is perilous.",
         "vi": "Học mà không suy nghĩ là công cốc; suy nghĩ mà không học là nguy hiểm.",
-        "ja": "学びて思わざれば則ち罔し、思いて学ばざれば則ち殆うし。",
         "ko": "배우기만 하고 생각하지 않으면 얻는 것이 없고, 생각만 하고 배우지 않으면 위태롭다.",
         "zh-Hans": "学而不思则罔，思而不学则殆。",
         "zh-Hant": "學而不思則罔，思而不學則殆。"
@@ -3469,18 +3387,18 @@
         "links": {},
         "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0128",
+      "id": "ja-0122",
       "type": "quote",
-      "text": "The roots of education are bitter, but the fruit is sweet.",
-      "lang": "en",
+      "text": "教育の根は苦いが、その実は甘い。",
+      "lang": "ja",
       "translations": {
+        "en": "The roots of education are bitter, but the fruit is sweet.",
         "vi": "Rễ của học vấn thì đắng, nhưng quả thì ngọt.",
-        "ja": "教育の根は苦いが、その実は甘い。",
         "ko": "배움의 뿌리는 쓰지만, 그 열매는 달다.",
         "zh-Hans": "教育之根苦涩，其果甘甜。",
         "zh-Hant": "教育之根苦澀，其果甘甜。"
@@ -3495,20 +3413,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0129",
+      "id": "ja-0123",
       "type": "quote",
-      "text": "The mind is not a vessel to be filled but a fire to be kindled.",
-      "lang": "en",
+      "text": "心は満たすべき器ではなく、燃やすべき火である。",
+      "lang": "ja",
       "translations": {
+        "en": "The mind is not a vessel to be filled but a fire to be kindled.",
         "vi": "Trí óc không phải cái bình để đổ đầy, mà là ngọn lửa để nhen lên.",
-        "ja": "心は満たすべき器ではなく、燃やすべき火である。",
         "ko": "마음은 채워야 할 그릇이 아니라, 지펴야 할 불이다.",
         "zh-Hans": "心灵不是待填满的容器，而是待点燃的火焰。",
         "zh-Hant": "心靈不是待填滿的容器，而是待點燃的火焰。"
@@ -3523,20 +3441,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0130",
+      "id": "ja-0124",
       "type": "quote",
-      "text": "While we teach, we learn.",
-      "lang": "en",
+      "text": "教えながら、我々は学ぶ。",
+      "lang": "ja",
       "translations": {
+        "en": "While we teach, we learn.",
         "vi": "Trong lúc dạy, ta học.",
-        "ja": "教えながら、我々は学ぶ。",
         "ko": "가르치는 동안, 우리는 배운다.",
         "zh-Hans": "教学相长。",
         "zh-Hant": "教學相長。"
@@ -3551,20 +3469,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0131",
+      "id": "ja-0125",
       "type": "quote",
-      "text": "Learning never exhausts the mind.",
-      "lang": "en",
+      "text": "学びが心を枯らすことはない。",
+      "lang": "ja",
       "translations": {
+        "en": "Learning never exhausts the mind.",
         "vi": "Học tập không bao giờ làm kiệt trí óc.",
-        "ja": "学びが心を枯らすことはない。",
         "ko": "배움은 결코 정신을 고갈시키지 않는다.",
         "zh-Hans": "学习永远不会耗尽心智。",
         "zh-Hant": "學習永遠不會耗盡心智。"
@@ -3579,20 +3497,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0132",
+      "id": "ja-0126",
       "type": "quote",
-      "text": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
-      "lang": "en",
+      "text": "明日死ぬかのように生きよ。永遠に生きるかのように学べ。",
+      "lang": "ja",
       "translations": {
+        "en": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
         "vi": "Hãy sống như thể mai bạn sẽ chết. Hãy học như thể bạn sẽ sống mãi.",
-        "ja": "明日死ぬかのように生きよ。永遠に生きるかのように学べ。",
         "ko": "내일 죽을 것처럼 살고, 영원히 살 것처럼 배워라.",
         "zh-Hans": "像明天就要死去那样生活，像永远活着那样学习。",
         "zh-Hant": "像明天就要死去那樣生活，像永遠活著那樣學習。"
@@ -3607,20 +3525,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0133",
+      "id": "ja-0127",
       "type": "quote",
-      "text": "The authority of those who teach is often an obstacle to those who want to learn.",
-      "lang": "en",
+      "text": "教える者の権威は、しばしば学ぼうとする者の妨げとなる。",
+      "lang": "ja",
       "translations": {
+        "en": "The authority of those who teach is often an obstacle to those who want to learn.",
         "vi": "Uy quyền của người dạy thường là vật cản với người muốn học.",
-        "ja": "教える者の権威は、しばしば学ぼうとする者の妨げとなる。",
         "ko": "가르치는 자의 권위는 종종 배우려는 자에게 걸림돌이 된다.",
         "zh-Hans": "施教者的权威，常常成为求学者的障碍。",
         "zh-Hant": "施教者的權威，常常成為求學者的障礙。"
@@ -3635,20 +3553,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0134",
+      "id": "ja-0128",
       "type": "quote",
-      "text": "I am still learning.",
-      "lang": "en",
+      "text": "我、いまだ学びつつあり。",
+      "lang": "ja",
       "translations": {
+        "en": "I am still learning.",
         "vi": "Tôi vẫn đang học.",
-        "ja": "我、いまだ学びつつあり。",
         "ko": "나는 아직도 배우고 있다.",
         "zh-Hans": "我仍在学习。",
         "zh-Hant": "我仍在學習。"
@@ -3663,20 +3581,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["learning"],
       "holidays": []
     },
     {
-      "id": "en-0135",
+      "id": "ja-0129",
       "type": "quote",
-      "text": "It is not that we have a short time to live, but that we waste a lot of it.",
-      "lang": "en",
+      "text": "我々の人生が短いのではない。我々がその多くを浪費しているのだ。",
+      "lang": "ja",
       "translations": {
+        "en": "It is not that we have a short time to live, but that we waste a lot of it.",
         "vi": "Không phải ta có ít thời gian để sống, mà là ta phí phạm quá nhiều.",
-        "ja": "我々の人生が短いのではない。我々がその多くを浪費しているのだ。",
         "ko": "우리에게 시간이 짧은 것이 아니라, 우리가 그 많은 시간을 낭비하는 것이다.",
         "zh-Hans": "不是我们的生命太短，而是我们浪费了太多。",
         "zh-Hant": "不是我們的生命太短，而是我們浪費了太多。"
@@ -3691,20 +3609,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0136",
+      "id": "ja-0130",
       "type": "quote",
-      "text": "Dost thou love life? Then do not squander time.",
-      "lang": "en",
+      "text": "人生を愛するか。ならば時間を浪費するな。",
+      "lang": "ja",
       "translations": {
+        "en": "Dost thou love life? Then do not squander time.",
         "vi": "Bạn có yêu cuộc sống không? Vậy thì đừng hoang phí thời gian.",
-        "ja": "人生を愛するか。ならば時間を浪費するな。",
         "ko": "삶을 사랑하는가? 그렇다면 시간을 낭비하지 말라.",
         "zh-Hans": "你热爱生命吗？那就不要虚掷光阴。",
         "zh-Hant": "你熱愛生命嗎？那就不要虛擲光陰。"
@@ -3719,20 +3637,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0137",
+      "id": "ja-0131",
       "type": "quote",
-      "text": "Do not act as if you were going to live ten thousand years.",
-      "lang": "en",
+      "text": "一万年生きるかのように振る舞うな。",
+      "lang": "ja",
       "translations": {
+        "en": "Do not act as if you were going to live ten thousand years.",
         "vi": "Đừng sống như thể bạn sẽ sống mười ngàn năm.",
-        "ja": "一万年生きるかのように振る舞うな。",
         "ko": "만 년을 살 것처럼 행동하지 말라.",
         "zh-Hans": "别活得好像你能活一万年。",
         "zh-Hant": "別活得好像你能活一萬年。"
@@ -3747,20 +3665,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0138",
+      "id": "ja-0132",
       "type": "quote",
-      "text": "Time is the most valuable thing a man can spend.",
-      "lang": "en",
+      "text": "時間は、人が費やしうる最も価値あるものである。",
+      "lang": "ja",
       "translations": {
+        "en": "Time is the most valuable thing a man can spend.",
         "vi": "Thời gian là thứ quý giá nhất mà con người có thể tiêu.",
-        "ja": "時間は、人が費やしうる最も価値あるものである。",
         "ko": "시간은 사람이 쓸 수 있는 가장 값진 것이다.",
         "zh-Hans": "时间是人所能花费的最宝贵之物。",
         "zh-Hant": "時間是人所能花費的最寶貴之物。"
@@ -3775,20 +3693,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0139",
+      "id": "ja-0133",
       "type": "quote",
-      "text": "Seize the day, trusting as little as possible in tomorrow.",
-      "lang": "en",
+      "text": "今日を摘め。明日を当てにすることは、できる限り少なく。",
+      "lang": "ja",
       "translations": {
+        "en": "Seize the day, trusting as little as possible in tomorrow.",
         "vi": "Hãy nắm lấy ngày hôm nay, và đặt ít niềm tin nhất có thể vào ngày mai.",
-        "ja": "今日を摘め。明日を当てにすることは、できる限り少なく。",
         "ko": "오늘을 붙잡아라, 내일은 되도록 믿지 말고.",
         "zh-Hans": "及时行乐，尽可能少地寄望于明天。",
         "zh-Hant": "及時行樂，盡可能少地寄望於明天。"
@@ -3803,20 +3721,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0140",
+      "id": "ja-0134",
       "type": "quote",
-      "text": "Time is what we want most, but what we use worst.",
-      "lang": "en",
+      "text": "時間は最も欲しがるものでありながら、最も下手に使うものである。",
+      "lang": "ja",
       "translations": {
+        "en": "Time is what we want most, but what we use worst.",
         "vi": "Thời gian là thứ ta muốn nhất, nhưng lại dùng tệ nhất.",
-        "ja": "時間は最も欲しがるものでありながら、最も下手に使うものである。",
         "ko": "시간은 우리가 가장 원하면서도 가장 잘못 쓰는 것이다.",
         "zh-Hans": "时间是我们最想要，却用得最糟的东西。",
         "zh-Hant": "時間是我們最想要，卻用得最糟的東西。"
@@ -3831,20 +3749,20 @@
         "source": null,
         "year": 1693,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0141",
+      "id": "ja-0135",
       "type": "quote",
-      "text": "A man who dares to waste one hour of time has not discovered the value of life.",
-      "lang": "en",
+      "text": "一時間を無駄にする勇気がある者は、人生の価値をまだ知らない。",
+      "lang": "ja",
       "translations": {
+        "en": "A man who dares to waste one hour of time has not discovered the value of life.",
         "vi": "Người dám phí một giờ đồng hồ là người chưa khám phá ra giá trị của cuộc đời.",
-        "ja": "一時間を無駄にする勇気がある者は、人生の価値をまだ知らない。",
         "ko": "한 시간을 낭비할 용기가 있는 사람은, 아직 삶의 가치를 발견하지 못한 것이다.",
         "zh-Hans": "敢于浪费一小时的人，还没发现生命的价值。",
         "zh-Hant": "敢於浪費一小時的人，還沒發現生命的價值。"
@@ -3859,20 +3777,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0142",
+      "id": "ja-0136",
       "type": "quote",
-      "text": "The two most powerful warriors are patience and time.",
-      "lang": "en",
+      "text": "最も強い二人の戦士は、忍耐と時間である。",
+      "lang": "ja",
       "translations": {
+        "en": "The two most powerful warriors are patience and time.",
         "vi": "Hai chiến binh mạnh nhất là kiên nhẫn và thời gian.",
-        "ja": "最も強い二人の戦士は、忍耐と時間である。",
         "ko": "가장 강력한 두 전사는 인내와 시간이다.",
         "zh-Hans": "最强大的两位战士，是耐心和时间。",
         "zh-Hant": "最強大的兩位戰士，是耐心和時間。"
@@ -3887,20 +3805,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["time"],
       "holidays": []
     },
     {
-      "id": "en-0143",
+      "id": "ja-0137",
       "type": "quote",
-      "text": "Character is destiny.",
-      "lang": "en",
+      "text": "性格は運命なり。",
+      "lang": "ja",
       "translations": {
+        "en": "Character is destiny.",
         "vi": "Tính cách là số phận.",
-        "ja": "性格は運命なり。",
         "ko": "성격이 곧 운명이다.",
         "zh-Hans": "性格即命运。",
         "zh-Hant": "性格即命運。"
@@ -3915,20 +3833,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0144",
+      "id": "ja-0138",
       "type": "quote",
-      "text": "With malice toward none, with charity for all.",
-      "lang": "en",
+      "text": "何人にも悪意を抱かず、すべての人に慈愛を。",
+      "lang": "ja",
       "translations": {
+        "en": "With malice toward none, with charity for all.",
         "vi": "Không ác ý với ai, mà bác ái với tất cả.",
-        "ja": "何人にも悪意を抱かず、すべての人に慈愛を。",
         "ko": "누구에게도 악의 없이, 모두에게 자애로써.",
         "zh-Hans": "不怀恶意于任何人，心存仁爱于所有人。",
         "zh-Hant": "不懷惡意於任何人，心存仁愛於所有人。"
@@ -3943,20 +3861,20 @@
         "source": null,
         "year": 1865,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0145",
+      "id": "ja-0139",
       "type": "quote",
-      "text": "Character is much easier kept than recovered.",
-      "lang": "en",
+      "text": "人格は取り戻すより、保つ方がはるかに易しい。",
+      "lang": "ja",
       "translations": {
+        "en": "Character is much easier kept than recovered.",
         "vi": "Giữ nhân cách dễ hơn nhiều so với lấy lại nó.",
-        "ja": "人格は取り戻すより、保つ方がはるかに易しい。",
         "ko": "인격은 되찾는 것보다 지키는 것이 훨씬 쉽다.",
         "zh-Hans": "品格易守难复。",
         "zh-Hant": "品格易守難復。"
@@ -3971,20 +3889,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0146",
+      "id": "ja-0140",
       "type": "quote",
-      "text": "Without a struggle, there can be no progress.",
-      "lang": "en",
+      "text": "闘いなくして、進歩はない。",
+      "lang": "ja",
       "translations": {
+        "en": "Without a struggle, there can be no progress.",
         "vi": "Không có đấu tranh thì không thể có tiến bộ.",
-        "ja": "闘いなくして、進歩はない。",
         "ko": "투쟁 없이는 진보도 없다.",
         "zh-Hans": "没有抗争，就没有进步。",
         "zh-Hant": "沒有抗爭，就沒有進步。"
@@ -3999,20 +3917,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0147",
+      "id": "ja-0141",
       "type": "quote",
-      "text": "A good reputation is more valuable than money.",
-      "lang": "en",
+      "text": "良い評判は、金銭よりも価値がある。",
+      "lang": "ja",
       "translations": {
+        "en": "A good reputation is more valuable than money.",
         "vi": "Danh tiếng tốt còn quý hơn tiền bạc.",
-        "ja": "良い評判は、金銭よりも価値がある。",
         "ko": "좋은 평판은 돈보다 값지다.",
         "zh-Hans": "好名声比金钱更宝贵。",
         "zh-Hant": "好名聲比金錢更寶貴。"
@@ -4027,20 +3945,20 @@
         "source": null,
         "year": null,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0148",
+      "id": "ja-0142",
       "type": "quote",
-      "text": "Integrity without knowledge is weak and useless.",
-      "lang": "en",
+      "text": "知識なき誠実は、脆く役に立たない。",
+      "lang": "ja",
       "translations": {
+        "en": "Integrity without knowledge is weak and useless.",
         "vi": "Chính trực mà thiếu tri thức thì yếu ớt và vô dụng.",
-        "ja": "知識なき誠実は、脆く役に立たない。",
         "ko": "지식 없는 성실함은 약하고 쓸모없다.",
         "zh-Hans": "无知的正直，软弱而无用。",
         "zh-Hant": "無知的正直，軟弱而無用。"
@@ -4055,20 +3973,20 @@
         "source": null,
         "year": 1759,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0149",
+      "id": "ja-0143",
       "type": "quote",
-      "text": "It is better to offer no excuse than a bad one.",
-      "lang": "en",
+      "text": "下手な言い訳をするより、何も言い訳しない方がよい。",
+      "lang": "ja",
       "translations": {
+        "en": "It is better to offer no excuse than a bad one.",
         "vi": "Không viện cớ còn hơn viện một cớ tồi.",
-        "ja": "下手な言い訳をするより、何も言い訳しない方がよい。",
         "ko": "나쁜 변명을 하느니, 아예 변명하지 않는 편이 낫다.",
         "zh-Hans": "与其找个烂借口，不如不找借口。",
         "zh-Hant": "與其找個爛藉口，不如不找藉口。"
@@ -4083,20 +4001,20 @@
         "source": null,
         "year": 1783,
         "links": {},
-        "rights": "public-domain"
+        "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0150",
+      "id": "ja-0144",
       "type": "quote",
-      "text": "The superior man is modest in speech but exceeds in action.",
-      "lang": "en",
+      "text": "君子は言に訥にして、行に敏ならんことを欲す。",
+      "lang": "ja",
       "translations": {
+        "en": "The superior man is modest in speech but exceeds in action.",
         "vi": "Người quân tử nói thì dè dặt, mà làm thì vượt trội.",
-        "ja": "君子は言に訥にして、行に敏ならんことを欲す。",
         "ko": "군자는 말은 어눌하되, 행동은 민첩하고자 한다.",
         "zh-Hans": "君子欲讷于言而敏于行。",
         "zh-Hant": "君子欲訥於言而敏於行。"
@@ -4113,81 +4031,15 @@
         "links": {},
         "rights": "own-translation"
       },
-      "regions": ["US", "GB", "AU", "CA", "NZ", "IE"],
+      "regions": ["JP"],
       "tags": ["character"],
       "holidays": []
     },
     {
-      "id": "en-0151",
-      "type": "quote",
-      "text": "The best-laid schemes o' mice an' men gang aft agley.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "To a Mouse",
-        "character": null,
-        "actor": null,
-        "author": "Robert Burns",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": 1785,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["burns-night"]
-    },
-    {
-      "id": "en-0152",
-      "type": "quote",
-      "text": "A man's a man for a' that.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": "Robert Burns",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": 1795,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["burns-night"]
-    },
-    {
-      "id": "en-0153",
-      "type": "quote",
-      "text": "O wad some Power the giftie gie us to see oursels as ithers see us!",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "To a Louse",
-        "character": null,
-        "actor": null,
-        "author": "Robert Burns",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": 1786,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["burns-night"]
-    },
-    {
-      "id": "en-0154",
+      "id": "ja-0145",
       "type": "proverb",
-      "text": "Lang may yer lum reek.",
-      "lang": "en",
+      "text": "一年の計は元旦にあり",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4196,20 +4048,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Scots traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["burns-night"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0155",
+      "id": "ja-0146",
       "type": "proverb",
-      "text": "Here's tae us, wha's like us?",
-      "lang": "en",
+      "text": "明けましておめでとうございます",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4218,20 +4070,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Scots traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["burns-night"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0156",
+      "id": "ja-0147",
       "type": "proverb",
-      "text": "Whit's fur ye'll no go by ye.",
-      "lang": "en",
+      "text": "一富士二鷹三茄子",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4240,20 +4092,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Scots",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["burns-night"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0157",
+      "id": "ja-0148",
       "type": "proverb",
-      "text": "Mony a mickle maks a muckle.",
-      "lang": "en",
+      "text": "笑う門には福来る",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4262,20 +4114,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Scots",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["burns-night"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0158",
+      "id": "ja-0149",
       "type": "proverb",
-      "text": "Slàinte mhath!",
-      "lang": "en",
+      "text": "千里の道も一歩から",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4284,20 +4136,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Scottish Gaelic",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["burns-night"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0159",
+      "id": "ja-0150",
       "type": "proverb",
-      "text": "Pancake Tuesday's a very happy day, if you don't give us a holiday, we'll all run away.",
-      "lang": "en",
+      "text": "初心忘るべからず",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4306,20 +4158,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Shroving rhyme",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0160",
+      "id": "ja-0151",
       "type": "proverb",
-      "text": "Snick, snack, the pan's hot, we be come a-shroving.",
-      "lang": "en",
+      "text": "果報は寝て待て",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4328,20 +4180,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Cornish shroving rhyme",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0161",
+      "id": "ja-0152",
       "type": "proverb",
-      "text": "Shrove Tuesday, Shrove Tuesday, when Jack went to plough.",
-      "lang": "en",
+      "text": "石の上にも三年",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4350,20 +4202,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["oshogatsu"]
     },
     {
-      "id": "en-0162",
+      "id": "ja-0153",
       "type": "proverb",
-      "text": "As flat as a pancake.",
-      "lang": "en",
+      "text": "鬼は外、福は内",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4372,20 +4224,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0163",
+      "id": "ja-0154",
       "type": "proverb",
-      "text": "You cannot eat your cake and have it.",
-      "lang": "en",
+      "text": "来年のことを言えば鬼が笑う",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4394,20 +4246,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English (ghi nhận 1546)",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0164",
+      "id": "ja-0155",
       "type": "proverb",
-      "text": "The proof of the pudding is in the eating.",
-      "lang": "en",
+      "text": "鬼の目にも涙",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4416,20 +4268,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0165",
+      "id": "ja-0156",
       "type": "proverb",
-      "text": "Hunger is the best sauce.",
-      "lang": "en",
+      "text": "鬼に金棒",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4438,20 +4290,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0166",
+      "id": "ja-0157",
       "type": "proverb",
-      "text": "After a feast, a fast.",
-      "lang": "en",
+      "text": "渡る世間に鬼はない",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4460,64 +4312,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["pancake-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0167",
-      "type": "quote",
-      "text": "Cry \"God for Harry, England, and Saint George!\"",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "Henry V",
-        "character": null,
-        "actor": null,
-        "author": "Shakespeare",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["st-georges-day"]
-    },
-    {
-      "id": "en-0168",
-      "type": "quote",
-      "text": "This royal throne of kings, this sceptred isle.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "Richard II",
-        "character": null,
-        "actor": null,
-        "author": "Shakespeare",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["st-georges-day"]
-    },
-    {
-      "id": "en-0169",
+      "id": "ja-0158",
       "type": "proverb",
-      "text": "St George he was for England.",
-      "lang": "en",
+      "text": "心を鬼にする",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4526,42 +4334,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["st-georges-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0170",
-      "type": "quote",
-      "text": "England expects that every man will do his duty.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": "Nelson",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": 1805,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["st-georges-day"]
-    },
-    {
-      "id": "en-0171",
+      "id": "ja-0159",
       "type": "proverb",
-      "text": "An Englishman's home is his castle.",
-      "lang": "en",
+      "text": "鬼の霍乱",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4570,20 +4356,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["st-georges-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0172",
+      "id": "ja-0160",
       "type": "proverb",
-      "text": "Fortune favours the brave.",
-      "lang": "en",
+      "text": "鬼も十八番茶も出花",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4592,64 +4378,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Latin (\"Fortis fortuna adiuvat\")",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["st-georges-day"]
+      "holidays": ["setsubun"]
     },
     {
-      "id": "en-0173",
-      "type": "quote",
-      "text": "Courage mounteth with occasion.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "King John",
-        "character": null,
-        "actor": null,
-        "author": "Shakespeare",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["st-georges-day"]
-    },
-    {
-      "id": "en-0174",
-      "type": "quote",
-      "text": "Cowards die many times before their deaths.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "Julius Caesar",
-        "character": null,
-        "actor": null,
-        "author": "Shakespeare",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["st-georges-day"]
-    },
-    {
-      "id": "en-0175",
+      "id": "ja-0161",
       "type": "proverb",
-      "text": "Remember, remember the fifth of November, gunpowder treason and plot.",
-      "lang": "en",
+      "text": "桃の節句",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4658,20 +4400,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional (phổ biến TK19)",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0176",
+      "id": "ja-0162",
       "type": "proverb",
-      "text": "Penny for the Guy!",
-      "lang": "en",
+      "text": "雛人形をしまい遅れると婚期が遅れる",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4680,20 +4422,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0177",
+      "id": "ja-0163",
       "type": "proverb",
-      "text": "A penny loaf to feed the Pope.",
-      "lang": "en",
+      "text": "女三人寄れば姦しい",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4702,20 +4444,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional bonfire rhyme",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0178",
+      "id": "ja-0164",
       "type": "proverb",
-      "text": "Guy Fawkes, Guy Fawkes, 'twas his intent to blow up King and Parliament.",
-      "lang": "en",
+      "text": "桃栗三年柿八年",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4724,20 +4466,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0179",
+      "id": "ja-0165",
       "type": "proverb",
-      "text": "Holla boys, holla boys, let the bells ring!",
-      "lang": "en",
+      "text": "三つ子の魂百まで",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4746,20 +4488,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0180",
+      "id": "ja-0166",
       "type": "proverb",
-      "text": "There's no smoke without fire.",
-      "lang": "en",
+      "text": "春眠暁を覚えず",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4768,42 +4510,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0181",
-      "type": "quote",
-      "text": "A little fire is quickly trodden out.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": "Henry VI, Part 3",
-        "character": null,
-        "actor": null,
-        "author": "Shakespeare",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["bonfire-night"]
-    },
-    {
-      "id": "en-0182",
+      "id": "ja-0167",
       "type": "proverb",
-      "text": "Fire is a good servant but a bad master.",
-      "lang": "en",
+      "text": "花より団子",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4812,20 +4532,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["bonfire-night"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0183",
+      "id": "ja-0168",
       "type": "proverb",
-      "text": "Christmas is coming, the goose is getting fat, please put a penny in the old man's hat.",
-      "lang": "en",
+      "text": "娘一人に婿八人",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4834,20 +4554,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Nursery rhyme",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["hinamatsuri"]
     },
     {
-      "id": "en-0184",
+      "id": "ja-0169",
       "type": "proverb",
-      "text": "It is more blessed to give than to receive.",
-      "lang": "en",
+      "text": "鯉の滝登り",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4856,20 +4576,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Acts 20:35",
-        "year": 1611,
+        "source": "日本のことわざ",
+        "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["kodomo-no-hi"]
     },
     {
-      "id": "en-0185",
+      "id": "ja-0170",
       "type": "proverb",
-      "text": "Charity begins at home.",
-      "lang": "en",
+      "text": "子は宝",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4878,20 +4598,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["kodomo-no-hi"]
     },
     {
-      "id": "en-0186",
+      "id": "ja-0171",
       "type": "proverb",
-      "text": "A gift long waited for is sold, not given.",
-      "lang": "en",
+      "text": "這えば立て立てば歩めの親心",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4900,20 +4620,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["kodomo-no-hi"]
     },
     {
-      "id": "en-0187",
+      "id": "ja-0172",
       "type": "proverb",
-      "text": "Give a thing, and take a thing, to wear the devil's gold ring.",
-      "lang": "en",
+      "text": "可愛い子には旅をさせよ",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4922,20 +4642,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Children's traditional",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["kodomo-no-hi"]
     },
     {
-      "id": "en-0188",
+      "id": "ja-0173",
       "type": "proverb",
-      "text": "Beggars can't be choosers.",
-      "lang": "en",
+      "text": "親の背を見て子は育つ",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4944,42 +4664,20 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "English",
+        "source": "日本のことわざ",
         "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["kodomo-no-hi"]
     },
     {
-      "id": "en-0189",
-      "type": "quote",
-      "text": "He gives twice who gives quickly.",
-      "lang": "en",
-      "translations": {},
-      "attribution": {
-        "work": null,
-        "character": null,
-        "actor": null,
-        "author": "Publilius Syrus (\"Bis dat qui cito dat\")",
-        "developer": null,
-        "publisher": null,
-        "source": null,
-        "year": null,
-        "links": {},
-        "rights": "public-domain"
-      },
-      "regions": ["GB"],
-      "tags": [],
-      "holidays": ["boxing-day"]
-    },
-    {
-      "id": "en-0190",
+      "id": "ja-0174",
       "type": "proverb",
-      "text": "Eat, drink and be merry.",
-      "lang": "en",
+      "text": "栴檀は双葉より芳し",
+      "lang": "ja",
       "translations": {},
       "attribution": {
         "work": null,
@@ -4988,14 +4686,586 @@
         "author": null,
         "developer": null,
         "publisher": null,
-        "source": "Ecclesiastes 8:15",
-        "year": 1611,
+        "source": "日本のことわざ",
+        "year": null,
         "links": {},
         "rights": "public-domain"
       },
-      "regions": ["GB"],
+      "regions": ["JP"],
       "tags": [],
-      "holidays": ["boxing-day"]
+      "holidays": ["kodomo-no-hi"]
+    },
+    {
+      "id": "ja-0175",
+      "type": "proverb",
+      "text": "鉄は熱いうちに打て",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["kodomo-no-hi"]
+    },
+    {
+      "id": "ja-0176",
+      "type": "proverb",
+      "text": "子を持って知る親の恩",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["kodomo-no-hi"]
+    },
+    {
+      "id": "ja-0177",
+      "type": "proverb",
+      "text": "逢うは別れの始め",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0178",
+      "type": "proverb",
+      "text": "一日千秋",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0179",
+      "type": "proverb",
+      "text": "遠くて近きは男女の仲",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0180",
+      "type": "proverb",
+      "text": "待てば海路の日和あり",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0181",
+      "type": "proverb",
+      "text": "思う念力岩をも通す",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0182",
+      "type": "proverb",
+      "text": "縁は異なもの味なもの",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0183",
+      "type": "proverb",
+      "text": "恋に上下の隔てなし",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0184",
+      "type": "proverb",
+      "text": "天は自ら助くる者を助く",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tanabata"]
+    },
+    {
+      "id": "ja-0185",
+      "type": "proverb",
+      "text": "盆と正月が一緒に来たよう",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0186",
+      "type": "proverb",
+      "text": "盆過ぎての鯖商い",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0187",
+      "type": "proverb",
+      "text": "孝行のしたい時分に親はなし",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0188",
+      "type": "proverb",
+      "text": "石に布団は着せられず",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0189",
+      "type": "proverb",
+      "text": "死んで花実が咲くものか",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0190",
+      "type": "proverb",
+      "text": "逝く者は日々に疎し",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0191",
+      "type": "proverb",
+      "text": "一寸の光陰軽んずべからず",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0192",
+      "type": "proverb",
+      "text": "立つ鳥跡を濁さず",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["obon"]
+    },
+    {
+      "id": "ja-0193",
+      "type": "proverb",
+      "text": "中秋の名月",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0194",
+      "type": "proverb",
+      "text": "月に叢雲花に風",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0195",
+      "type": "proverb",
+      "text": "月と鼈",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0196",
+      "type": "proverb",
+      "text": "花鳥風月",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0197",
+      "type": "proverb",
+      "text": "月夜に提灯",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0198",
+      "type": "proverb",
+      "text": "月夜に釜を抜かれる",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0199",
+      "type": "proverb",
+      "text": "月満つれば則ち虧く",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
+    },
+    {
+      "id": "ja-0200",
+      "type": "proverb",
+      "text": "月日に関守なし",
+      "lang": "ja",
+      "translations": {},
+      "attribution": {
+        "work": null,
+        "character": null,
+        "actor": null,
+        "author": null,
+        "developer": null,
+        "publisher": null,
+        "source": "日本のことわざ",
+        "year": null,
+        "links": {},
+        "rights": "public-domain"
+      },
+      "regions": ["JP"],
+      "tags": [],
+      "holidays": ["tsukimi"]
     }
   ]
 }

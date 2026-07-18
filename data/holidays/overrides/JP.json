@@ -1,0 +1,30 @@
+{
+  "country": "JP",
+  "add": [
+    {
+      "tag": "oshogatsu",
+      "rule": "1-1"
+    },
+    {
+      "tag": "hinamatsuri",
+      "rule": "3-3"
+    },
+    {
+      "tag": "kodomo-no-hi",
+      "rule": "5-5"
+    },
+    {
+      "tag": "tanabata",
+      "rule": "7-7"
+    },
+    {
+      "tag": "obon",
+      "rule": "8-13",
+      "days": 3
+    },
+    {
+      "tag": "tsukimi",
+      "rule": "lunar:8-15"
+    }
+  ]
+}

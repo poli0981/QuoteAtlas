@@ -3,5 +3,5 @@
   "book": ["wikipedia.org", "wikisource.org"],
   "game": ["store.steampowered.com"],
   "quote": ["wikipedia.org"],
-  "extra": []
+  "extra": ["https://www.snopes.com/fact-check/quote-habit-excellence-aristotle/"]
 }

@@ -17,8 +17,8 @@ test.describe('boot', () => {
   });
 
   test('surfaces the locale fallback rather than failing silently (R4)', async ({ app }) => {
-    // timezone Asia/Ho_Chi_Minh ⇒ detect() = VN, which has no pool yet ⇒ en + banner
-    const banner = fill(S.common.region.fallback, { locale: 'English', region: 'Vietnam' });
+    // timezone Asia/Bangkok ⇒ detect() = TH, which has no native pool ⇒ en + banner
+    const banner = fill(S.common.region.fallback, { locale: 'English', region: 'Thailand' });
     await expect(app.getByText(banner)).toBeVisible();
   });
 
