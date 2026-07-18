@@ -27,6 +27,7 @@ import i18n, { UI_LANGUAGES } from '../lib/i18n';
 import { mediaUrl } from '../lib/storage/media-adapter';
 import { ErrorView } from './ErrorView';
 import { UpdateToast } from './UpdateToast';
+import { platformKind } from '../lib/platform';
 import { useAutoHide } from './use-auto-hide';
 import { useFullscreen } from './use-fullscreen';
 import { useQuoteStack } from './use-quote-stack';
@@ -357,7 +358,9 @@ export function App(): ReactElement {
 
       {consentVersion !== LEGAL_VERSION && <Gate />}
 
-      <UpdateToast />
+      {/* PWA reload toast is web-only; native builds ship no service worker
+          (vite.config disables it) and update via the platform's own flow. */}
+      {platformKind() === 'web' && <UpdateToast />}
     </main>
   );
 }

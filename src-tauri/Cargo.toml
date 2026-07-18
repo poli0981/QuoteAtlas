@@ -1,0 +1,34 @@
+[package]
+name = "quoteatlas"
+version = "0.0.0"
+description = "QuoteAtlas — offline-first ambient quote display"
+authors = ["poli0981 / SkullMute"]
+license = "GPL-3.0-only"
+edition = "2021"
+rust-version = "1.77.2"
+
+# The mobile target compiles the app as a lib (Android/iOS JNI entry point calls
+# `run()`); desktop uses the bin in src/main.rs. The lib name must differ from the
+# bin crate name → convention `<crate>_lib`. main.rs therefore calls
+# `quoteatlas_lib::run()`, NOT `quoteatlas::run()`.
+[lib]
+name = "quoteatlas_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2" }
+
+# All-platform plugins (desktop + Android). Desktop-only plugins
+# (single-instance, window-state) are added in the desktop round. The desktop
+# updater (tauri-plugin-updater), process, and dialog plugins are intentionally
+# absent — no consumer this round (docs deviation, see the PR body).
+[dependencies]
+# `protocol-asset` is required because tauri.conf.json enables the asset protocol
+# (local background media). `tauri dev`/`build` would inject it, but plain `cargo
+# build`/`clippy` (used locally and in CI) need it declared here to satisfy the
+# tauri-build feature-allowlist check.
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-os = "2"
+tauri-plugin-store = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-opener = "2"
