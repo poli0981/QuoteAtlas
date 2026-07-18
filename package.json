@@ -31,6 +31,7 @@
     "gen:attributions": "tsx scripts/gen-attributions.ts",
     "gen:tzmap": "tsx scripts/gen-tz-map.ts",
     "import:content": "tsx scripts/import-content.ts && prettier --write \"data/**/*.json\"",
+    "sync:version": "tsx scripts/sync-version.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
