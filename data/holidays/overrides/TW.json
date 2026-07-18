@@ -1,0 +1,29 @@
+{
+  "country": "TW",
+  "add": [
+    {
+      "tag": "chunjie",
+      "rule": "lunar:1-1"
+    },
+    {
+      "tag": "yuanxiao",
+      "rule": "lunar:1-15"
+    },
+    {
+      "tag": "duanwu",
+      "rule": "lunar:5-5"
+    },
+    {
+      "tag": "qixi",
+      "rule": "lunar:7-7"
+    },
+    {
+      "tag": "zhongqiu",
+      "rule": "lunar:8-15"
+    },
+    {
+      "tag": "chongyang",
+      "rule": "lunar:9-9"
+    }
+  ]
+}

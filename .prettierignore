@@ -7,3 +7,4 @@ src-tauri/target/
 src-tauri/gen/
 public/fonts/
 package-lock.json
+content-src/

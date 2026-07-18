@@ -27,6 +27,9 @@ src-tauri/gen/apple/
 # only the subset public/fonts/*.woff2 outputs are tracked
 fonts-src/
 
+# Content import build artifact (the 5 content-src/*.md sources ARE committed)
+content-src/provenance.report.md
+
 # Environment / local overrides
 .env
 .env.*

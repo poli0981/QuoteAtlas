@@ -1,0 +1,21 @@
+{
+  "country": "GB",
+  "add": [
+    {
+      "tag": "burns-night",
+      "rule": "1-25"
+    },
+    {
+      "tag": "st-georges-day",
+      "rule": "4-23"
+    },
+    {
+      "tag": "bonfire-night",
+      "rule": "11-5"
+    },
+    {
+      "tag": "boxing-day",
+      "rule": "12-26"
+    }
+  ]
+}

@@ -1,7 +1,16 @@
 import type { Page } from '@playwright/test';
 import enData from '../data/quotes/en.json' with { type: 'json' };
 import type { QuoteRecord } from '../src/features/quote/types';
-import { LEGAL_VERSION, S, clickToolbar, expect, readStore, seed, test } from './fixtures';
+import {
+  LEGAL_VERSION,
+  S,
+  clickToolbar,
+  expect,
+  readStore,
+  seed,
+  test,
+  waitForInteractive,
+} from './fixtures';
 
 /**
  * Quote display, session-stack navigation and favorites (docs/05 §2, docs/06 §11/§12).
@@ -211,8 +220,8 @@ test.describe('quote modes', () => {
     expect(POOL.map((q) => q.text)).toContain(first);
 
     // The daily seed is date+locale derived, so no boot may move it. Several reloads,
-    // not one: with a 6-quote pool a single repeat could be luck under a broken
-    // (random) selector — three cannot.
+    // not one: a single repeat could be luck under a broken (random) selector — three
+    // cannot.
     for (let i = 0; i < 3; i += 1) {
       await page.goto('/');
       await expect(quote(page)).toHaveText(first);
@@ -224,8 +233,8 @@ test.describe('quote modes', () => {
 
     // The distinguishing property of per-load is that reloading *re-rolls* the pick.
     // Any single load looks exactly like daily mode, so the only assertion with teeth
-    // is "reloads eventually disagree". The pool has 6 records, so a per-load mode
-    // silently behaving like daily would have to be lucky (1/6)^9 to survive 10 loads.
+    // is "reloads eventually disagree". A per-load mode silently behaving like daily
+    // would have to keep re-rolling the same quote across all 10 loads.
     const seen = new Set<string>();
     for (let i = 0; i < 10 && seen.size < 2; i += 1) {
       await page.goto('/');
@@ -241,17 +250,33 @@ test.describe('quote modes', () => {
 });
 
 test.describe('attribution', () => {
-  test('every record in the pool renders its exact attribution line', async ({ app }) => {
-    const caption = app.locator('figcaption');
+  test('renders each record’s exact attribution across one no-repeat pass', async ({ page }) => {
+    // Pin New Year's Day so the pool narrows to the small, deterministic `new-year`
+    // set. A random walk over the full ~190-quote pool can't reliably surface the
+    // handful of linked records, and the anti-repeat ring (engine HISTORY_MAX = 50)
+    // can't guarantee a no-repeat pass over a pool that large. The narrowed pool
+    // sidesteps both while still exercising the linked AND plain branches.
+    await page.clock.setFixedTime(new Date('2026-01-01T09:30:00+07:00'));
+    await seed(page, { consentVersion: LEGAL_VERSION, quoteMode: 'daily' });
+    await page.goto('/');
+    await waitForInteractive(page);
+
+    const nyPool = POOL.filter((q) => q.holidays.includes('new-year'));
+    expect(nyPool.length, 'the new-year pool must have >1 quote to walk').toBeGreaterThan(1);
+
+    const caption = page.locator('figcaption');
     const link = caption.getByRole('link');
     const seen = new Set<string>();
     let linked = 0;
     let plain = 0;
 
-    // The anti-repeat ring never re-picks a shown quote until the pool is exhausted,
-    // so POOL.length - 1 `next` steps walk the whole pool exactly once.
-    for (let i = 0; i < POOL.length; i += 1) {
-      const record = await currentRecord(app);
+    // The pool is far below HISTORY_MAX, so the ring never re-picks: nyPool.length
+    // `next` steps walk the whole (narrowed) pool exactly once.
+    for (let i = 0; i < nyPool.length; i += 1) {
+      const record = await currentRecord(page);
+      expect(record.holidays.includes('new-year'), `${record.id} escaped the holiday filter`).toBe(
+        true,
+      );
       expect(seen.has(record.id), `anti-repeat re-showed ${record.id} within one pass`).toBe(false);
       seen.add(record.id);
 
@@ -270,12 +295,12 @@ test.describe('attribution', () => {
         linked += 1;
       }
 
-      if (i < POOL.length - 1) await clickToolbar(app, S.settings.next);
+      if (i < nyPool.length - 1) await clickToolbar(page, S.settings.next);
     }
 
-    expect(seen.size, 'one pass did not surface the whole pool').toBe(POOL.length);
-    // guard the two branches above: if the data ever lost all links (or all plain
-    // records), the loop would still be green while testing only half the renderer
+    expect(seen.size, 'one pass did not surface the whole new-year pool').toBe(nyPool.length);
+    // guard the two branches: if the data ever lost all links (or all plain records),
+    // the loop would still be green while testing only half the renderer
     expect(linked, 'no record with an attribution link was exercised').toBeGreaterThan(0);
     expect(plain, 'no record without an attribution link was exercised').toBeGreaterThan(0);
   });

@@ -1,14 +1,54 @@
 {
   "dataVersion": 1,
-  "generated": "2026-07-13",
+  "generated": "2026-07-18",
   "locales": [
     {
       "code": "en",
       "file": "en.json",
-      "count": 6,
+      "count": 188,
       "dir": "ltr",
       "fontKey": "serif",
       "regions": ["US", "GB", "AU", "CA", "NZ", "IE"]
+    },
+    {
+      "code": "vi",
+      "file": "vi.json",
+      "count": 200,
+      "dir": "ltr",
+      "fontKey": "serif",
+      "regions": ["VN"]
+    },
+    {
+      "code": "ja",
+      "file": "ja.json",
+      "count": 200,
+      "dir": "ltr",
+      "fontKey": "serif-jp",
+      "regions": ["JP"]
+    },
+    {
+      "code": "ko",
+      "file": "ko.json",
+      "count": 184,
+      "dir": "ltr",
+      "fontKey": "serif-kr",
+      "regions": ["KR"]
+    },
+    {
+      "code": "zh-Hans",
+      "file": "zh-Hans.json",
+      "count": 200,
+      "dir": "ltr",
+      "fontKey": "serif-sc",
+      "regions": ["CN"]
+    },
+    {
+      "code": "zh-Hant",
+      "file": "zh-Hant.json",
+      "count": 200,
+      "dir": "ltr",
+      "fontKey": "serif-tc",
+      "regions": ["TW", "HK"]
     }
   ]
 }

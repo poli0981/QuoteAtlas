@@ -1,8 +1,34 @@
 {
   "country": "VN",
   "add": [
-    { "tag": "tet", "rule": "lunar:1-1", "days": 5 },
-    { "tag": "hung-kings", "rule": "lunar:3-10" },
-    { "tag": "mid-autumn", "rule": "lunar:8-15" }
+    {
+      "tag": "tet",
+      "rule": "lunar:1-1",
+      "days": 5
+    },
+    {
+      "tag": "tet-han-thuc",
+      "rule": "lunar:3-3"
+    },
+    {
+      "tag": "hung-kings",
+      "rule": "lunar:3-10"
+    },
+    {
+      "tag": "tet-doan-ngo",
+      "rule": "lunar:5-5"
+    },
+    {
+      "tag": "vu-lan",
+      "rule": "lunar:7-15"
+    },
+    {
+      "tag": "trung-thu",
+      "rule": "lunar:8-15"
+    },
+    {
+      "tag": "ong-cong-ong-tao",
+      "rule": "lunar:12-23"
+    }
   ]
 }

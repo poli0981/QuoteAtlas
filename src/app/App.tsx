@@ -34,7 +34,16 @@ import { useFullscreen } from './use-fullscreen';
 import { useQuoteStack } from './use-quote-stack';
 
 const INDEX = indexData as unknown as LocaleIndex;
-const POOL = enData.quotes as unknown as QuoteRecord[];
+// `en` is bundled for first paint (always present, R4). Other locale pools load
+// lazily when the resolved locale changes (docs/03 §2). index.json / id-map.json
+// are not quote pools, so they're excluded from the glob.
+const EN_POOL = enData.quotes as unknown as QuoteRecord[];
+const poolLoaders = import.meta.glob<{ default: { quotes: QuoteRecord[] } }>([
+  '../../data/quotes/*.json',
+  '!../../data/quotes/en.json',
+  '!../../data/quotes/index.json',
+  '!../../data/quotes/id-map.json',
+]);
 const POOL_REGIONS = regionsWithPool(INDEX);
 const ALL_REGIONS = [
   ...new Set([...Object.values(tzData.map), ...INDEX.locales.flatMap((l) => l.regions)]),
@@ -83,6 +92,7 @@ export function App(): ReactElement {
   const toggleFavorite = useSettings((s) => s.toggleFavorite);
 
   const [detected, setDetected] = useState<string | null>(null);
+  const [pool, setPool] = useState<QuoteRecord[]>(EN_POOL);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [online, setOnline] = useState(() => navigator.onLine);
   const [bgImageUrl, setBgImageUrl] = useState<string | null>(null);
@@ -100,7 +110,7 @@ export function App(): ReactElement {
   const holidayTags = useMemo(() => resolveActiveHolidays(new Date(), effective), [effective]);
 
   const { quote, goPrev, goNext, canPrev } = useQuoteStack({
-    pool: POOL,
+    pool,
     mode: quoteMode,
     locale,
     rotateSeconds,
@@ -118,6 +128,27 @@ export function App(): ReactElement {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setDetected(detect(tzData.map, { timeZone, languages: navigator.languages }));
   }, []);
+
+  useEffect(() => {
+    // Load the resolved locale's quote pool (docs/03 §2). `en` is already bundled;
+    // other locales load on demand and re-seed the quote stack when they arrive.
+    if (locale === 'en') {
+      setPool(EN_POOL);
+      return undefined;
+    }
+    const loader = poolLoaders[`../../data/quotes/${locale}.json`];
+    if (!loader) {
+      setPool(EN_POOL);
+      return undefined;
+    }
+    let live = true;
+    void loader().then((mod) => {
+      if (live) setPool(mod.default.quotes);
+    });
+    return () => {
+      live = false;
+    };
+  }, [locale]);
 
   useEffect(() => {
     // track connectivity for the offline notice (docs/06 §9)
