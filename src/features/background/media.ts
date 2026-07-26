@@ -139,4 +139,89 @@ export type ImportResult =
   | { ok: true; item: MediaItem }
   /** the picked file is already in the library — `existing` is the item to reuse */
   | { ok: false; reason: 'duplicate'; existing: MediaItem }
-  | { ok: false; reason: 'unsupported' | VideoRejectReason | 'uncompressible' };
+  | { ok: false; reason: 'unsupported' | VideoRejectReason | 'uncompressible' | 'aspect' };
+
+/** A display's pixel dimensions — the reference the aspect gate judges against. */
+export interface ScreenSize {
+  w: number;
+  h: number;
+}
+
+/** Long edge ÷ short edge, or null when the dimensions are unusable. */
+function longShortRatio(w: number, h: number): number | null {
+  if (!Number.isFinite(w) || !Number.isFinite(h) || w <= 0 || h <= 0) return null;
+  return Math.max(w, h) / Math.min(w, h);
+}
+
+/**
+ * The fraction of the media that survives being fitted to the screen with
+ * `cover` — the mode both the image and video backgrounds use (docs/03 §4).
+ *
+ * Orientation-agnostic on purpose: both ratios are normalised to long ÷ short, so
+ * a 9:16 clip on a 16:9 phone scores a perfect fit. It *is* one — held upright —
+ * and refusing it because the device happens to be landscape at import time would
+ * be arbitrary, since the window can rotate a second later.
+ *
+ * Returns 1 for any unusable dimension: a screen we cannot measure must never
+ * block an import.
+ */
+export function visibleFractionUnderCover(
+  mediaW: number,
+  mediaH: number,
+  screenW: number,
+  screenH: number,
+): number {
+  const media = longShortRatio(mediaW, mediaH);
+  const screen = longShortRatio(screenW, screenH);
+  if (media == null || screen == null) return 1;
+  return Math.min(media, screen) / Math.max(media, screen);
+}
+
+/**
+ * A 4:3 picture on a 16:9 display lands *exactly* on a 0.75 threshold, and binary
+ * floating point does not agree with itself about whether (4/3)/(16/9) is 0.75.
+ * Accept the boundary explicitly rather than letting the last bit decide.
+ */
+const ASPECT_EPSILON = 1e-9;
+
+export type AspectDecision = { action: 'accept' } | { action: 'reject'; reason: 'aspect' };
+
+/** Refuse media that `cover` would crop beyond the cap (docs/03 §4, docs/04 §7). */
+export function decideAspect(
+  mediaW: number,
+  mediaH: number,
+  screen: ScreenSize,
+  caps: MediaCaps,
+): AspectDecision {
+  const visible = visibleFractionUnderCover(mediaW, mediaH, screen.w, screen.h);
+  return visible >= caps.minVisibleFraction - ASPECT_EPSILON
+    ? { action: 'accept' }
+    : { action: 'reject', reason: 'aspect' };
+}
+
+/**
+ * Largest ratio term still readable as a shape. Past it, decimals communicate
+ * better: an ultrawide 3440×1440 reduces to "43:18", which tells nobody anything,
+ * where "2.39:1" is a ratio people recognise.
+ */
+const MAX_RATIO_TERM = 21;
+
+function gcd(a: number, b: number): number {
+  return b === 0 ? a : gcd(b, a % b);
+}
+
+/**
+ * A display's shape written the way a person would say it: "16:9" when it reduces
+ * to small whole numbers, "1.54:1" when it does not (plenty of laptop panels do
+ * not reduce). Used to tell the user what shape to aim for instead of only that
+ * their file was wrong.
+ */
+export function formatAspectRatio(w: number, h: number): string {
+  const long = Math.round(Math.max(w, h));
+  const short = Math.round(Math.min(w, h));
+  if (short <= 0 || !Number.isFinite(long)) return '1:1';
+  const g = gcd(long, short) || 1;
+  const a = long / g;
+  const b = short / g;
+  return a <= MAX_RATIO_TERM ? `${a}:${b}` : `${(long / short).toFixed(2)}:1`;
+}

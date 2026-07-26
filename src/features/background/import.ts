@@ -3,6 +3,7 @@ import { importImage } from './import-image';
 import { importVideo } from './import-video';
 import type { MediaProfile } from './limits';
 import { isImageMime, sniffMediaType, type ImportResult, type MediaItem } from './media';
+import { screenSize } from './viewport';
 
 /** SHA-256 of the file's bytes, hex-encoded. Not a security hash — an identity one. */
 async function sha256Hex(file: Blob): Promise<string> {
@@ -27,7 +28,11 @@ export async function importMedia(
   // surface as "unsupported file type" instead of "too big".
   const hashFile = (): Promise<string> => sha256Hex(file);
 
+  // Read the display once, here, so both importers judge against the same screen
+  // and neither of them has to touch the DOM to find out what it is.
+  const screen = screenSize();
+
   return isImageMime(mime)
-    ? importImage(file, profile, media, hashFile)
-    : importVideo(file, profile, media, hashFile);
+    ? importImage(file, profile, media, hashFile, screen)
+    : importVideo(file, profile, media, hashFile, screen);
 }

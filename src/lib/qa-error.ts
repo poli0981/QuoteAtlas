@@ -8,6 +8,7 @@
 
 export type QaErrorCode =
   | 'E_DATA_LOAD'
+  | 'E_MEDIA_ASPECT'
   | 'E_MEDIA_QUOTA'
   | 'E_MEDIA_OVERSIZE'
   | 'E_MEDIA_STORAGE'

@@ -32,7 +32,7 @@ describe('importVideo — memory discipline', () => {
     const hashFile = vi.fn<() => Promise<string>>();
     const { file, readWholeFile } = hugeWebm(caps.videoMaxBytes4k + 1);
 
-    const result = await importVideo(file, 'web', [], hashFile);
+    const result = await importVideo(file, 'web', [], hashFile, { w: 1920, h: 1080 });
 
     expect(result).toEqual({ ok: false, reason: 'size' });
     expect(hashFile).not.toHaveBeenCalled();

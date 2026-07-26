@@ -12,6 +12,7 @@
 import { putMedia } from '../../lib/storage/media-adapter';
 import { capsFor, type MediaProfile } from './limits';
 import {
+  decideAspect,
   decideVideoImport,
   extFor,
   findDuplicate,
@@ -19,6 +20,7 @@ import {
   sniffMediaType,
   type ImportResult,
   type MediaItem,
+  type ScreenSize,
 } from './media';
 
 async function videoMetadata(
@@ -49,6 +51,7 @@ export async function importVideo(
   profile: MediaProfile,
   media: readonly MediaItem[],
   hashFile: () => Promise<string>,
+  screen: ScreenSize,
 ): Promise<ImportResult> {
   const head = new Uint8Array(await file.slice(0, 16).arrayBuffer());
   const mime = sniffMediaType(head);
@@ -68,6 +71,12 @@ export async function importVideo(
   } catch {
     return { ok: false, reason: 'unsupported' };
   }
+
+  // Shape first, like the image path: a clip that would be cropped past the cap
+  // is unusable whatever its duration or size, and rejecting here means never
+  // hashing it (docs/03 §4).
+  const aspect = decideAspect(meta.width, meta.height, screen, caps);
+  if (aspect.action === 'reject') return { ok: false, reason: aspect.reason };
 
   const videoCount = media.filter((m) => m.kind === 'video').length;
   const decision = decideVideoImport(meta.duration, meta.height, file.size, caps, videoCount);

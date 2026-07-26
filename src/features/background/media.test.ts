@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import {
+  decideAspect,
   decideImageImport,
   decideVideoImport,
   extFor,
   findDuplicate,
+  formatAspectRatio,
   isImageMime,
   sniffMediaType,
+  visibleFractionUnderCover,
   type MediaItem,
 } from './media';
 import { capsFor, videoCapBytes } from './limits';
@@ -194,5 +197,108 @@ describe('decideVideoImport', () => {
       action: 'reject',
       reason: 'size',
     });
+  });
+});
+
+describe('visibleFractionUnderCover', () => {
+  it('is 1 for an exact match, in either orientation', () => {
+    expect(visibleFractionUnderCover(1920, 1080, 2560, 1440)).toBeCloseTo(1, 10);
+    // orientation-agnostic: a portrait clip is a perfect fit for a landscape
+    // phone, because the phone can be held upright
+    expect(visibleFractionUnderCover(1080, 1920, 2560, 1440)).toBeCloseTo(1, 10);
+  });
+
+  it('reports the area a cover fit would keep', () => {
+    // 4:3 on 16:9 → the sides survive, (4/3)/(16/9) of the frame
+    expect(visibleFractionUnderCover(1600, 1200, 1920, 1080)).toBeCloseTo(0.75, 10);
+    // square on 16:9 → barely more than half
+    expect(visibleFractionUnderCover(1000, 1000, 1920, 1080)).toBeCloseTo(0.5625, 10);
+    // ultrawide on 16:9 → the ends get cropped instead, same formula
+    expect(visibleFractionUnderCover(2560, 1080, 1920, 1080)).toBeCloseTo(0.75, 4);
+  });
+
+  it('treats unusable dimensions as "cannot tell", never as a reason to block', () => {
+    const cases: [number, number, number, number][] = [
+      [0, 1080, 1920, 1080],
+      [1920, 0, 1920, 1080],
+      [1920, 1080, 0, 0],
+      [Number.NaN, 1080, 1920, 1080],
+      [1920, 1080, Infinity, 1080],
+      [-1920, 1080, 1920, 1080],
+    ];
+    for (const [mw, mh, sw, sh] of cases) {
+      expect(visibleFractionUnderCover(mw, mh, sw, sh)).toBe(1);
+    }
+  });
+});
+
+describe('decideAspect', () => {
+  const caps = capsFor('web');
+  const wide = { w: 1920, h: 1080 };
+
+  it('accepts an exact match and a portrait file of the same shape', () => {
+    expect(decideAspect(3840, 2160, wide, caps)).toEqual({ action: 'accept' });
+    expect(decideAspect(1080, 1920, wide, caps)).toEqual({ action: 'accept' });
+  });
+
+  it('accepts 4:3 on 16:9 — exactly on the threshold', () => {
+    // This is the case binary floats disagree about: (4/3)/(16/9) is 0.75 in
+    // decimal and 0.7500000000000001 in doubles. It must not depend on that.
+    expect(decideAspect(1600, 1200, wide, caps)).toEqual({ action: 'accept' });
+    expect(decideAspect(4, 3, wide, caps)).toEqual({ action: 'accept' });
+  });
+
+  it('rejects a square, which loses 44% of itself on a 16:9 display', () => {
+    expect(decideAspect(1000, 1000, wide, caps)).toEqual({ action: 'reject', reason: 'aspect' });
+  });
+
+  it('scores a 9:16 clip exactly like a 16:9 one — orientation is not the test', () => {
+    // 4:3 display: both normalise to 1.778 vs 1.333, i.e. exactly on the line.
+    const fourThree = { w: 1024, h: 768 };
+    expect(decideAspect(1080, 1920, fourThree, caps)).toEqual({ action: 'accept' });
+    expect(decideAspect(1920, 1080, fourThree, caps)).toEqual({ action: 'accept' });
+
+    // …and both fail together once the display is squarer than that.
+    const fiveFour = { w: 1280, h: 1024 };
+    expect(decideAspect(1080, 1920, fiveFour, caps)).toEqual({
+      action: 'reject',
+      reason: 'aspect',
+    });
+    expect(decideAspect(1920, 1080, fiveFour, caps)).toEqual({
+      action: 'reject',
+      reason: 'aspect',
+    });
+  });
+
+  it('lets everything through when the screen cannot be measured', () => {
+    expect(decideAspect(1000, 1000, { w: 0, h: 0 }, caps)).toEqual({ action: 'accept' });
+  });
+
+  it('is stricter on a tall phone, which is the point', () => {
+    // 20:9 phone: a 4:3 photo really does lose 40% of itself to the crop
+    const phone = { w: 1080, h: 2400 };
+    expect(decideAspect(1600, 1200, phone, caps)).toEqual({ action: 'reject', reason: 'aspect' });
+    expect(decideAspect(1920, 1080, phone, caps)).toEqual({ action: 'accept' });
+  });
+});
+
+describe('formatAspectRatio', () => {
+  it('reduces common displays to the shape people name', () => {
+    expect(formatAspectRatio(1920, 1080)).toBe('16:9');
+    expect(formatAspectRatio(1024, 768)).toBe('4:3');
+    // fully reduced, so a 16:10 panel reads as 8:5 — the same shape, said shorter
+    expect(formatAspectRatio(2560, 1600)).toBe('8:5');
+    // orientation-agnostic, like the gate itself
+    expect(formatAspectRatio(1080, 2400)).toBe('20:9');
+  });
+
+  it('falls back to decimals when the reduction is not a shape', () => {
+    expect(formatAspectRatio(1512, 982)).toBe('1.54:1');
+    // 3440×1440 reduces to 43:18, which communicates nothing
+    expect(formatAspectRatio(3440, 1440)).toBe('2.39:1');
+  });
+
+  it('never divides by zero', () => {
+    expect(formatAspectRatio(0, 0)).toBe('1:1');
   });
 });
