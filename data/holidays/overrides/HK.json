@@ -24,6 +24,10 @@
     {
       "tag": "chongyang",
       "rule": "lunar:9-9"
+    },
+    {
+      "tag": "qingming",
+      "rule": "term:qingming"
     }
   ]
 }

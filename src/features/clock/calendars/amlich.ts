@@ -248,6 +248,49 @@ export function convertLunar2Solar(
   return jdToDate(monthStart + lunarDay - 1);
 }
 
+/** Sun's ecliptic longitude in DEGREES (0..360) at local midnight of a day number. */
+function sunLongitudeDeg(dayNumber: number, timeZone: number): number {
+  return (sunLongitude(dayNumber - 0.5 - timeZone / 24) * 180) / PI;
+}
+
+/**
+ * The civil date in `year` on which the sun reaches ecliptic longitude
+ * `targetDeg` — i.e. the first day of that solar term (tiết khí / 節気 / 节气,
+ * docs/05 §4). The 24 terms sit at multiples of 15°: 315° is lập xuân / 立春,
+ * 15° is thanh minh / 清明, 270° is đông chí.
+ *
+ * A term belongs to the day *containing* the crossing, not the next one, which
+ * is why the test is `target ∈ (longitude at this midnight, longitude at the
+ * next]`. The sun advances ~1°/day so exactly one day matches — except within a
+ * few degrees of the winter solstice, where a calendar year can contain the same
+ * longitude twice (once each January and December); the terms used for holidays
+ * are nowhere near that, and the first crossing is returned.
+ *
+ * `timeZone` matters for the same reason it does for the lunar months: a
+ * crossing minutes either side of local midnight lands on different days in
+ * different zones.
+ */
+export function solarTermDate(targetDeg: number, year: number, timeZone = 7): SolarDate | null {
+  // The wrap branch below tests `target > a || target <= b`, which is true for
+  // ANY target above 360 — so an out-of-range longitude would silently resolve to
+  // the equinox instead of failing. Reject it here rather than there.
+  if (!(targetDeg >= 0 && targetDeg < 360)) return null;
+
+  const start = jdFromDate(1, 1, year);
+  const end = jdFromDate(31, 12, year);
+  for (let jd = start; jd <= end; jd++) {
+    const a = sunLongitudeDeg(jd, timeZone);
+    const b = sunLongitudeDeg(jd + 1, timeZone);
+    // `a > b` is the 360°→0° wrap at the vernal equinox.
+    const crossed = a <= b ? targetDeg > a && targetDeg <= b : targetDeg > a || targetDeg <= b;
+    if (crossed) return jdToDate(jd);
+  }
+
+  /* v8 ignore next 2 -- unreachable: the sun sweeps every in-range longitude
+     exactly once per year, and the guard above rejects the rest. */
+  return null;
+}
+
 const CAN = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'];
 const CHI = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
 const MONTHS = [

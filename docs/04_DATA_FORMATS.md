@@ -85,8 +85,39 @@ of** `date-holidays` output:
   "remove": [ "some-wrong-entry-name" ] }
 ```
 
-`lunar:M-D` rules are evaluated by the in-house Vietnamese lunar module
-(doc 05 §5) — never by the library — so VN dates are always UTC+7-correct.
+### Rule grammar
+
+Implemented in `src/features/holidays/rules.ts`; the schema pattern in
+`data/schema/holiday-override.schema.json` is the gate.
+
+| form | means | example |
+| --- | --- | --- |
+| `M-D` | fixed Gregorian date | `12-25` |
+| `lunar:M-D` | lunisolar date, in the region's own zone | `lunar:1-1` |
+| `easter` | Easter Sunday (Gregorian computus) | `easter` |
+| `easter±N` | N days from Easter | `easter-47` |
+| `nth:M-W-N` | Nth weekday W of month M (W: 0=Sun…6=Sat) | `nth:5-0-2` |
+| `last:M-W` | last weekday W of month M | `last:5-1` |
+| `term:NAME` | first day of a solar term (tiết khí / 節気) | `term:qingming` |
+| `term:NAME±N` | N days from a solar term | `term:lichun-1` |
+
+The offset forms are what make holidays *defined relative to something else*
+expressible at all: Shrove Tuesday is Easter − 47, Mothering Sunday is
+Easter − 21, and setsubun is the day before lập xuân. Written as fixed dates they
+would be wrong in most years. Named terms live in `TERM_LONGITUDE`; an unnamed
+one resolves to null, because a typo is not a holiday.
+
+⚠️ **Lunisolar rules and solar terms are resolved in the region's own zone**, not
+Vietnam's. A new moon or a term crossing minutes either side of local midnight
+lands on a different day in a different zone — which is exactly why Tết and 春节
+fall a day apart in 1968 and 2007 (doc 05 §5, R8). VN is UTC+7, CN/TW/HK/MO/SG/MY
+UTC+8, KR/JP UTC+9. `lunar:M-D` is evaluated by the in-house module (doc 05 §5),
+never by a library.
+
+A country's own `add` entry for a tag **shadows** the international rule for the
+same tag rather than adding a second date for it — that is how Britain gets
+Mothering Sunday instead of the second Sunday of May. `remove` cannot express
+this: it drops the tag everywhere, including the country's own replacement.
 
 ## 4. Attribution link allowlist — `data/allowlist-domains.json`
 

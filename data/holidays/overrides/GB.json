@@ -16,6 +16,14 @@
     {
       "tag": "boxing-day",
       "rule": "12-26"
+    },
+    {
+      "tag": "pancake-day",
+      "rule": "easter-47"
+    },
+    {
+      "tag": "mothers-day",
+      "rule": "easter-21"
     }
   ]
 }

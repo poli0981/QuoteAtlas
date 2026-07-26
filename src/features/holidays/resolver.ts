@@ -2,41 +2,32 @@
  * Holiday resolution & precedence (docs/05 §4).
  *
  * This module owns `holidayFilter` (imported by the quote engine) and the
- * rule/override-driven resolver. `lunar:M-D` rules are evaluated by the in-house
- * amlich module (UTC+7) — never by a library (CLAUDE.md R8).
+ * override-driven resolver; the rule grammar itself lives in `rules.ts`.
+ * Lunisolar rules are evaluated by the in-house amlich module — never by a
+ * library (CLAUDE.md R8) — in the region's OWN zone, so 春节 in China is not
+ * computed at Vietnam's UTC+7.
  *
  * NOTE: layering the `date-holidays` library on top (per-country statutory rules
- * + a library-name→tag mapping) is a Phase 2 follow-up; v1.0's holidays (Tết,
- * mid-autumn, Hùng Kings, new-year) are all expressible as override rules here.
+ * + a library-name→tag mapping) is a Phase 2 follow-up; the holidays shipped so
+ * far are all expressible as override rules here.
  */
-import { convertLunar2Solar } from '../clock/calendars/amlich';
 import type { QuoteRecord } from '../quote/types';
+import { lunarZoneFor, resolveRule, type RuleDate } from './rules';
 import type { HolidayOverride, HolidayTagRegistry, HolidayTags } from './types';
-
-const LUNAR_PREFIX = 'lunar:';
 
 function dayIndex(y: number, m: number, d: number): number {
   return Math.floor(Date.UTC(y, m - 1, d) / 86400000);
 }
 
 /**
- * Resolve a holiday rule to its solar (month, day) in a given year.
- * Supports `M-D` (fixed Gregorian) and `lunar:M-D` (VN lunar via amlich, UTC+7).
- * Returns null for malformed or non-existent (e.g. missing leap) rules.
+ * Resolve a holiday rule to its Gregorian (month, day) in a given year, for a
+ * country. Null for a malformed rule, or one naming a date that does not occur
+ * that year (a missing leap month, a 5th Monday in a month with four).
+ *
+ * See `rules.ts` for the grammar.
  */
-export function resolveRuleDate(rule: string, year: number): { m: number; d: number } | null {
-  const isLunar = rule.startsWith(LUNAR_PREFIX);
-  const body = isLunar ? rule.slice(LUNAR_PREFIX.length) : rule;
-  const parts = body.split('-');
-  if (parts.length !== 2) return null;
-  const m = Number(parts[0]);
-  const d = Number(parts[1]);
-  if (!Number.isInteger(m) || !Number.isInteger(d)) return null;
-  if (!isLunar) return { m, d };
-
-  const solar = convertLunar2Solar(d, m, year, false);
-  if (solar.y === 0) return null;
-  return { m: solar.m, d: solar.d };
+export function resolveRuleDate(rule: string, year: number, country = 'VN'): RuleDate | null {
+  return resolveRule(rule, year, lunarZoneFor(country));
 }
 
 /**
@@ -53,14 +44,23 @@ export function resolve(
   const removed = new Set(overrides?.remove ?? []);
   const matched = new Set<string>();
   const cur = dayIndex(date.y, date.m, date.d);
+  const zone = lunarZoneFor(country);
 
   for (const entry of overrides?.add ?? []) {
     if (removed.has(entry.tag)) continue;
-    const rd = resolveRuleDate(entry.rule, date.y);
-    if (!rd) continue;
-    const start = dayIndex(date.y, rd.m, rd.d);
-    const span = entry.days ?? 1;
-    if (cur >= start && cur < start + span) matched.add(entry.tag);
+    // Resolve in the PREVIOUS year too: a rule can land in late December and run
+    // into January (Tết's 5-day span never does, but `12-31` with days: 2 does,
+    // and so would a lunar rule that slips across the boundary).
+    for (const y of [date.y, date.y - 1]) {
+      const rd = resolveRule(entry.rule, y, zone);
+      if (!rd) continue;
+      const start = dayIndex(y, rd.m, rd.d);
+      const span = entry.days ?? 1;
+      if (cur >= start && cur < start + span) {
+        matched.add(entry.tag);
+        break;
+      }
+    }
   }
 
   const national: string[] = [];

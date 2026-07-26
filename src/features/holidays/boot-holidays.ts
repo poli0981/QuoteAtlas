@@ -28,9 +28,15 @@ for (const mod of Object.values(overrideMods)) {
 export function resolveActiveHolidays(date: Date, country: string | null): HolidayTags {
   if (!country) return { national: [], international: [] };
   const own = OVERRIDES[country];
+  const ownTags = new Set((own?.add ?? []).map((a) => a.tag));
   const merged: HolidayOverride = {
     country,
-    add: [...INTL_ADDS, ...(own?.add ?? [])],
+    // A country's own entry SHADOWS the international one for the same tag,
+    // rather than adding a second date for it. Britain's Mothering Sunday is
+    // Easter − 21, not the second Sunday of May; without shadowing, a British
+    // user would get "mothers-day" twice a year. `remove` cannot express this —
+    // it drops the tag everywhere, including the country's own replacement.
+    add: [...INTL_ADDS.filter((a) => !ownTags.has(a.tag)), ...(own?.add ?? [])],
     ...(own?.remove ? { remove: own.remove } : {}),
   };
   return resolve(
