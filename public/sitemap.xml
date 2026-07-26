@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  One URL, because there is exactly one route: src/app/App.tsx renders the
+  notFound view for any path other than "/" (there is no router). The UI
+  language is a stored setting rather than a path segment, so there are no
+  per-language URLs to declare with hreflang either.
+
+  No <lastmod>: nothing regenerates this file, so a date here would start
+  lying the moment the app changes.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://qouteatlas.app/</loc>
+  </url>
+</urlset>

@@ -93,6 +93,18 @@ export default tseslint.config(
     },
   },
 
+  // R1 does not reach maintainer tooling: the fence exists so the *shipped app*
+  // makes no network calls it did not declare. smoke-web.ts is a Node CLI the
+  // maintainer runs by hand against the deployed site — nothing it does is in a
+  // user's process. Scoped to the one file rather than all of scripts/ so the
+  // fence still catches a build script that starts phoning home.
+  {
+    files: ['scripts/smoke-web.ts'],
+    rules: {
+      'no-restricted-globals': 'off',
+    },
+  },
+
   // docs/07 §6 — ban physical-direction Tailwind utilities / CSS props in src/.
   // Catches static className string literals; dynamic (clsx/template) cases are a
   // documented coverage gap (supplement with a grep lint-script if needed).

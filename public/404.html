@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>QuoteAtlas — page not found</title>
     <!--
-      The host-level 404 (docs/08 §5): served by Cloudflare Pages for an unknown
-      path before any JS runs. Once the app or its service worker is in charge,
-      the in-app ErrorView takes over and *is* translated.
+      The host-level 404 (docs/08 §5): served by Cloudflare with a real 404
+      status for an unknown path, before any JS runs (wrangler.jsonc
+      `not_found_handling: "404-page"`). Note the host's html_handling serves
+      this file at /404 and 307s /404.html to it. Once the service worker is in
+      charge — i.e. offline — the in-app ErrorView takes over and *is* translated.
 
       Styles live in an external file, not a <style> block: the shipped CSP is
       `style-src 'self'` with no 'unsafe-inline' (docs/09 §1), which would block

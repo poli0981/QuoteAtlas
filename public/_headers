@@ -1,4 +1,4 @@
-## Cloudflare Pages response headers (docs/09 §1).
+## Cloudflare Workers Static Assets response headers (docs/09 §1).
 ##
 ## No third-party origins anywhere, so 'self' holds and NOTHING needs
 ## 'unsafe-inline'. Vite emits external scripts/styles, and React applies dynamic
@@ -15,3 +15,20 @@
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Cross-Origin-Opener-Policy: same-origin
+
+## Vite gives everything under /assets/ a content hash, so those bytes can never
+## change behind a URL. Cloudflare's default for static assets is
+## `public, max-age=0, must-revalidate`, i.e. a revalidation round-trip on every
+## single load of the bundle.
+##
+## Rules are ADDITIVE and a header set twice is comma-joined, so anything named
+## here must NOT also appear in the /* block above (overriding would need a
+## `! Header-Name` line first).
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600

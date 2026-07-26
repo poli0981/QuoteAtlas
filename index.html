@@ -3,7 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>QuoteAtlas</title>
+
+    <title>QuoteAtlas — ambient quote display</title>
+    <meta
+      name="description"
+      content="One fully attributed quote at a time, matched to your region, over a background you choose. Offline-first, no accounts, no tracking."
+    />
+    <link rel="canonical" href="https://qouteatlas.app/" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="color-scheme" content="dark" />
+
+    <!--
+      lang="en" above is only the pre-hydration default; src/app/App.tsx keeps it
+      in step with the chosen UI language, which is a stored setting rather than a
+      URL segment. That is also why there are no hreflang alternates: there is one
+      URL, so there would be nothing to point them at.
+    -->
+
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="QuoteAtlas" />
+    <meta property="og:url" content="https://qouteatlas.app/" />
+    <meta property="og:title" content="QuoteAtlas — ambient quote display" />
+    <meta
+      property="og:description"
+      content="One fully attributed quote at a time, matched to your region, over a background you choose. Offline-first, no accounts, no tracking."
+    />
+    <meta property="og:image" content="https://qouteatlas.app/icon-512.png" />
+    <meta property="og:locale" content="en_US" />
+    <!-- `summary`, not `summary_large_image`: og:image is the square app mark, not
+         1200x630 card artwork. Flip it when real artwork exists (docs/00 §8.6). -->
+    <meta name="twitter:card" content="summary" />
+
+    <!--
+      A `type` that is not a JS MIME type makes this a data block rather than a
+      script: "prepare the script element" returns before the CSP step, so
+      `script-src 'self'` does not police it and no 'unsafe-inline' is needed
+      (docs/09 §1). e2e/csp.spec.ts asserts both that this block is present and
+      that the page boots with zero CSP violations, on chromium and webkit.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "QuoteAtlas",
+        "url": "https://qouteatlas.app/",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "license": "https://www.gnu.org/licenses/gpl-3.0.html"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
