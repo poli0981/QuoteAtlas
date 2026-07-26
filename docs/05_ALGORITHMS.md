@@ -67,6 +67,24 @@ holidayFilter(pool, {national, international}):
 Multiple holidays on one day → union of their tags at the winning precedence
 level.
 
+**Rule grammar** (full table in doc 04 §3, implementation in
+`features/holidays/rules.ts`): `M-D`, `lunar:M-D`, `easter[±N]`, `nth:M-W-N`,
+`last:M-W`, `term:NAME[±N]`. Solar terms come from `solarTermDate()` in doc 05 §5
+— the sun's ecliptic longitude at multiples of 15°, where 315° is lập xuân and
+15° is thanh minh.
+
+Two things the grammar has to get right that a date list cannot:
+
+- **Relative holidays.** Shrove Tuesday is Easter − 47 and setsubun is the day
+  before lập xuân. Both move by weeks between years.
+- **Zone.** Lunisolar dates and solar terms are resolved in the region's own zone
+  (VN +7, CN/TW/HK/MO/SG/MY +8, KR/JP +9). Resolving China's 春节 at Vietnam's
+  UTC+7 puts it on the wrong day in 1968 and 2007, the same divergence §5
+  describes.
+
+Each rule is also evaluated against the **previous** year, so a span starting in
+late December still matches in January.
+
 ## 5. Vietnamese lunar calendar — `features/clock/calendars/amlich.ts`
 
 In-house implementation of the **Hồ Ngọc Đức algorithm** (astronomical new

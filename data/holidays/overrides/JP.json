@@ -25,6 +25,10 @@
     {
       "tag": "tsukimi",
       "rule": "lunar:8-15"
+    },
+    {
+      "tag": "setsubun",
+      "rule": "term:lichun-1"
     }
   ]
 }

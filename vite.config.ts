@@ -164,6 +164,9 @@ export default defineConfig({
         'src/features/quote/engine.ts': { lines: 100 },
         'src/features/quote/attribution.ts': { lines: 100 },
         'src/features/holidays/resolver.ts': { lines: 100 },
+        // The rule grammar decides what day a holiday lands on; a wrong answer
+        // here shows the wrong quotes to everyone in a country for a day.
+        'src/features/holidays/rules.ts': { lines: 100 },
         'src/features/region/detect.ts': { lines: 100 },
         'src/features/clock/calendars/amlich.ts': { lines: 100 },
         'src/features/background/compressor.ts': { lines: 100 },

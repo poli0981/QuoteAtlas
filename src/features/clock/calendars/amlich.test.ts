@@ -4,6 +4,7 @@ import {
   convertLunar2Solar,
   convertSolar2Lunar,
   formatVi,
+  solarTermDate,
   type LunarDate,
 } from './amlich';
 import vectors from './fixtures/amlich-vectors.json';
@@ -252,6 +253,40 @@ describe('amlich — can-chi & formatting', () => {
     expect(formatVi({ day: 1, month: 6, year: 2025, leap: true })).toBe(
       'ngày 1 tháng Sáu (nhuận), Ất Tỵ',
     );
+  });
+});
+
+describe('amlich — solar terms', () => {
+  it('places the terms on the days they are published on', () => {
+    const f = (t: { d: number; m: number; y: number } | null): string =>
+      t == null ? 'null' : `${String(t.m).padStart(2, '0')}-${String(t.d).padStart(2, '0')}`;
+    // 清明 at UTC+8
+    expect(f(solarTermDate(15, 2024, 8))).toBe('04-04');
+    expect(f(solarTermDate(15, 2026, 8))).toBe('04-05');
+    // 立春 at UTC+9. 2025 is the one that matters: it fell on 3 Feb for the first
+    // time in 124 years, which is why setsubun 2025 was 2 Feb rather than 3 Feb.
+    expect(f(solarTermDate(315, 2025, 9))).toBe('02-03');
+    expect(f(solarTermDate(315, 2024, 9))).toBe('02-04');
+    // solstices / equinoxes
+    expect(f(solarTermDate(270, 2024, 7))).toBe('12-21');
+    expect(f(solarTermDate(0, 2025, 8))).toBe('03-20');
+  });
+
+  it('is timezone-sensitive, which is the whole reason it takes a zone', () => {
+    // Somewhere in 1900–2100 a crossing must straddle midnight between UTC+7 and
+    // UTC+9; if none did, the parameter would be decoration.
+    let differing = 0;
+    for (let y = 1950; y <= 2050; y++) {
+      const a = solarTermDate(315, y, 7);
+      const b = solarTermDate(315, y, 9);
+      if (a?.d !== b?.d) differing++;
+    }
+    expect(differing).toBeGreaterThan(0);
+  });
+
+  it('returns null for a longitude the sun never reaches', () => {
+    expect(solarTermDate(400, 2025, 8)).toBeNull();
+    expect(solarTermDate(-10, 2025, 8)).toBeNull();
   });
 });
 
