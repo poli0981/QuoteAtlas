@@ -1,8 +1,8 @@
 # QuoteAtlas release (docs/12 §3, docs/13). Runs on a v* tag: build + sign the
-# Android APK, then cut a GitHub Release with the APK + SHA256SUMS. Web is deployed
-# by the Cloudflare Workers Builds git integration on the main push (not from here —
-# the account has no classic Pages project to `wrangler pages deploy` into). Desktop
-# bundles + the minisign updater are out of scope this round. All actions SHA-pinned.
+# Android APK, build the three desktop bundle sets, then cut a GitHub Release with
+# everything plus SHA256SUMS. Web is deployed by the Cloudflare Workers Builds git
+# integration on the main push, not from here. The minisign updater is still out of
+# scope — desktop has no in-app update path. All actions SHA-pinned.
 name: Release
 
 on:
@@ -64,21 +64,113 @@ jobs:
           retention-days: 7
           if-no-files-found: error
 
+  desktop:
+    # Unsigned bundles: there is no code-signing certificate (docs/13 §2), so
+    # Windows shows a SmartScreen warning and macOS needs a right-click → Open.
+    # Documented in the README rather than papered over.
+    #
+    # fail-fast is off so one runner's trouble does not throw away the other two
+    # platforms' bundles — and `release` below does not require this job at all,
+    # so a bad macOS day cannot block the Android release.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            artifact: desktop-windows
+            bundles: nsis
+          - os: macos-latest
+            artifact: desktop-macos
+            bundles: dmg
+            # Built as a universal binary so one dmg covers Apple silicon and
+            # Intel; the runner is arm64, so the x86_64 target must be added.
+            target: universal-apple-darwin
+            extra-rust-targets: x86_64-apple-darwin,aarch64-apple-darwin
+          - os: ubuntu-22.04
+            artifact: desktop-linux
+            bundles: appimage,deb,rpm
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install Linux bundling dependencies
+        if: matrix.os == 'ubuntu-22.04'
+        # webkit2gtk 4.1 is the Tauri v2 webview; the rest are what the AppImage,
+        # deb and rpm bundlers shell out to.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev \
+            patchelf file rpm
+      - uses: dtolnay/rust-toolchain@e97e2d8cc328f1b50210efc529dca0028893a2d9 # v1 (stable)
+        with:
+          toolchain: stable
+          targets: ${{ matrix.extra-rust-targets || '' }}
+      - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
+        with:
+          workspaces: src-tauri
+          key: ${{ matrix.artifact }}
+      - run: npm ci
+      - run: npm run sync:version
+      - name: Build bundles
+        run: npm run tauri -- build --bundles ${{ matrix.bundles }} ${{ matrix.target && format('--target {0}', matrix.target) || '' }}
+      - name: Collect the bundles under one predictable name
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          mkdir -p out
+          # The bundler nests output per format and per target, and the file names
+          # differ by platform — glob for the artefact extensions instead of
+          # spelling out paths that change with every bundler version.
+          found=0
+          while IFS= read -r f; do
+            ext="${f##*.}"
+            dest="out/quoteatlas-v${version}-${{ matrix.artifact }}.${ext}"
+            # Linux emits three bundles with three extensions, so names do not
+            # collide — but if a bundler ever emits two of the same kind, the
+            # rename would quietly drop one. Say so instead.
+            test ! -e "$dest" || { echo "two bundles both map to $dest: $f"; exit 1; }
+            cp "$f" "$dest"
+            found=$((found + 1))
+          done < <(find src-tauri/target -type f \
+            \( -name '*.exe' -o -name '*.dmg' -o -name '*.AppImage' -o -name '*.deb' -o -name '*.rpm' \) \
+            -path '*bundle*')
+          test "$found" -gt 0 || { echo "no desktop bundle was produced"; exit 1; }
+          ls -la out
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ matrix.artifact }}
+          path: out/*
+          retention-days: 7
+          if-no-files-found: error
+
   release:
-    needs: [android]
+    # Android is required; desktop is not. `!cancelled()` lets this run even when
+    # a desktop matrix leg failed, so a signed APK still ships — the release then
+    # simply carries fewer files.
+    needs: [android, desktop]
+    if: ${{ !cancelled() && needs.android.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: android-apk
-      - name: Generate SHA256SUMS
-        run: sha256sum quoteatlas-v*-android-arm64.apk > SHA256SUMS
+          path: release
+          merge-multiple: true
+      - name: Check the APK is present and check-sum everything that is
+        run: |
+          cd release
+          ls -la
+          # The APK is the one artefact a release may not go out without.
+          ls quoteatlas-v*-android-arm64.apk >/dev/null
+          sha256sum * > SHA256SUMS
+          cat SHA256SUMS
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         with:
-          files: |
-            quoteatlas-v*-android-arm64.apk
-            SHA256SUMS
+          files: release/*
           generate_release_notes: true
           fail_on_unmatched_files: true

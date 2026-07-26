@@ -1,0 +1,13 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "desktop",
+  "description": "Desktop-only window control (docs/06 §8). Fullscreen on desktop hides the window chrome, which the web Fullscreen API cannot do inside a Tauri webview — src/app/use-fullscreen.ts calls setFullscreen there instead. Android has no window chrome to hide and never takes this path.",
+  "platforms": ["windows", "macOS", "linux"],
+  "windows": ["main"],
+  "permissions": [
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-is-fullscreen",
+    "core:window:allow-unminimize",
+    "core:window:allow-set-focus"
+  ]
+}
