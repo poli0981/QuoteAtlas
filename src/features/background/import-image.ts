@@ -54,7 +54,15 @@ export async function importImage(
 
   const caps = capsFor(profile);
   const imageCount = media.filter((m) => m.kind === 'image').length;
-  const dims = await dimensions(file);
+  // A decode failure here means the bytes sniffed as an image but are truncated
+  // or corrupt — that IS an unsupported file, and saying so keeps the caller's
+  // catch-all free to mean "something else went wrong" (docs/06 §9).
+  let dims: { w: number; h: number };
+  try {
+    dims = await dimensions(file);
+  } catch {
+    return { ok: false, reason: 'unsupported' };
+  }
   const decision = decideImageImport(Math.max(dims.w, dims.h), file.size, caps, imageCount);
   // decideImageImport only ever rejects for 'library-full' (an over-cap image is
   // compressed, not refused), so the file is known-importable here either way —

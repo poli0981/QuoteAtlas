@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { capsFor, classifyImage, imageCapBytes, targetEdge } from './limits';
+import { capsFor, classifyImage, imageCapBytes, profileFor, targetEdge } from './limits';
 
 const MB = 1024 * 1024;
 
@@ -23,6 +23,22 @@ describe('capsFor', () => {
   it('shares byte/duration caps across profiles', () => {
     expect(capsFor('web').videoMaxBytes1080).toBe(capsFor('desktop-android').videoMaxBytes1080);
     expect(capsFor('web').videoMaxSeconds).toBe(capsFor('desktop-android').videoMaxSeconds);
+  });
+});
+
+describe('profileFor', () => {
+  it('browser gets the web profile; installed shells get the roomier one', () => {
+    expect(profileFor('web')).toBe('web');
+    expect(profileFor('android')).toBe('desktop-android');
+    expect(profileFor('desktop')).toBe('desktop-android');
+  });
+
+  it('an installed shell really does get higher caps than the browser', () => {
+    // Regression: the media UI hardcoded capsFor('web'), so DESKTOP_ANDROID was
+    // dead at runtime and Android silently kept the browser's 25-image cap.
+    expect(capsFor(profileFor('android')).imageMaxFiles).toBeGreaterThan(
+      capsFor(profileFor('web')).imageMaxFiles,
+    );
   });
 });
 

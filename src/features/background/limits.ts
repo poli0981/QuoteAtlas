@@ -4,6 +4,7 @@
  * No literal cap value may appear anywhere else in the codebase (enforced by the
  * grep meta-test in limits.test.ts). Consumers read caps via `capsFor(profile)`.
  */
+import type { PlatformKind } from '../../lib/platform';
 
 const MB = 1024 * 1024;
 
@@ -48,6 +49,16 @@ const DESKTOP_ANDROID: MediaCaps = {
 /** The media caps for a platform profile (docs/02 §4). */
 export function capsFor(profile: MediaProfile): MediaCaps {
   return profile === 'web' ? WEB : DESKTOP_ANDROID;
+}
+
+/**
+ * The cap profile a running platform belongs to (docs/02 §4). Installed shells
+ * get the roomier profile because they own real disk; the browser does not. The
+ * UI must go through this rather than hardcoding a profile — until it did, the
+ * `desktop-android` caps were unreachable at runtime.
+ */
+export function profileFor(kind: PlatformKind): MediaProfile {
+  return kind === 'web' ? 'web' : 'desktop-android';
 }
 
 export type ImageClass = 'P1080' | 'P4K' | 'OVERSIZE';
