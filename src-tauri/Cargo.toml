@@ -1,6 +1,6 @@
 [package]
 name = "quoteatlas"
-version = "0.1.0"
+version = "0.2.0"
 description = "QuoteAtlas — offline-first ambient quote display"
 authors = ["poli0981 / SkullMute"]
 license = "GPL-3.0-only"
