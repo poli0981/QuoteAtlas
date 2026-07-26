@@ -24,4 +24,5 @@ published before the first signed release, docs/13 §2)_.
 
 QuoteAtlas is offline-first with no backend. The attack surface is (1) the update
 channel, (2) user-supplied media files, (3) the supply chain, (4) the web host —
-see `docs/09` (maintainer-internal) for the full threat model.
+see [`docs/09_SECURITY_PRIVACY.md`](docs/09_SECURITY_PRIVACY.md) for the full
+threat model.
