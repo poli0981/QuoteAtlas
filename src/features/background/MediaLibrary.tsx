@@ -11,7 +11,8 @@ import {
 import { useSettings } from '../settings/store';
 import { importMedia } from './import';
 import { capsFor, profileFor } from './limits';
-import type { MediaItem } from './media';
+import { formatAspectRatio, type MediaItem } from './media';
+import { screenSize } from './viewport';
 
 type Purpose = 'image' | 'video' | 'slideshow';
 
@@ -157,7 +158,10 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
           // A refusal is a normal outcome, but a bug report is far more useful
           // when it says *which* one the user hit (docs/04 §9).
           pushLog({ level: 'warn', code: 'E_MEDIA_REJECTED', msg: `import refused: ${r.reason}` });
-          setError(t(`err.${errKey(r.reason)}`));
+          // `ratio` is only read by err.aspect; i18next drops unused
+          // interpolations, so every reason can share one call.
+          const screen = screenSize();
+          setError(t(`err.${errKey(r.reason)}`, { ratio: formatAspectRatio(screen.w, screen.h) }));
           return;
         }
         addMedia(r.item);
