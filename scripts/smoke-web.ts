@@ -8,6 +8,16 @@
  * dropped CSP, a soft 404 coming back, assets losing their immutable caching)
  * that would ship silently with every gate green. This is the check that fails.
  *
+ * Every existence check asserts the CONTENT TYPE, never the status alone. Under
+ * an SPA fallback a missing file answers `200` with the app shell, so a status
+ * check passes for a file that is not there — which is exactly how the first
+ * version of this script reported a green `/apple-touch-icon.png` while the
+ * server was handing out `text/html`.
+ *
+ * Cloudflare caches at the edge, so a stale entry can outlive a deploy: a failure
+ * here means "purge the cache, then re-run" at least as often as it means "the
+ * build is wrong". `CF-Cache-Status: HIT` on a path you know changed is the tell.
+ *
  * Run after a Workers build lands:  npm run smoke:web
  * Against a preview instead:        npm run smoke:web -- https://<preview-host>
  */
@@ -93,8 +103,21 @@ async function main(): Promise<void> {
     record(`${asset} is cached immutably`, cache.includes('immutable'), cache || '(absent)');
   }
 
-  const icon = await head('/apple-touch-icon.png');
-  record('/apple-touch-icon.png exists', icon.status === 200, `status ${icon.status}`);
+  for (const [path, type] of [
+    ['/apple-touch-icon.png', 'image/png'],
+    ['/icon-192.png', 'image/png'],
+    ['/icon-512.png', 'image/png'],
+    ['/icon-maskable-512.png', 'image/png'],
+    ['/manifest.webmanifest', 'application/manifest+json'],
+  ] as const) {
+    const res = await head(path);
+    const got = res.headers.get('content-type') ?? '';
+    record(
+      `${path} is served as ${type}`,
+      res.status === 200 && got.includes(type),
+      `status ${res.status}, type ${got || '(none)'}`,
+    );
+  }
 
   const width = Math.max(...checks.map((c) => c.name.length));
   for (const c of checks) {
