@@ -37,7 +37,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "gen:amlich": "tsx scripts/gen-amlich-vectors.ts"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",

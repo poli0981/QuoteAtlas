@@ -10,5 +10,8 @@
     "search": "Tìm quốc gia…",
     "reset": "Về tự động nhận diện",
     "fallback": "Đang hiển thị {{locale}} — chưa có kho cho {{region}}"
+  },
+  "calendar": {
+    "lunarVi": "Âm lịch"
   }
 }

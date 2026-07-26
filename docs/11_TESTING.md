@@ -16,12 +16,29 @@ Coverage gates: **100 %** line coverage on `amlich.ts`, `engine.ts`,
 
 ## 2. Vietnamese lunar vectors (the critical fixture)
 
-`fixtures/amlich-vectors.json`: ≥ 400 solar↔lunar pairs spanning **1900–2100**,
-including every Tết date, all leap-month years, and the known VN/CN divergence
-years (1968, 1985, 2007 era). ⚠️ Human step, once: generate/verify vectors
-against Hồ Ngọc Đức's published tables before trusting the module — the test
-suite is only as good as the vectors. Property tests on top:
-`convertLunar2Solar(convertSolar2Lunar(d)) === d` for 5 000 random dates.
+`fixtures/amlich-vectors.json` is **generated** by `npm run gen:amlich`: 490
+solar↔lunar pairs spanning **1900–2100**, all 201 Tết dates, all 74 leap months,
+and every VN/CN divergence run. It is a regression net, not proof — the pairs
+come from the module itself. Three things carry the real weight:
+
+1. **An independent implementation.** All 73 414 days are compared against
+   `Intl`'s `chinese` calendar. That calendar is what R8 forbids for *display*
+   (it computes at UTC+8), which is exactly what makes it a good *oracle*: a
+   different codebase over the same astronomy, so the two may only disagree where
+   the timezone genuinely moves a boundary. Result: 2 667 days differ, in 84 runs
+   — **78 are a whole month shifted one day** (the mechanical UTC+7 effect) and
+   only **6 are leap-month placement**, which is the entire human review surface.
+2. **Invariants a wrong-but-consistent answer cannot satisfy.** Every lunar day
+   is 1..30, every complete lunar month is 29 or 30 days, and *every* day
+   round-trips — exhaustively, not sampled.
+3. **Human sign-off** on `divergence.substantive` (6 rows) and the Tết column.
+   `_verified` stays `false` until then, and the Clock must not show the lunar
+   line while it is (R8).
+
+⚠️ The old 5 000-random-date round-trip test was **not sufficient** and is
+replaced. `convertLunar2Solar(0, …)` maps straight back to its solar date, so a
+day-0 bug is self-consistent under round-trip; two such days (2054-05-07,
+2062-04-09) survived that test and were caught only by the day-range invariant.
 
 ## 3. Other unit targets (minimum cases)
 
