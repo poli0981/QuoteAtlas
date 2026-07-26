@@ -110,13 +110,22 @@ export default defineConfig({
     watch: { ignored: ['**/src-tauri/**'] },
   },
   // Only override the build target for native webviews. Windows (WebView2) and
-  // Android (System WebView) are Chromium; macOS/Linux (deferred desktop round)
-  // are WebKit. The web/Cloudflare build keeps Vite's defaults.
+  // Android (System WebView) are Chromium; macOS (WKWebView) and Linux
+  // (webkit2gtk 4.1) are WebKit. The web/Cloudflare build keeps Vite's defaults.
+  //
+  // safari15, not the safari13 the Tauri template suggests: esbuild refuses to
+  // lower @tauri-apps/api's destructuring below it ("Transforming destructuring
+  // to the configured target environment is not supported yet"), and that API
+  // entered the bundle when desktop fullscreen started importing
+  // `@tauri-apps/api/window`. safari14 fails the same way; 15 is the lowest that
+  // builds. Safari 15 shipped back to macOS 10.15, which is also Tauri v2's
+  // minimum, so this costs no supported version. Linux is unaffected either way —
+  // webkit2gtk 4.1 is far newer than any of these.
   ...(tauriPlatform
     ? {
         build: {
           target:
-            tauriPlatform === 'windows' || tauriPlatform === 'android' ? 'chrome105' : 'safari13',
+            tauriPlatform === 'windows' || tauriPlatform === 'android' ? 'chrome105' : 'safari15',
           minify: tauriDebug ? false : ('esbuild' as const),
           sourcemap: tauriDebug,
         },
