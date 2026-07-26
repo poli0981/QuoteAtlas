@@ -1,5 +1,3 @@
-<!-- Replace «contact» with the real contact address before the first release (docs/00 §8). -->
-
 # Privacy Policy — QuoteAtlas
 
 _Version 1 (2026)_
@@ -22,7 +20,7 @@ Network connections:
 
 Uninstalling the app / clearing site data deletes everything.
 
-Contact: «contact».
+Contact: contact@qouteatlas.app.
 
 ## VI
 
@@ -42,4 +40,4 @@ Kết nối mạng:
 
 Gỡ ứng dụng / xóa dữ liệu trang là xóa toàn bộ.
 
-Liên hệ: «contact».
+Liên hệ: contact@qouteatlas.app.

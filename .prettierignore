@@ -8,3 +8,6 @@ src-tauri/gen/
 public/fonts/
 package-lock.json
 content-src/
+# Hand-written prose and hand-aligned tables, same rationale as content-src/:
+# reformatting them produces a large mechanical diff that hides real edits.
+docs/

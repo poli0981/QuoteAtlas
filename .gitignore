@@ -1,7 +1,3 @@
-# Local-only project spec — MUST NEVER be committed/pushed (maintainer constraint)
-/docs/
-/CLAUDE.md
-
 # Dependencies
 node_modules/
 
