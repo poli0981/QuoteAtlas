@@ -1,43 +1,78 @@
 /**
- * Media file storage (docs/02 §4, docs/04 §6). Web uses OPFS
- * (`/backgrounds/<id>.<ext>`); desktop/Android use the Tauri fs plugin
- * (`$APPDATA/backgrounds/<id>.<ext>`) and serve files through the asset protocol.
+ * Media file storage (docs/02 §4, docs/04 §6). Web AND Android use OPFS
+ * (`/backgrounds/<id>.<ext>`); desktop uses the Tauri fs plugin
+ * (`$APPDATA/backgrounds/<id>.<ext>`) and serves files through the asset protocol.
  * Binaries never live in settings — only the index does. Tauri modules are loaded
  * via dynamic import inside the native branches so the web bundle stays Tauri-free.
+ *
+ * Android deliberately takes the OPFS branch, not the Tauri one (a deviation from
+ * the "native shells use native storage" sketch in docs/02 §4). Its WebView is
+ * Chromium — minSdk is 31 and the System WebView auto-updates, so OPFS is well
+ * past its Chromium 109 baseline — while the Tauri path has three Android-only
+ * failure modes that OPFS simply does not have:
+ *   1. `convertFileSrc` returns `http://asset.localhost/…` on Android (and
+ *      Windows), a *different origin* from the page, so every media URL has to
+ *      clear the CSP as a remote host rather than as `asset:`.
+ *   2. `$APPDATA` resolves to `/data/user/0/<id>`, but Tauri canonicalises the
+ *      request path before matching it against the configured scope, and
+ *      `/data/user/0` is a symlink to `/data/data`. Paths that do not exist yet
+ *      skip canonicalisation — which is why the very first `mkdir`/`writeFile`
+ *      succeeded and every read, stat and later mkdir was then refused.
+ *   3. Android has no custom-protocol IPC, so `writeFile` ships the bytes across
+ *      the JNI bridge as a JSON array of integers — roughly 3× the file size for
+ *      a file that may already be 25 MB.
  */
-import { isTauri } from '../platform';
+import { platformKind } from '../platform';
+import { QaError } from '../qa-error';
+
+/** Desktop is the only platform on the Tauri fs path (see the note above). */
+function usesTauriFs(): boolean {
+  return platformKind() === 'desktop';
+}
 
 export async function putMedia(name: string, blob: Blob): Promise<void> {
-  if (isTauri()) return putMediaTauri(name, blob);
+  if (usesTauriFs()) return putMediaTauri(name, blob);
   return putMediaWeb(name, blob);
 }
 
 /**
- * A URL the background layer can render. Web returns a `blob:` object URL (the
- * caller revokes it); native returns a stable asset-protocol URL. `revokeObjectURL`
- * is a no-op on non-`blob:` URLs, so callers need no branch — and `<video>` streams
- * the asset via HTTP range requests instead of buffering the whole file.
+ * A URL the background layer can render. OPFS returns a `blob:` object URL (the
+ * caller revokes it); desktop returns a stable asset-protocol URL. `revokeObjectURL`
+ * is a no-op on non-`blob:` URLs, so callers need no branch — and an object URL
+ * made from an OPFS `File` is backed by the stored file rather than a heap copy,
+ * so `<video>` still streams instead of buffering the whole clip.
  */
 export async function mediaUrl(name: string): Promise<string> {
-  if (isTauri()) return mediaUrlTauri(name);
+  if (usesTauriFs()) return mediaUrlTauri(name);
   return mediaUrlWeb(name);
 }
 
 export async function removeMedia(name: string): Promise<void> {
-  if (isTauri()) return removeMediaTauri(name);
+  if (usesTauriFs()) return removeMediaTauri(name);
   return removeMediaWeb(name);
 }
 
 export async function estimateStorage(): Promise<{ usage: number; quota: number }> {
-  if (isTauri()) return estimateStorageTauri();
+  if (usesTauriFs()) return estimateStorageTauri();
   const est = await navigator.storage.estimate();
   return { usage: est.usage ?? 0, quota: est.quota ?? 0 };
 }
 
-// --- web (OPFS) ---
+// --- OPFS (web + Android) ---
 
+/**
+ * OPFS is typed as always-present but really can be missing — a pre-109 Chromium
+ * WebView, or a browser in private mode, throws here. Translating that into a
+ * typed error is what lets the UI say "storage unavailable" instead of blaming
+ * the user's file (docs/06 §9).
+ */
 async function backgroundsDir(): Promise<FileSystemDirectoryHandle> {
-  const root = await navigator.storage.getDirectory();
+  let root: FileSystemDirectoryHandle;
+  try {
+    root = await navigator.storage.getDirectory();
+  } catch {
+    throw new QaError('E_MEDIA_STORAGE', 'OPFS unavailable');
+  }
   return root.getDirectoryHandle('backgrounds', { create: true });
 }
 
@@ -61,7 +96,7 @@ async function removeMediaWeb(name: string): Promise<void> {
   await dir.removeEntry(name);
 }
 
-// --- native (Tauri fs + asset protocol) ---
+// --- desktop (Tauri fs + asset protocol) ---
 
 async function putMediaTauri(name: string, blob: Blob): Promise<void> {
   const { mkdir, writeFile, BaseDirectory } = await import('@tauri-apps/plugin-fs');
