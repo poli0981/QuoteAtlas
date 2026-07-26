@@ -90,6 +90,16 @@ Internal steps (standard for this algorithm): `jdFromDate` → `getNewMoonDay(k)
 → `getSunLongitude` → `getLunarMonth11(y)` → leap-month placement → date
 mapping. Keep it ≤ ~200 LOC, zero dependencies.
 
+⚠️ **One deliberate departure from the published algorithm.** `k` is a *mean*
+synodic estimate and a true lunation runs up to ~7 hours either side of the mean,
+so `k + 1` can overshoot a month boundary by more than one step. The usual
+`if (monthStart > dayNumber) k -= 1` steps back exactly once, which is one short
+for 2054-05-07 and 2062-04-09 — both returned **lunar day 0**, an impossible date
+that would have rendered as "ngày 0 tháng 4". `lunarMonthStart()` walks back until
+the new moon is actually on or before the day. Only the backward direction is
+needed: `floor(…) + 1` cannot land below the true index without the real new moon
+running a whole synodic month ahead of the mean.
+
 Other regional calendars use `Intl.DateTimeFormat` with `-u-ca-…`
 (`chinese`, `japanese`, `dangi`, `buddhist`, `islamic-umalqura`, `hebrew`,
 `persian`) — table in doc 07 §4.

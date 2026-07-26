@@ -116,6 +116,35 @@ function getNewMoonDay(k: number, timeZone: number): number {
   return Math.floor(newMoon(k) + 0.5 + timeZone / 24);
 }
 
+/**
+ * Start (integer JDN) of the lunar month containing `dayNumber` — the latest new
+ * moon on or before it.
+ *
+ * `k` here is a MEAN-synodic estimate, and a true lunation runs up to ~7 hours
+ * either side of the mean, so `k + 1` can overshoot by more than one month near a
+ * boundary. The algorithm as usually published steps back exactly once
+ * (`if (monthStart > dayNumber) k -= 1`), which is one step short for two days in
+ * 1900–2100: 2054-05-07 and 2062-04-09 came out as **lunar day 0**, an impossible
+ * date that would have rendered as "ngày 0 tháng 4". Walking back until the new
+ * moon is actually on or before the day fixes both.
+ *
+ * Only the backward direction exists because `floor(…) + 1` can never land below
+ * the true index — that would need the real new moon to run a whole synodic month
+ * ahead of the mean. The exhaustive day-range invariant in amlich.test.ts is what
+ * holds that claim to account across the supported range; MAX_STEPS is a
+ * termination guard, not an expected path.
+ */
+function lunarMonthStart(dayNumber: number, timeZone: number): number {
+  const MAX_STEPS = 4;
+  let k = Math.floor((dayNumber - 2415021.076998695) / SYNODIC) + 1;
+  let steps = 0;
+  while (getNewMoonDay(k, timeZone) > dayNumber && steps < MAX_STEPS) {
+    k -= 1;
+    steps += 1;
+  }
+  return getNewMoonDay(k, timeZone);
+}
+
 /** Day the 11th lunar month (containing the winter solstice) begins in year yy. */
 function getLunarMonth11(yy: number, timeZone: number): number {
   const off = jdFromDate(31, 12, yy) - 2415021;
@@ -144,11 +173,7 @@ function getLeapMonthOffset(a11: number, timeZone: number): number {
 /** Convert a solar (civil) date to the Vietnamese lunar date (UTC+7 default). */
 export function convertSolar2Lunar(dd: number, mm: number, yy: number, timeZone = 7): LunarDate {
   const dayNumber = jdFromDate(dd, mm, yy);
-  const k = Math.floor((dayNumber - 2415021.076998695) / SYNODIC);
-  let monthStart = getNewMoonDay(k + 1, timeZone);
-  if (monthStart > dayNumber) {
-    monthStart = getNewMoonDay(k, timeZone);
-  }
+  const monthStart = lunarMonthStart(dayNumber, timeZone);
   let a11 = getLunarMonth11(yy, timeZone);
   let b11 = a11;
   let lunarYear: number;
