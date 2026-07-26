@@ -280,7 +280,7 @@ export function App(): ReactElement {
       />
 
       <header className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-4 p-6">
-        <Clock locale={uiLanguage} hour12={hour12} />
+        <Clock locale={uiLanguage} hour12={hour12} region={effective} />
         <div className="flex items-center gap-3 text-sm">
           <RegionPicker
             detected={detected}

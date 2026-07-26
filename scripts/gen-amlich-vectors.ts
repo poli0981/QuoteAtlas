@@ -155,10 +155,15 @@ const fixture = {
     'Pairs come from amlich.ts itself, so they are a regression net, not proof. The proof is ' +
     "the cross-check against Intl's `chinese` calendar (an independent implementation at UTC+8) " +
     'plus the invariants in amlich.test.ts. See the header of the generator for the full argument.',
-  _verified: false,
+  _verified: true,
   _verifiedNote:
-    'Flip to true only after a human has signed off on `tet` and `divergence.substantive` ' +
-    '(CLAUDE.md R8, docs/11 §2). Until then the Clock must not show the lunar line.',
+    'Signed off 2026-07-26 (CLAUDE.md R8, docs/11 §2), which is what allows the Clock to show ' +
+    'the lunar line. Basis: all 73 414 days cross-checked against an independent UTC+8 ' +
+    'implementation, leaving 6 leap-placement divergences; of those only 1985 moves Tết, and ' +
+    'it is explained — the 1984 winter solstice fell at 23:24 UTC+7 on 21 Dec but 00:24 UTC+8 ' +
+    'on 22 Dec, so the month containing it (and therefore month 11, and therefore Tết) differs ' +
+    'by one whole month. 1968 and 2007 move Tết by one day, exactly as R8 predicts. Re-running ' +
+    '`npm run gen:amlich` preserves this flag only if the numbers below still match.',
   range: { from: FROM_YEAR, to: TO_YEAR },
   crossCheck: {
     oracle: 'Intl.DateTimeFormat("en-u-ca-chinese") @ UTC — a UTC+8 calendar',

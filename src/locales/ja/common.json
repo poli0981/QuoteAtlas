@@ -10,5 +10,8 @@
     "search": "国を検索…",
     "reset": "自動検出に戻す",
     "fallback": "{{locale}} を表示中 — {{region}} のプールはまだありません"
+  },
+  "calendar": {
+    "lunarVi": "旧暦"
   }
 }
