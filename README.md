@@ -4,12 +4,26 @@ An offline-first, privacy-first **ambient quote display**. It shows one fully
 attributed proverb or quotation — matched to your region, with a live clock and
 regional calendar, and holiday-aware selection — over a background you customize
 (color, gradient, image, video, slideshow). One React core ships as a web PWA and
-(later) desktop + Android via Tauri 2. **No backend. No telemetry. Offline-first.**
+as desktop + Android apps via Tauri 2. **No backend. No telemetry. Offline-first.**
 
 > **Status:** in active development. The web app is live at
-> **<https://qouteatlas.app/>**; signed Android APKs are attached to each
-> [release](https://github.com/poli0981/QuoteAtlas/releases). Desktop bundles are
-> not built yet.
+> **<https://qouteatlas.app/>**; Android APKs and desktop bundles for Windows,
+> macOS and Linux are attached to each
+> [release](https://github.com/poli0981/QuoteAtlas/releases).
+
+## Installing
+
+The Android APK is signed. **The desktop bundles are not** — there is no
+code-signing certificate — so the OS will warn about them:
+
+- **Windows** (`.exe`, NSIS installer): SmartScreen shows "Windows protected your
+  PC" → _More info_ → _Run anyway_.
+- **macOS** (`.dmg`, universal): Gatekeeper refuses a double-click → right-click
+  the app → _Open_ → _Open_.
+- **Linux**: `.AppImage` (`chmod +x`, then run), `.deb`, or `.rpm`.
+
+Check what you downloaded against the `SHA256SUMS` file on the release before
+trusting any of it.
 
 ## Privacy & data
 

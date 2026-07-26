@@ -18,10 +18,9 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
-# All-platform plugins (desktop + Android). Desktop-only plugins
-# (single-instance, window-state) are added in the desktop round. The desktop
-# updater (tauri-plugin-updater), process, and dialog plugins are intentionally
-# absent — no consumer this round (docs deviation, see the PR body).
+# All-platform plugins (desktop + Android). The desktop updater
+# (tauri-plugin-updater), process, and dialog plugins are intentionally absent —
+# no consumer (docs deviation, see the PR body).
 [dependencies]
 # `protocol-asset` is required because tauri.conf.json enables the asset protocol
 # (local background media). `tauri dev`/`build` would inject it, but plain `cargo
@@ -32,3 +31,15 @@ tauri-plugin-os = "2"
 tauri-plugin-store = "2"
 tauri-plugin-fs = "2"
 tauri-plugin-opener = "2"
+
+# Desktop-only. Both crates fail to build for Android/iOS, so they are gated by
+# target rather than by a `#[cfg]` inside the source — the cfg alone would still
+# make cargo compile them for the mobile target.
+#
+# single-instance: QuoteAtlas is an ambient full-screen display. A second copy
+#   would fight the first for the screen rather than usefully show a second quote.
+# window-state: it is left running for hours, so where it was placed and how big
+#   it was are worth remembering across restarts.
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-single-instance = "2"
+tauri-plugin-window-state = "2"

@@ -21,6 +21,8 @@
   },
   "err": {
     "unsupported": "Định dạng tệp không hỗ trợ.",
+    "aspect": "Không vừa màn hình — sẽ bị cắt mất quá nhiều. Hãy chọn tệp có tỉ lệ gần {{ratio}}.",
+    "storage": "Không lưu được tệp này — bộ nhớ ứng dụng không khả dụng. Hãy khởi động lại ứng dụng rồi thử lại.",
     "libraryFull": "Thư viện đã đầy — xóa bớt để thêm mới.",
     "uncompressible": "Không thể nén ảnh dưới giới hạn — hãy giảm dung lượng rồi thử lại.",
     "duration": "Video dài quá 3:00 — hãy cắt bớt (gợi ý: LosslessCut).",

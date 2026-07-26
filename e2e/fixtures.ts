@@ -113,26 +113,41 @@ function pngChunk(type: string, data: Buffer): Buffer {
 }
 
 /**
- * A real, valid 1×1 PNG in the given colour — enough to drive the whole import
- * pipeline (sniff → decode → OPFS).
+ * A real, valid solid-colour PNG — enough to drive the whole import pipeline
+ * (sniff → decode → aspect gate → OPFS).
  *
  * The colour is what makes the FILE BYTES differ, and that matters: import dedups
  * on the SHA-256 of the picked file, so two uploads of the same colour are one
  * item on purpose. Any spec that wants N distinct items must pass N distinct
  * colours (a hand-rolled encoder, because there is no other way to vary the bytes
  * while staying a decodable PNG).
+ *
+ * The default 32×18 is 16:9, and that is load-bearing rather than decorative.
+ * Import refuses anything `cover` would crop past the cap (docs/04 §7), judged
+ * against `screen` — 1920×1080 in headless chromium, 1792×1120 in webkit. The
+ * 1×1 this used to return is square, which keeps only 56% on either, so every
+ * media spec would fail the gate. Pass explicit dimensions to test the gate.
  */
-export function tinyPng(color: [number, number, number] = [22, 160, 133]): {
+export function tinyPng(
+  color: [number, number, number] = [22, 160, 133],
+  width = 32,
+  height = 18,
+): {
   name: string;
   mimeType: string;
   buffer: Buffer;
 } {
   const ihdr = Buffer.alloc(13);
-  ihdr.writeUInt32BE(1, 0); // width
-  ihdr.writeUInt32BE(1, 4); // height
+  ihdr.writeUInt32BE(width, 0);
+  ihdr.writeUInt32BE(height, 4);
   ihdr[8] = 8; // bit depth
   ihdr[9] = 2; // colour type: truecolour (RGB)
-  const scanline = Buffer.from([0, ...color]); // filter byte 0 + one RGB pixel
+  // Each row is a filter byte (0 = None) followed by `width` RGB pixels.
+  const row = Buffer.concat([
+    Buffer.from([0]),
+    Buffer.concat(Array.from({ length: width }, () => Buffer.from(color))),
+  ]);
+  const scanline = Buffer.concat(Array.from({ length: height }, () => row));
   const buffer = Buffer.concat([
     Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
     pngChunk('IHDR', ihdr),

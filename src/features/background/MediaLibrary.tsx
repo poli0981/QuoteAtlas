@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, type ChangeEvent, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { pushLog } from '../../lib/log-buffer';
+import { platformKind } from '../../lib/platform';
+import { QaError } from '../../lib/qa-error';
 import {
   estimateStorage,
   mediaUrl,
@@ -7,8 +10,9 @@ import {
 } from '../../lib/storage/media-adapter';
 import { useSettings } from '../settings/store';
 import { importMedia } from './import';
-import { capsFor } from './limits';
-import type { MediaItem } from './media';
+import { capsFor, profileFor } from './limits';
+import { formatAspectRatio, type MediaItem } from './media';
+import { screenSize } from './viewport';
 
 type Purpose = 'image' | 'video' | 'slideshow';
 
@@ -43,7 +47,8 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
   const [storage, setStorage] = useState<{ usage: number; quota: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const caps = capsFor('web');
+  const profile = profileFor(platformKind());
+  const caps = capsFor(profile);
 
   const items =
     purpose === 'image'
@@ -140,7 +145,7 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
     if (!file) return;
     setError(null);
     setNotice(null);
-    void importMedia(file, 'web', media)
+    void importMedia(file, profile, media)
       .then((r) => {
         if (!r.ok) {
           if (r.reason === 'duplicate') {
@@ -150,14 +155,30 @@ export function MediaLibrary({ purpose }: { purpose: Purpose }): ReactElement {
             ensureSelected(r.existing);
             return;
           }
-          setError(t(`err.${errKey(r.reason)}`));
+          // A refusal is a normal outcome, but a bug report is far more useful
+          // when it says *which* one the user hit (docs/04 §9).
+          pushLog({ level: 'warn', code: 'E_MEDIA_REJECTED', msg: `import refused: ${r.reason}` });
+          // `ratio` is only read by err.aspect; i18next drops unused
+          // interpolations, so every reason can share one call.
+          const screen = screenSize();
+          setError(t(`err.${errKey(r.reason)}`, { ratio: formatAspectRatio(screen.w, screen.h) }));
           return;
         }
         addMedia(r.item);
         ensureSelected(r.item);
       })
-      .catch(() => {
-        setError(t('err.unsupported'));
+      .catch((cause: unknown) => {
+        // NOT a bad file: every "this file is wrong" outcome comes back as an
+        // `ok: false` reason above, so reaching here means the import itself
+        // threw — storage unavailable, quota, an unexpected decode failure.
+        // Reporting those as "unsupported file type" is exactly what made the
+        // Android storage bug undiagnosable for a whole release (docs/06 §9).
+        pushLog({
+          level: 'error',
+          code: cause instanceof QaError ? cause.code : 'E_MEDIA_STORAGE',
+          msg: cause instanceof Error ? `${cause.name}: ${cause.message}` : 'import threw',
+        });
+        setError(t('err.storage'));
       });
   };
 

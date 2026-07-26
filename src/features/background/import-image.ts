@@ -7,6 +7,7 @@ import { putMedia } from '../../lib/storage/media-adapter';
 import { compressViaLadder } from './compressor';
 import { capsFor, type MediaProfile } from './limits';
 import {
+  decideAspect,
   decideImageImport,
   extFor,
   findDuplicate,
@@ -14,6 +15,7 @@ import {
   sniffMediaType,
   type ImportResult,
   type MediaItem,
+  type ScreenSize,
 } from './media';
 
 function webpEncodeSupported(): boolean {
@@ -47,6 +49,7 @@ export async function importImage(
   profile: MediaProfile,
   media: readonly MediaItem[],
   hashFile: () => Promise<string>,
+  screen: ScreenSize,
 ): Promise<ImportResult> {
   const head = new Uint8Array(await file.slice(0, 16).arrayBuffer());
   const mime = sniffMediaType(head);
@@ -54,7 +57,21 @@ export async function importImage(
 
   const caps = capsFor(profile);
   const imageCount = media.filter((m) => m.kind === 'image').length;
-  const dims = await dimensions(file);
+  // A decode failure here means the bytes sniffed as an image but are truncated
+  // or corrupt — that IS an unsupported file, and saying so keeps the caller's
+  // catch-all free to mean "something else went wrong" (docs/06 §9).
+  let dims: { w: number; h: number };
+  try {
+    dims = await dimensions(file);
+  } catch {
+    return { ok: false, reason: 'unsupported' };
+  }
+  // Shape is checked before anything expensive and before the dedup hash: unlike
+  // 'library-full', a shape that does not fit means the FILE is unusable, so
+  // there is nothing to gain from reading it whole to look for a twin.
+  const aspect = decideAspect(dims.w, dims.h, screen, caps);
+  if (aspect.action === 'reject') return { ok: false, reason: aspect.reason };
+
   const decision = decideImageImport(Math.max(dims.w, dims.h), file.size, caps, imageCount);
   // decideImageImport only ever rejects for 'library-full' (an over-cap image is
   // compressed, not refused), so the file is known-importable here either way —

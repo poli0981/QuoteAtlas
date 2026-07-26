@@ -21,6 +21,8 @@
   },
   "err": {
     "unsupported": "Unsupported file type.",
+    "aspect": "Doesn't fit your screen — too much of it would be cropped away. Use something closer to {{ratio}}.",
+    "storage": "Couldn't save this file — app storage is unavailable. Restart the app and try again.",
     "libraryFull": "Library full — delete some to add more.",
     "uncompressible": "Couldn't fit this image under the size limit — shrink it and try again.",
     "duration": "Video longer than 3:00 — trim it first (e.g. LosslessCut).",

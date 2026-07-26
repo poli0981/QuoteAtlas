@@ -86,7 +86,7 @@ quoteatlas/
 | Concern | Web | Desktop | Android |
 |---|---|---|---|
 | Settings persistence | `localStorage` | `tauri-plugin-store` | `tauri-plugin-store` |
-| Media storage | OPFS (+ `persist()`), IndexedDB fallback | `fs` plugin → `$APPDATA/backgrounds/` | same as desktop |
+| Media storage | OPFS | `fs` plugin → `$APPDATA/backgrounds/` | **OPFS, same as web** — see below |
 | Media caps source | `limits.ts` → `WEB` profile | `limits.ts` → `DESKTOP_ANDROID` profile | same |
 | External links | `<a target="_blank" rel="noopener noreferrer">` | `opener` plugin | `opener` plugin |
 | Update | `web.ts` (SW `needRefresh`) | `desktop.ts` (plugin-updater) | `android.ts` (GitHub API + browser) |
@@ -95,6 +95,26 @@ quoteatlas/
 `platform.ts` decides once at boot; features consume the injected adapter, never
 sniff the platform inline. Adding a platform = adding an adapter, not editing
 features.
+
+**Android uses OPFS, not the `fs` plugin** (deviation from the row above as
+originally written; shipped 2026-07-26). Its WebView is Chromium — minSdk 31, and
+the System WebView auto-updates, so OPFS is well past its Chromium 109 baseline —
+while the native path has three Android-only failure modes that OPFS does not:
+
+1. `convertFileSrc` returns `http://asset.localhost/…` on Android (and Windows), a
+   *different origin* from the page, so every media URL has to clear the CSP as a
+   remote host rather than as `asset:`.
+2. `$APPDATA` resolves to `/data/user/0/<id>`, but Tauri canonicalises the request
+   path before matching the configured scope and `/data/user/0` is a symlink to
+   `/data/data`. Paths that do not exist yet skip canonicalisation — which is why
+   the very first `mkdir`/`writeFile` succeeded and every read, stat and later
+   mkdir was then refused. (upstream: tauri-apps/tauri#12364.)
+3. Android is excluded from the custom-protocol IPC, so `writeFile` ships the bytes
+   across the JNI bridge as a JSON array of integers — roughly 3× the size of a
+   file that may already be 25 MB.
+
+`platformKind() === 'desktop'` is therefore the only thing on the `fs` path. The
+rationale also lives in the `media-adapter.ts` header so it is not "fixed" back.
 
 ## 5. Boot sequence (detail in doc 03 §1)
 

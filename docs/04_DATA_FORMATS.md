@@ -146,6 +146,24 @@ underline with `[text](url)`.
 | `VIDEO_MAX_BYTES_4K` (height ≤ 2160) | **125 MB** | **150 MB** |
 | Accepted image | jpg png webp avif (+ animated gif/webp, counted as image) | same |
 | Accepted video | mp4 (H.264/AAC), webm (VP9/AV1) | same |
+| `MIN_VISIBLE_FRACTION` (aspect gate) | 0.75 | 0.75 |
+
+**Aspect gate.** Backgrounds are fitted with `cover`, so media that does not match
+the display is *cropped*, not letterboxed — and the further off it is, the more it
+is also blown up. Import refuses anything that would keep less than
+`MIN_VISIBLE_FRACTION` of the frame. 4:3 on 16:9 lands exactly on the line and is
+accepted; a square keeps 56% and is refused.
+
+The comparison is **orientation-agnostic** — both ratios normalise to long edge ÷
+short edge — so a 9:16 clip scores identically to a 16:9 one. It *is* a perfect
+fit held upright, and a verdict that flipped with how the device happened to be
+turned at import time would be arbitrary. For the same reason the reference is
+`screen`, not the window, which can be resized a second later. An unmeasurable
+screen always resolves to "fits": a gate that cannot see the display must never be
+the reason an import fails.
+
+Note this is strict on tall phones by design — on a 20:9 screen an ordinary 4:3
+photo keeps only 60% and is refused. The error names the shape to aim for.
 
 ## 8. Settings export — `quoteatlas-settings-YYYYMMDD-HHmm.json`
 

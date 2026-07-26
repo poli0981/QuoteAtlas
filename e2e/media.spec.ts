@@ -67,6 +67,11 @@ async function upload(panel: Locator, expectedItems: number): Promise<void> {
   await expect(panel.getByRole('listitem')).toHaveCount(expectedItems);
 }
 
+/** The shape the aspect gate would refuse: square, on a landscape screen. */
+async function uploadSquare(panel: Locator): Promise<void> {
+  await panel.locator('input[type="file"]').setInputFiles(tinyPng([200, 30, 30], 64, 64));
+}
+
 async function closeSettings(panel: Locator): Promise<void> {
   await panel.getByRole('button', { name: S.settings.close }).click();
   await expect(panel).toBeHidden();
@@ -90,6 +95,29 @@ test.describe('background media library', () => {
     expect(state.background.mode).toBe('image');
     expect(state.background.imageId).toBeNull();
     expect(state.media).toEqual([]);
+  });
+
+  test('refuses an image that cover would crop past the cap, and says what to aim for', async ({
+    app,
+  }) => {
+    const panel = await openSettings(app);
+    await chooseMode(panel, S.settings.background.image);
+
+    // A square on a landscape display keeps ~56% of itself under `cover` — the
+    // blown-up, hard-cropped result is what this gate exists to prevent.
+    await uploadSquare(panel);
+
+    const alert = panel.getByRole('alert');
+    await expect(alert).toBeVisible();
+    // the message names the screen's shape, so the user knows what to pick next
+    await expect(alert).toContainText(':');
+
+    // refused means refused: nothing stored, nothing applied
+    await expect(panel.getByRole('listitem')).toHaveCount(0);
+    await expect(panel.getByText(S.media.empty)).toBeVisible();
+    const state = await persisted(app);
+    expect(state.media).toEqual([]);
+    expect(state.background.imageId).toBeNull();
   });
 
   test('an imported image lands in the grid, the store and the page background', async ({
