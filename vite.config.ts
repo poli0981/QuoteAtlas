@@ -31,7 +31,18 @@ export default defineConfig({
       // an inline script would need `script-src 'unsafe-inline'`, which docs/09 §1
       // makes a blocking review item. Keeping this null keeps the CSP strict.
       injectRegister: null,
-      includeAssets: ['icon.svg', '404.html', '404.css'],
+      // robots.txt / sitemap.xml are deliberately absent: they are for crawlers,
+      // which never install a service worker, and precaching them would make the
+      // SW answer a navigation to /robots.txt from cache.
+      includeAssets: [
+        'icon.svg',
+        'apple-touch-icon.png',
+        'icon-192.png',
+        'icon-512.png',
+        'icon-maskable-512.png',
+        '404.html',
+        '404.css',
+      ],
       manifest: {
         id: '/',
         name: 'QuoteAtlas',
@@ -46,9 +57,21 @@ export default defineConfig({
         categories: ['lifestyle', 'productivity'],
         scope: '/',
         start_url: '/',
-        // TODO(human asset): real 192/512 PNGs — Android's install prompt wants a
-        // raster maskable icon; icon.svg is the placeholder (docs/00 §8).
-        icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
+        // Rasters are generated from the same geometry as icon.svg by
+        // `npm run gen:icons`. The maskable one is a separate file because the
+        // full-bleed mark's lower corners fall outside the 80%-diameter safe
+        // circle that an arbitrary Android mask may crop to.
+        icons: [
+          { src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          {
+            src: 'icon-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
       },
       workbox: {
         // The quote pool + tz map are bundled into the JS chunk, so the app shell
@@ -59,10 +82,17 @@ export default defineConfig({
         // from the precache *silently* — offline would then lose its typeface.
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         cleanupOutdatedCaches: true,
-        // Unknown paths resolve to the app shell, which renders the translated
-        // notFound view. /404.html is the host-level page and must serve itself.
+        // Online, the host answers an unknown path with a real 404 and the static
+        // page (wrangler.jsonc `not_found_handling`). This fallback is the OFFLINE
+        // story: with no network the SW serves the app shell, which renders the
+        // translated notFound view rather than a browser error.
+        //
+        // The denylist covers everything that must reach the host as itself:
+        // /404 because Cloudflare's html_handling rewrites /404.html to it, and
+        // robots/sitemap because a crawler-facing file served as the app shell is
+        // worse than a 404.
         navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/404\.html$/],
+        navigateFallbackDenylist: [/^\/404(\.html)?$/, /^\/robots\.txt$/, /^\/sitemap\.xml$/],
       },
     }),
   ],

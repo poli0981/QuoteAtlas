@@ -92,6 +92,12 @@ test.describe('shipped security headers', () => {
     // to injected <style> tags or a style attribute, this is what would catch it.
     await expect(page.locator('main')).toHaveCSS('background-image', /linear-gradient/);
 
+    // The JSON-LD data block is an inline <script>, so this is the empirical proof
+    // that `script-src 'self'` does not police a non-JS `type` — asserted on both
+    // engines. Count it explicitly: without that, the test would keep passing
+    // vacuously if the block were ever dropped from index.html.
+    await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
+
     expect(await violations(page)).toEqual([]);
   });
 

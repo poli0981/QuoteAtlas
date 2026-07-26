@@ -121,6 +121,10 @@ export function App(): ReactElement {
   useEffect(() => {
     // keep the i18n runtime in sync with the persisted UI language
     void i18n.changeLanguage(uiLanguage);
+    // …and the document with it. index.html can only ship a static lang="en",
+    // but the chosen language is a stored setting, so without this a VI or JA
+    // user's chrome is announced by a screen reader with an English voice.
+    document.documentElement.lang = uiLanguage;
   }, [uiLanguage]);
 
   useEffect(() => {

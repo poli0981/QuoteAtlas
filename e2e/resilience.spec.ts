@@ -81,6 +81,17 @@ test.describe('resilience', () => {
     await expect(app.getByText(S.errors.offline.title)).toBeVisible();
   });
 
+  /**
+   * This is the OFFLINE path, even though it reads like the online one.
+   *
+   * `vite preview` falls back to index.html for any unknown path, which is
+   * exactly what the service worker does with no network (vite.config.ts
+   * `navigateFallback`) — so this covers the offline behaviour faithfully.
+   * Online, production does NOT do this: `wrangler.jsonc` sets
+   * `not_found_handling: "404-page"`, so Cloudflare answers an unknown path with
+   * a real 404 and the static `public/404.html`, and this view is never reached.
+   * `npm run smoke:web` asserts that half against the deployed site.
+   */
   test('renders the notFound view on an unknown route, with a way back to the quotes', async ({
     app,
   }) => {

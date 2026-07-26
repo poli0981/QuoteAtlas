@@ -1,0 +1,34 @@
+// Cloudflare Workers Static Assets config (docs/12 §4, docs/13 §5).
+//
+// The web app has been deploying from a dashboard-configured Workers Builds Git
+// integration that runs on every push to `main`. This file takes that config
+// into the repo so the routing behaviour is reviewable in a diff.
+//
+// `name` MUST stay `quoteatlas` — it is the existing Worker that
+// https://qouteatlas.app/ is bound to. A different name would silently create a
+// second Worker, deploy there, and leave the custom domain on the old one while
+// every build still reported success.
+//
+// There is no `main`: this is an assets-only Worker, so there is no Worker code,
+// no `compatibility_flags`, and nothing for `observability` to observe.
+// `assets.directory` is required — the bot-generated config on the
+// `cloudflare/workers-autoconfig` branch omits it because it relies on
+// @cloudflare/vite-plugin, which this project does not use.
+{
+  "name": "quoteatlas",
+  "compatibility_date": "2026-07-26",
+  "assets": {
+    "directory": "./dist",
+
+    // Unknown paths get a real 404 with the static page, not the app shell with
+    // a 200. A soft 404 is an SEO defect, and with exactly one route (App.tsx
+    // renders notFound for anything but "/") there is no client-side routing to
+    // preserve. The in-app notFound view still shows offline, where the service
+    // worker's navigateFallback answers instead of the host.
+    "not_found_handling": "404-page",
+
+    // The default. Named explicitly because it is load-bearing and surprising:
+    // it 307s /404.html to /404, which is why the SW denylist matches both.
+    "html_handling": "auto-trailing-slash",
+  },
+}

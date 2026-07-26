@@ -1,0 +1,10 @@
+# QuoteAtlas — https://qouteatlas.app/
+#
+# Nothing here is private and there is no backend, so everything is crawlable.
+# /assets/* is deliberately NOT disallowed: the page is a JS-rendered SPA, and a
+# crawler that cannot fetch the bundle sees an empty shell.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://qouteatlas.app/sitemap.xml
