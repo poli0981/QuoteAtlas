@@ -31,4 +31,5 @@
     // it 307s /404.html to /404, which is why the SW denylist matches both.
     "html_handling": "auto-trailing-slash",
   },
+  "workers_dev": false,
 }
